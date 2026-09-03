@@ -1,1 +1,53 @@
-
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+.corazon {
+  width: 120px;
+  height: 120px;
+  background: red;
+  position: relative;
+  transform: rotate(-45deg);
+  animation: latir 1s infinite;
+}
+.corazon:before, .corazon:after {
+  content: "";
+  width: 120px;
+  height: 120px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+}
+.corazon:before { top: -60px; left: 0; }
+.corazon:after { left: 60px; top: 0; }
+.texto {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  color: white;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 28px;
+  z-index: 10;
+}
+@keyframes latir {
+  0% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.15); }
+  100% { transform: rotate(-45deg) scale(1); }
+}
+</style>
+</head>
+<body>
+<div class="corazon"><div class="texto">paz</div></div>
+</body>
+</html>
