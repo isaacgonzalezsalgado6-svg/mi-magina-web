@@ -1,54 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Me Jalo - Player</title>
+<title>Te Amo en 100 Idiomas</title>
 <style>
-body{margin:0;height:100vh;background:linear-gradient(135deg,#0f0c29,#302b63,#ff4d6d);display:flex;justify-content:center;align-items:center;font-family:Arial}
-.player{background:white;width:320px;padding:30px;border-radius:25px;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,.4)}
-.cover{width:180px;height:180px;background:linear-gradient(135deg,#ff4d6d,#302b63);border-radius:50%;margin:0 auto 20px;display:flex;justify-content:center;align-items:center;font-size:80px;animation:spin 3s linear infinite paused}
-.cover.playing{animation-play-state:running}
-@keyframes spin{to{transform:rotate(360deg)}}
-h2{margin:10px 0 5px}
-p{opacity:.6;margin:0 0 15px}
-input{display:none}
-label{background:#ff4d6d;color:white;padding:10px 20px;border-radius:20px;cursor:pointer;display:inline-block;margin:10px;font-weight:bold}
-audio{width:100%;margin-top:15px}
-.btn{width:60px;height:60px;border:none;border-radius:50%;background:#0f0c29;color:white;font-size:28px;cursor:pointer;margin:10px}
+  body{
+    margin:0;
+    height:100vh;
+    background: radial-gradient(circle at center, #ff1a4d, #000);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family: 'Segoe UI', sans-serif;
+    overflow:hidden;
+    color:white;
+  }
+ .card{
+    text-align:center;
+    animation: flotar 3s ease-in-out infinite;
+  }
+  @keyframes flotar{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+  }
+  #idioma{
+    font-size:20px;
+    opacity:0.7;
+    letter-spacing:3px;
+    text-transform:uppercase;
+  }
+  #frase{
+    font-size: clamp(40px, 10vw, 80px);
+    font-weight:900;
+    margin:15px 0;
+    text-shadow: 0 0 30px rgba(255,255,255,0.7);
+  }
+  #corazon{
+    font-size:50px;
+    animation: latir 0.8s infinite;
+  }
+  @keyframes latir{
+    0%{transform:scale(1)}
+    50%{transform:scale(1.3)}
+    100%{transform:scale(1)}
+  }
 </style>
 </head>
 <body>
-<div class="player">
-<div class="cover" id="cover">🎵</div>
-<h2>Me Jalo</h2>
-<p>Tu reproductor</p>
 
-<label for="file">📁 Subir tu música MP3</label>
-<input type="file" id="file" accept="audio/*">
-
-<audio id="audio" controls></audio>
-<br>
-<button class="btn" onclick="audio.play()">▶️</button>
-<button class="btn" onclick="audio.pause()">⏸️</button>
+<div class="card">
+  <div id="idioma">Español</div>
+  <div id="frase">Te amo</div>
+  <div id="corazon">❤️</div>
 </div>
 
 <script>
-const fileInput = document.getElementById('file');
-const audio = document.getElementById('audio');
-const cover = document.getElementById('cover');
+const lista = [
+["Español","Te amo"],["Inglés","I love you"],["Francés","Je t'aime"],
+["Italiano","Ti amo"],["Portugués","Eu te amo"],["Alemán","Ich liebe dich"],
+["Japonés","愛してる"],["Coreano","사랑해"],["Chino","我爱你"],
+["Ruso","Я тебя люблю"],["Árabe","أحبك"],["Turco","Seni seviyorum"],
+["Griego","Σ' αγαπώ"],["Hebreo","אני אוהב אותך"],["Hindi","मैं तुमसे प्यार करता हूँ"],
+["Tailandés","ฉันรักคุณ"],["Vietnamita","Tôi yêu bạn"],["Polaco","Kocham cię"],
+["Holandés","Ik hou van jou"],["Sueco","Jag älskar dig"],["Noruego","Jeg elsker deg"],
+["Danés","Jeg elsker dig"],["Finlandés","Minä rakastan sinua"],["Húngaro","Szeretlek"],
+["Checo","Miluji tě"],["Rumano","Te iubesc"],["Ucraniano","Я тебе кохаю"],
+["Bengalí","আমি তোমায় ভালোবাসি"],["Filipino","Mahal kita"],["Indonesio","Aku cinta kamu"],
+["Malayo","Saya cinta kamu"],["Suajili","Nakupenda"],["Zulú","Ngiyakuthanda"],
+["Hawaiano","Aloha wau ia 'oe"],["Islandés","Ég elska þig"],["Catalán","T'estimo"],
+["Vasco","Maite zaitut"],["Gallego","Quérote"],["Esperanto","Mi amas vin"],
+["Latín","Te amo"],["Criollo","Mwen renmen ou"],["Irlandés","Is breá liom tú"],
+["Galés","Rwy'n dy garu di"],["Afrikáans","Ek is lief vir jou"],["Albanés","Të dua"],
+["Serbio","Volim te"],["Croata","Volim te"],["Eslovaco","Ľúbim ťa"],
+["Esloveno","Ljubim te"],["Búlgaro","Обичам те"],["Bielorruso","Я цябе кахаю"],
+["Georgiano","მიყვარხარ"],["Armenio","Ես քեզ սիրում եմ"],["Azerí","Səni sevirəm"],
+["Kazajo","Мен сені сүйемін"],["Mongol","Би чамд хайртай"],["Nepalí","म तिमीलाई माया गर्छु"],
+["Tamil","நான் உன்னை காதலிக்கிறேன்"],["Telugu","నేను నిన్ను ప్రేమిస్తున్నాను"],
+["Canarés","ನಾನು ನಿನ್ನನ್ನು ಪ್ರೀತಿಸುತ್ತೇನೆ"],["Malayalam","ഞാൻ നിന്നെ സ്നേഹിക്കുന്നു"],
+["Cingalés","මම ඔයාට ආදරෙයි"],["Birmano","မင်းကိုချစ်တယ်"],["Jemer","ខ្ញុំ​ស្រឡាញ់​អ្នក"],
+["Lao","ຂ້ອຍຮັກເຈົ້າ"],["Maltés","Inħobbok"],["Letón","Es tevi mīlu"],
+["Lituano","Aš tave myliu"],["Estonio","Ma armastan sind"],["Macedonio","Те сакам"],
+["Bosnio","Volim te"],["Luxemburgués","Ech hunn dech gär"],["Quechua","Munakuyki"],
+["Guaraní","Rohayhu"],["Mapudungun","Azu duamkeimi"],["Náhuatl","Nimitztlazohtla"],
+["Haitiano","Mwen renmen ou"],["Maorí","Kei te aroha au ki a koe"],["Samoano","Ou te alofa ia te oe"],
+["Tahitiano","Ua here vau ia oe"],["Fiyiano","Au lomani iko"],["Yoruba","Mo nifẹ rẹ"],
+["Igbo","A hụrụ m gị n'anya"],["Hausa","Ina son ka"],["Amárico","እወድሃለሁ"],
+["Somalí","Waan ku jeclahay"],["Kinyarwanda","Ndagukunda"],["Lingala","Nalingi yo"],
+["Chichewa","Ndimakukondani"],["Sesoto","Kea u rata"],["Xhosa","Ndiyakuthanda"],
+["Criollo Seychelles","Mon kontan ou"],["Papiamento","Mi ta stima bo"],
+["Kurdo","Ez hej te dikim"],["Pastún","زه تا سره مینه لرم"],["Sindhi","مان توکي پيار ڪريان ٿو"],
+["Uigur","مەن سېنى سۆيىمەن"],["Tibetano","ངས་ཁྱེད་རང་ལ་དགའ་པོ་བྱེད་ཀྱི་ཡོད།"],
+["Dzongkha","ང་གིས་ཁྱེད་ལུ་དགའ།"],["Inuktitut","ᓇᒡᓕᒋᕙᒋᑦ"],["Yidis","איך האב דיך ליב"]
+];
 
-fileInput.onchange = function(){
-  const file = this.files[0];
-  if(file){
-    audio.src = URL.createObjectURL(file);
-    audio.play();
-    cover.textContent = "💿";
-  }
-};
+let i = 0;
+const idiomaEl = document.getElementById('idioma');
+const fraseEl = document.getElementById('frase');
 
-audio.onplay = ()=> cover.classList.add('playing');
-audio.onpause = ()=> cover.classList.remove('playing');
+function cambiar(){
+  idiomaEl.textContent = lista[i][0];
+  fraseEl.textContent = lista[i][1];
+  i = (i + 1) % lista.length;
+}
+
+// VELOCIDAD: 1200 = lento bonito, 700 = medio, 400 = rápido
+setInterval(cambiar, 1200);
 </script>
+
 </body>
 </html>
