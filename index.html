@@ -1,53 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: white;
-}
-.corazon {
-  width: 120px;
-  height: 120px;
-  background: red;
-  position: relative;
-  transform: rotate(-45deg);
-  animation: latir 1s infinite;
-}
-.corazon:before, .corazon:after {
-  content: "";
-  width: 120px;
-  height: 120px;
-  background: red;
-  border-radius: 50%;
-  position: absolute;
-}
-.corazon:before { top: -60px; left: 0; }
-.corazon:after { left: 60px; top: 0; }
-.texto {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  color: white;
-  font-family: Arial;
-  font-weight: bold;
-  font-size: 28px;
-  z-index: 10;
-}
-@keyframes latir {
-  0% { transform: rotate(-45deg) scale(1); }
-  50% { transform: rotate(-45deg) scale(1.15); }
-  100% { transform: rotate(-45deg) scale(1); }
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Juego de Adivinanza</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f4f4f9; }
+        .container { background: white; padding: 20px; border-radius: 10px; display: inline-block; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); }
+        input { padding: 10px; font-size: 16px; width: 100px; text-align: center; }
+        button { padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #28a745; color: white; border: none; border-radius: 5px; }
+        button:hover { background-color: #218838; }
+        #mensaje { margin-top: 20px; font-weight: bold; font-size: 18px; }
+    </style>
 </head>
 <body>
-<div class="corazon"><div class="texto">paz</div></div>
+
+<div class="container">
+    <h2>Adivina el Número</h2>
+    <p>Estoy pensando en un número del 1 al 100.</p>
+    <input type="number" id="intento" min="1" max="100">
+    <br><br>
+    <button onclick="verificarNumero()">Adivinar</button>
+    <div id="mensaje"></div>
+</div>
+
+<script>
+    let numeroSecreto = Math.floor(Math.random() * 100) + 1;
+    let intentos = 0;
+
+    function verificarNumero() {
+        const input = document.getElementById('intento');
+        const mensaje = document.getElementById('mensaje');
+        const userGuess = Number(input.value);
+        intentos++;
+
+        if (!userGuess || userGuess < 1 || userGuess > 100) {
+            mensaje.style.color = 'orange';
+            mensaje.textContent = 'Escribe un número válido entre 1 y 100.';
+            return;
+        }
+
+        if (userGuess === numeroSecreto) {
+            mensaje.style.color = 'green';
+            mensaje.textContent = `¡Felicidades! Adivinaste el número en ${intentos} intentos.`;
+        } else if (userGuess < numeroSecreto) {
+            mensaje.style.color = 'blue';
+            mensaje.textContent = 'El número secreto es mayor.';
+        } else {
+            mensaje.style.color = 'red';
+            mensaje.textContent = 'El número secreto es menor.';
+        }
+    }
+</script>
+
 </body>
 </html>
