@@ -1,33 +1,54 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Para ti</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Me Jalo - Player</title>
 <style>
-body{margin:0;height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);font-family:Arial;overflow:hidden}
-.tarjeta{background:#fff;padding:40px 30px;border-radius:20px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4);max-width:380px;width:85%}
-h1{color:#1a1a2e;font-size:26px}
-.botones{position:relative;height:140px;margin-top:30px}
-button{padding:14px 32px;font-size:17px;border:none;border-radius:30px;font-weight:bold;position:absolute;transition:.2s;cursor:pointer}
-#si{background:#302b63;color:white;left:20px;top:20px}
-#no{background:#e0e0e0;color:#333;left:200px;top:20px}
+body{margin:0;height:100vh;background:linear-gradient(135deg,#0f0c29,#302b63,#ff4d6d);display:flex;justify-content:center;align-items:center;font-family:Arial}
+.player{background:white;width:320px;padding:30px;border-radius:25px;text-align:center;box-shadow:0 15px 40px rgba(0,0,0,.4)}
+.cover{width:180px;height:180px;background:linear-gradient(135deg,#ff4d6d,#302b63);border-radius:50%;margin:0 auto 20px;display:flex;justify-content:center;align-items:center;font-size:80px;animation:spin 3s linear infinite paused}
+.cover.playing{animation-play-state:running}
+@keyframes spin{to{transform:rotate(360deg)}}
+h2{margin:10px 0 5px}
+p{opacity:.6;margin:0 0 15px}
+input{display:none}
+label{background:#ff4d6d;color:white;padding:10px 20px;border-radius:20px;cursor:pointer;display:inline-block;margin:10px;font-weight:bold}
+audio{width:100%;margin-top:15px}
+.btn{width:60px;height:60px;border:none;border-radius:50%;background:#0f0c29;color:white;font-size:28px;cursor:pointer;margin:10px}
 </style>
 </head>
 <body>
-<div class="tarjeta">
-<h1 id="texto">Oye negra, quieres que sea tu blanco?</h1>
-<p>Piensalo bien antes de responder</p>
-<div class="botones"><button id="si">SI</button><button id="no">NO</button></div>
+<div class="player">
+<div class="cover" id="cover">🎵</div>
+<h2>Me Jalo</h2>
+<p>Tu reproductor</p>
+
+<label for="file">📁 Subir tu música MP3</label>
+<input type="file" id="file" accept="audio/*">
+
+<audio id="audio" controls></audio>
+<br>
+<button class="btn" onclick="audio.play()">▶️</button>
+<button class="btn" onclick="audio.pause()">⏸️</button>
 </div>
+
 <script>
-const noBtn=document.getElementById("no"),siBtn=document.getElementById("si"),texto=document.getElementById("texto");
-const frases=["Segura que quieres decir que no?","Piénsalo otra vez...","No hay opcion de decir que no","Di que si","Vamos, sabes que quieres decir que si"];
-let c=0;
-function moverNo(){noBtn.style.left=Math.random()*180+"px";noBtn.style.top=Math.random()*80+"px";texto.innerText=frases[c%frases.length];c++;siBtn.style.transform="scale("+(1+c*0.15)+")";}
-noBtn.addEventListener("mouseover",moverNo);noBtn.addEventListener("click",moverNo);noBtn.addEventListener("touchstart",moverNo);
-siBtn.addEventListener("click",()=>{
-document.body.innerHTML='<div style="height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);color:white;font-family:Arial;text-align:center;padding:30px"><h1 style="font-size:38px">Sabia que dirias que si</h1><p style="font-size:26px;margin-top:25px">eres mi negra favorita</p><p style="margin-top:20px;opacity:0.7">Para siempre tu blanco</p></div>';
-});
+const fileInput = document.getElementById('file');
+const audio = document.getElementById('audio');
+const cover = document.getElementById('cover');
+
+fileInput.onchange = function(){
+  const file = this.files[0];
+  if(file){
+    audio.src = URL.createObjectURL(file);
+    audio.play();
+    cover.textContent = "💿";
+  }
+};
+
+audio.onplay = ()=> cover.classList.add('playing');
+audio.onpause = ()=> cover.classList.remove('playing');
 </script>
 </body>
 </html>
