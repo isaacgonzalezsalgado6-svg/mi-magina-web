@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paz</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #ffeef3;
+      font-family: Arial, sans-serif;
+    }
+    .heart {
+      width: 200px;
+      height: 200px;
+      background: #ff2e63;
+      position: relative;
+      transform: rotate(-45deg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: latido 1.2s infinite;
+      box-shadow: 0 10px 30px rgba(255,46,99,0.4);
+    }
+    .heart::before,
+    .heart::after {
+      content: "";
+      width: 200px;
+      height: 200px;
+      background: #ff2e63;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .heart::before {
+      top: -100px;
+      left: 0;
+    }
+    .heart::after {
+      top: 0;
+      left: 100px;
+    }
+    .heart span {
+      transform: rotate(45deg);
+      color: white;
+      font-size: 48px;
+      font-weight: bold;
+      z-index: 10;
+      letter-spacing: 3px;
+      text-transform: lowercase;
+    }
+    @keyframes latido {
+      0% { transform: rotate(-45deg) scale(1); }
+      50% { transform: rotate(-45deg) scale(1.1); }
+      100% { transform: rotate(-45deg) scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="heart">
+    <span>paz</span>
+  </div>
+</body>
+</html>
