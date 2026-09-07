@@ -3,110 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Te Amo en 100 Idiomas</title>
+<title>MEMORA AEI - Producto Oficial</title>
 <style>
-  body{
-    margin:0;
-    height:100vh;
-    background: radial-gradient(circle at center, #ff1a4d, #000);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    font-family: 'Segoe UI', sans-serif;
-    overflow:hidden;
-    color:white;
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+  body{margin:0;font-family:'Inter',sans-serif;background:#fff8f0}
+  .top{
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    color:white;padding:70px 20px;text-align:center;
   }
- .card{
-    text-align:center;
-    animation: flotar 3s ease-in-out infinite;
+  .top h1{font-size:60px;font-weight:900;letter-spacing:5px;margin:0}
+  .top h2{font-weight:400;opacity:0.9;margin-top:10px}
+  .container{max-width:1000px;margin:-40px auto 0;background:white;border-radius:40px;padding:40px;box-shadow:0 20px 60px rgba(0,0,0,0.15)}
+  
+  .etiqueta{display:inline-block;padding:6px 15px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:10px}
+  .e1{background:#e0f7ff;color:#0077b6} .e2{background:#ffefc5;color:#a36b00} .e3{background:#e7ffe9;color:#1a7a2e}
+
+  h3{font-size:28px;margin:30px 0 10px}
+  p.info{font-size:18px;line-height:1.8;color:#444}
+
+  .caracteristicas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:30px}
+  @media(max-width:700px){.caracteristicas{grid-template-columns:1fr}}
+
+  .car{
+    border-radius:25px;padding:25px;color:white;
   }
-  @keyframes flotar{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-15px)}
+  .car h4{font-size:20px;margin:10px 0}
+  .car p{font-size:14px;line-height:1.6;opacity:0.95}
+  .car1{background: linear-gradient(135deg, #4facfe, #00f2fe)}
+  .car2{background: linear-gradient(135deg, #43e97b, #38f9d7)}
+  .car3{background: linear-gradient(135deg, #fa709a, #fee140);color:#333}
+
+  .importancia{
+    background:#111827;color:white;border-radius:30px;padding:35px;margin-top:40px;
   }
-  #idioma{
-    font-size:20px;
-    opacity:0.7;
-    letter-spacing:3px;
-    text-transform:uppercase;
-  }
-  #frase{
-    font-size: clamp(40px, 10vw, 80px);
-    font-weight:900;
-    margin:15px 0;
-    text-shadow: 0 0 30px rgba(255,255,255,0.7);
-  }
-  #corazon{
-    font-size:50px;
-    animation: latir 0.8s infinite;
-  }
-  @keyframes latir{
-    0%{transform:scale(1)}
-    50%{transform:scale(1.3)}
-    100%{transform:scale(1)}
-  }
+  .importancia h3{color:#a78bfa}
+  .importancia ul{line-height:2;font-size:17px}
+
+  .footer{text-align:center;padding:30px;color:#999}
 </style>
 </head>
 <body>
 
-<div class="card">
-  <div id="idioma">Español</div>
-  <div id="frase">Te amo</div>
-  <div id="corazon">❤️</div>
+<div class="top">
+  <h1>MEMORA AEI</h1>
+  <h2>Reloj Inteligente de Apoyo para el Alzheimer</h2>
 </div>
 
-<script>
-const lista = [
-["Español","Te amo"],["Inglés","I love you"],["Francés","Je t'aime"],
-["Italiano","Ti amo"],["Portugués","Eu te amo"],["Alemán","Ich liebe dich"],
-["Japonés","愛してる"],["Coreano","사랑해"],["Chino","我爱你"],
-["Ruso","Я тебя люблю"],["Árabe","أحبك"],["Turco","Seni seviyorum"],
-["Griego","Σ' αγαπώ"],["Hebreo","אני אוהב אותך"],["Hindi","मैं तुमसे प्यार करता हूँ"],
-["Tailandés","ฉันรักคุณ"],["Vietnamita","Tôi yêu bạn"],["Polaco","Kocham cię"],
-["Holandés","Ik hou van jou"],["Sueco","Jag älskar dig"],["Noruego","Jeg elsker deg"],
-["Danés","Jeg elsker dig"],["Finlandés","Minä rakastan sinua"],["Húngaro","Szeretlek"],
-["Checo","Miluji tě"],["Rumano","Te iubesc"],["Ucraniano","Я тебе кохаю"],
-["Bengalí","আমি তোমায় ভালোবাসি"],["Filipino","Mahal kita"],["Indonesio","Aku cinta kamu"],
-["Malayo","Saya cinta kamu"],["Suajili","Nakupenda"],["Zulú","Ngiyakuthanda"],
-["Hawaiano","Aloha wau ia 'oe"],["Islandés","Ég elska þig"],["Catalán","T'estimo"],
-["Vasco","Maite zaitut"],["Gallego","Quérote"],["Esperanto","Mi amas vin"],
-["Latín","Te amo"],["Criollo","Mwen renmen ou"],["Irlandés","Is breá liom tú"],
-["Galés","Rwy'n dy garu di"],["Afrikáans","Ek is lief vir jou"],["Albanés","Të dua"],
-["Serbio","Volim te"],["Croata","Volim te"],["Eslovaco","Ľúbim ťa"],
-["Esloveno","Ljubim te"],["Búlgaro","Обичам те"],["Bielorruso","Я цябе кахаю"],
-["Georgiano","მიყვარხარ"],["Armenio","Ես քեզ սիրում եմ"],["Azerí","Səni sevirəm"],
-["Kazajo","Мен сені сүйемін"],["Mongol","Би чамд хайртай"],["Nepalí","म तिमीलाई माया गर्छु"],
-["Tamil","நான் உன்னை காதலிக்கிறேன்"],["Telugu","నేను నిన్ను ప్రేమిస్తున్నాను"],
-["Canarés","ನಾನು ನಿನ್ನನ್ನು ಪ್ರೀತಿಸುತ್ತೇನೆ"],["Malayalam","ഞാൻ നിന്നെ സ്നേഹിക്കുന്നു"],
-["Cingalés","මම ඔයාට ආදරෙයි"],["Birmano","မင်းကိုချစ်တယ်"],["Jemer","ខ្ញុំ​ស្រឡាញ់​អ្នក"],
-["Lao","ຂ້ອຍຮັກເຈົ້າ"],["Maltés","Inħobbok"],["Letón","Es tevi mīlu"],
-["Lituano","Aš tave myliu"],["Estonio","Ma armastan sind"],["Macedonio","Те сакам"],
-["Bosnio","Volim te"],["Luxemburgués","Ech hunn dech gär"],["Quechua","Munakuyki"],
-["Guaraní","Rohayhu"],["Mapudungun","Azu duamkeimi"],["Náhuatl","Nimitztlazohtla"],
-["Haitiano","Mwen renmen ou"],["Maorí","Kei te aroha au ki a koe"],["Samoano","Ou te alofa ia te oe"],
-["Tahitiano","Ua here vau ia oe"],["Fiyiano","Au lomani iko"],["Yoruba","Mo nifẹ rẹ"],
-["Igbo","A hụrụ m gị n'anya"],["Hausa","Ina son ka"],["Amárico","እወድሃለሁ"],
-["Somalí","Waan ku jeclahay"],["Kinyarwanda","Ndagukunda"],["Lingala","Nalingi yo"],
-["Chichewa","Ndimakukondani"],["Sesoto","Kea u rata"],["Xhosa","Ndiyakuthanda"],
-["Criollo Seychelles","Mon kontan ou"],["Papiamento","Mi ta stima bo"],
-["Kurdo","Ez hej te dikim"],["Pastún","زه تا سره مینه لرم"],["Sindhi","مان توکي پيار ڪريان ٿو"],
-["Uigur","مەن سېنى سۆيىمەن"],["Tibetano","ངས་ཁྱེད་རང་ལ་དགའ་པོ་བྱེད་ཀྱི་ཡོད།"],
-["Dzongkha","ང་གིས་ཁྱེད་ལུ་དགའ།"],["Inuktitut","ᓇᒡᓕᒋᕙᒋᑦ"],["Yidis","איך האב דיך ליב"]
-];
+<div class="container">
+  <span class="etiqueta e1">PRODUCTO OFICIAL AEI</span>
+  <h3>¿Qué es MEMORA AEI?</h3>
+  <p class="info">
+    <b>MEMORA AEI</b> es un reloj inteligente creado especialmente para <b>personas que sufren de Alzheimer</b>. 
+    Nuestro objetivo no es solo dar la hora, es ser una ayuda diaria, una compañía y una protección para ellos y tranquilidad para sus familias.
+  </p>
 
-let i = 0;
-const idiomaEl = document.getElementById('idioma');
-const fraseEl = document.getElementById('frase');
-
-function cambiar(){
-  idiomaEl.textContent = lista[i][0];
-  fraseEl.textContent = lista[i][1];
-  i = (i + 1) % lista.length;
-}
-
-// VELOCIDAD: 1200 = lento bonito, 700 = medio, 400 = rápido
-setInterval(cambiar, 1200);
-</script>
-
-</body>
-</html>
+  <h3>Información del Producto</h3>
+  
+  <div class="caracteristicas">
+    <div class="car car1">
+      <div style="font-size:40px">🕒</div>
+      <h4>1. Tiempo Real</h4>
+      <p>
+        Muestra la hora, fecha y día en tamaño grande y con voz. Le recuerda a la persona qué momento del día es, evitando la desorientación. Incluye recordatorios hablados: medicinas, comer, citas.
+      </p>
+    </div>
+    <div class="car car2">
+      <div style="font-size:40px">📍</div>
+      <h4>2. Ubicación en Tiempo Real</h4>
+      <p>
+        Con GPS integrado. La familia puede ver en todo momento dónde está desde el celular. Si la persona sale de su zona segura (casa, barrio), el reloj envía una alerta automática de emergencia.
+      </p>
+    </div>
+    <div class="car car3">
+      <div style="font-size:40px">☀️</div>
+      <h4>3. Papel Solar para Cargar</h4>
+      <p>
+        Innovación principal de MEMORA AEI. El reloj cuenta con <b>papel solar</b> en su correa que se carga con luz
