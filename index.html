@@ -15,30 +15,28 @@
   .top h2{font-weight:400;opacity:0.9;margin-top:10px}
   .container{max-width:1000px;margin:-40px auto 0;background:white;border-radius:40px;padding:40px;box-shadow:0 20px 60px rgba(0,0,0,0.15)}
   
-  .etiqueta{display:inline-block;padding:6px 15px;border-radius:20px;font-size:12px;font-weight:700;margin-bottom:10px}
-  .e1{background:#e0f7ff;color:#0077b6} .e2{background:#ffefc5;color:#a36b00} .e3{background:#e7ffe9;color:#1a7a2e}
-
-  h3{font-size:28px;margin:30px 0 10px}
-  p.info{font-size:18px;line-height:1.8;color:#444}
+  .resumen-box{
+    background: linear-gradient(135deg, #f5f7ff, #eef2ff);
+    border-left: 6px solid #667eea;
+    border-radius:20px;
+    padding:25px;
+    margin:20px 0;
+  }
+  .resumen-box p{font-size:17px;line-height:1.7;color:#333}
+  .lema{text-align:center;margin-top:15px;font-weight:900;color:#764ba2;font-size:18px;letter-spacing:1px}
 
   .caracteristicas{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;margin-top:30px}
   @media(max-width:700px){.caracteristicas{grid-template-columns:1fr}}
 
-  .car{
-    border-radius:25px;padding:25px;color:white;
-  }
+  .car{border-radius:25px;padding:25px;color:white;}
   .car h4{font-size:20px;margin:10px 0}
   .car p{font-size:14px;line-height:1.6;opacity:0.95}
   .car1{background: linear-gradient(135deg, #4facfe, #00f2fe)}
   .car2{background: linear-gradient(135deg, #43e97b, #38f9d7)}
   .car3{background: linear-gradient(135deg, #fa709a, #fee140);color:#333}
 
-  .importancia{
-    background:#111827;color:white;border-radius:30px;padding:35px;margin-top:40px;
-  }
-  .importancia h3{color:#a78bfa}
-  .importancia ul{line-height:2;font-size:17px}
-
+  .importancia{background:#111827;color:white;border-radius:30px;padding:35px;margin-top:40px;}
+  .importancia h3{color:#a78bfa;font-size:26px}
   .footer{text-align:center;padding:30px;color:#999}
 </style>
 </head>
@@ -50,32 +48,49 @@
 </div>
 
 <div class="container">
-  <span class="etiqueta e1">PRODUCTO OFICIAL AEI</span>
-  <h3>¿Qué es MEMORA AEI?</h3>
-  <p class="info">
-    <b>MEMORA AEI</b> es un reloj inteligente creado especialmente para <b>personas que sufren de Alzheimer</b>. 
-    Nuestro objetivo no es solo dar la hora, es ser una ayuda diaria, una compañía y una protección para ellos y tranquilidad para sus familias.
-  </p>
+  
+  <div class="resumen-box">
+    <h3 style="margin-top:0">📋 Resumen del Producto</h3>
+    <p><b>¿Qué es?</b> MEMORA AEI es un reloj inteligente creado para ayudar a personas que sufren de Alzheimer.</p>
+    <p><b>¿Para qué es?</b> Es una ayuda diaria que les brinda seguridad, autonomía y tranquilidad a ellos y a sus familias. Evita que se pierdan, les recuerda sus actividades y los mantiene siempre protegidos.</p>
+    <p><b>¿Por qué es importante?</b> Porque más que un reloj, devuelve dignidad y libertad. Permite que las personas con Alzheimer sigan viviendo con independencia sin miedo a perderse, y le da paz a su familia sabiendo que está seguro las 24 horas.</p>
+    <div class="lema">✨ Lema: "MEMORA AEI - Olvidar no debe significar perderse" ✨</div>
+  </div>
 
-  <h3>Información del Producto</h3>
+  <h3>Información Detallada del Producto</h3>
   
   <div class="caracteristicas">
     <div class="car car1">
       <div style="font-size:40px">🕒</div>
       <h4>1. Tiempo Real</h4>
-      <p>
-        Muestra la hora, fecha y día en tamaño grande y con voz. Le recuerda a la persona qué momento del día es, evitando la desorientación. Incluye recordatorios hablados: medicinas, comer, citas.
-      </p>
+      <p>Muestra hora y fecha en grande y con recordatorios de voz para medicinas y comidas. Evita la desorientación.</p>
     </div>
     <div class="car car2">
       <div style="font-size:40px">📍</div>
       <h4>2. Ubicación en Tiempo Real</h4>
-      <p>
-        Con GPS integrado. La familia puede ver en todo momento dónde está desde el celular. Si la persona sale de su zona segura (casa, barrio), el reloj envía una alerta automática de emergencia.
-      </p>
+      <p>Con GPS integrado. La familia ve dónde está desde el celular y recibe alerta si sale de su zona segura.</p>
     </div>
     <div class="car car3">
       <div style="font-size:40px">☀️</div>
-      <h4>3. Papel Solar para Cargar</h4>
-      <p>
-        Innovación principal de MEMORA AEI. El reloj cuenta con <b>papel solar</b> en su correa que se carga con luz
+      <h4>3. Panel Solar Integrado a la Pantalla</h4>
+      <p>Su pantalla tiene un panel solar integrado que se carga con luz solar y artificial. Nunca se apaga, no necesita que recuerden cargarlo. Protección 24/7.</p>
+    </div>
+  </div>
+
+  <div class="importancia">
+    <h3>Más que un reloj, es seguridad</h3>
+    <ul style="line-height:2;font-size:17px">
+      <li>✅ Evita que se pierdan: 6 de cada 10 personas con Alzheimer se desorientan.</li>
+      <li>✅ Autonomía: Pueden seguir saliendo solos sin miedo.</li>
+      <li>✅ Apoya la memoria: Les recuerda lo que su mente olvida.</li>
+      <li>✅ Tranquilidad familiar total gracias a su panel solar integrado que nunca se apaga.</li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    Proyecto AEI | MEMORA AEI © 2026 | Panel Solar Integrado a la Pantalla
+  </div>
+</div>
+
+</body>
+</html>
