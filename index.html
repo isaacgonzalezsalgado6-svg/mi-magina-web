@@ -3,27 +3,48 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEMORA AEI</title>
+<title>MEMORA AEI - Reloj Inteligente</title>
 <style>
-body{font-family:Arial;margin:0;text-align:center;background:#fff}
-.logo{padding:30px 20px 10px}
-.logo img{width:220px}
-h1{margin:10px 0 5px}
-.reloj{padding:20px;background:#f9f6f1;margin:20px;border-radius:20px}
-.reloj img{width:100%;max-width:700px;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+body { font-family: Arial, sans-serif; margin:0; background:#fff; text-align:center; color:#222; }
+.header { padding:30px 20px 10px; }
+.logo-central img { width:220px; max-width:80%; }
+.titulo { font-size:32px; font-weight:800; margin:15px 0 5px; }
+.subtitulo { color:#666; font-size:17px; margin-bottom:20px; }
+.reloj-principal { background:#f9f6f1; padding:25px 15px; margin:20px; border-radius:25px; }
+.reloj-principal img { width:100%; max-width:720px; border-radius:18px; box-shadow:0 12px 30px rgba(0,0,0,.18); }
+.reloj-principal p { font-weight:700; margin-top:15px; font-size:18px; }
+.features { display:flex; flex-wrap:wrap; justify-content:center; gap:15px; padding:20px; }
+.card { background:#fff; border:1px solid #eee; border-radius:15px; padding:15px; width:140px; box-shadow:0 4px 10px rgba(0,0,0,.05); }
+.card span { font-size:24px; }
+.btn { display:inline-block; margin:25px 0 40px; background:#111; color:#fff; padding:15px 30px; border-radius:30px; text-decoration:none; font-weight:bold; font-size:18px; }
 </style>
 </head>
 <body>
-<div class="logo">
-  <img src="./logo.png" alt="MEMORA AEI">
-  <h1>MEMORA AEI</h1>
-  <p>Seguridad y tranquilidad para tus seres queridos</p>
+
+<!-- 1. TU LOGO - PRIMERO -->
+<div class="header">
+  <div class="logo-central">
+    <img src="./logo.png" alt="Logo MEMORA AEI">
+  </div>
+  <div class="titulo">MEMORA AEI</div>
+  <div class="subtitulo">Seguridad y tranquilidad para tus seres queridos</div>
 </div>
 
-<div class="reloj">
-  <img src="./reloj.png" alt="Reloj MEMORA AEI">
-  <p><b>Reloj Inteligente MEMORA - Todas sus vistas</b></p>
+<!-- 2. TU RELOJ - JUSTO DEBAJO DEL LOGO -->
+<div class="reloj-principal">
+  <img src="./reloj.png" alt="Reloj Inteligente MEMORA AEI - Vistas completas">
+  <p>Reloj Inteligente - Vista Frontal, Lateral y Posterior</p>
 </div>
+
+<!-- 3. EL RESTO DE TU CÓDIGO ANTERIOR -->
+<div class="features">
+  <div class="card"><span>📍</span><br><b>Mi ubicación</b></div>
+  <div class="card"><span>📞</span><br><b>Contactar cuidador</b></div>
+  <div class="card"><span>🧠</span><br><b>Orientación</b></div>
+  <div class="card"><span>🆘</span><br><b>Emergencia SOS</b></div>
+</div>
+
+<a class="btn" href="https://wa.me/573000000000?text=Hola,%20quiero%20info%20del%20reloj%20MEMORA%20AEI">Pide el tuyo por WhatsApp</a>
 
 </body>
 </html>
