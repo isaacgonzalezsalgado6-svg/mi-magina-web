@@ -3,33 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEMORA AEI - Reloj 3D Exploded View</title>
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-  }
-}
-</script>
+<title>MEMORA AEI - Reloj Real</title>
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#fff;text-align:center;color:#222;overflow-x:hidden}
-.header{padding:30px 20px 10px}
-.logo-central img{width:200px;max-width:75%}
-.titulo{font-size:32px;font-weight:900;margin:10px 0 5px}
-.subtitulo{color:#666;font-size:16px;margin-bottom:10px}
-#container3d{position:relative;width:100%;height:100vh;max-height:700px;background:radial-gradient(#fdf8f1,#f2e9d9);margin:0 auto}
-#canvas3d{width:100%;height:100%;display:block;cursor:grab}
-#explicacion{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.85);color:#fff;padding:14px 22px;border-radius:20px;width:85%;max-width:500px;backdrop-filter:blur(10px);transition:all.4s}
-#explicacion h3{margin:0 0 5px;font-size:18px}
-#explicacion p{margin:0;font-size:14px;color:#ccc;line-height:1.4}
-#progress{position:absolute;top:20px;left:50%;transform:translateX(-50%);display:flex;gap:8px}
-.dot{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,.15);transition:.3s}
-.dot.active{background:#111;transform:scale(1.3)}
-.features{display:flex;flex-wrap:wrap;justify-content:center;gap:15px;padding:25px 20px}
-.card{background:#fff;border:1px solid #eee;border-radius:15px;padding:15px;width:140px;box-shadow:0 4px 10px rgba(0,0,0,.05)}
-.btn{display:inline-block;margin:15px 0 40px;background:#25D366;color:#fff;padding:16px 32px;border-radius:30px;text-decoration:none;font-weight:bold;font-size:18px}
-.btn-replay{background:#111;color:#fff;border:none;padding:10px 20px;border-radius:20px;font-weight:bold;cursor:pointer;margin-top:10px}
+*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;background:#f5f5f7;color:#1d1d1f}
+.header{padding:20px;text-align:center;background:#fff;border-bottom:1px solid #e5e5e5}
+.logo-central img{width:180px}
+.titulo{font-size:28px;font-weight:800;letter-spacing:-1px;margin:8px 0 2px}
+.sub{color:#86868b;font-size:14px}
+.hero{display:grid;grid-template-columns:1.3fr 0.7fr;gap:20px;max-width:1200px;margin:25px auto;padding:0 20px}
+.main-view{background:#e8e8ed;border-radius:28px;padding:20px;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12)}
+.main-view img{width:100%;border-radius:18px;transition:transform .6s cubic-bezier(.2,.8,.2,1);cursor:zoom-in}
+.main-view img:hover{transform:scale(1.06)}
+.badge{position:absolute;top:18px;left:18px;background:#000;color:#fff;padding:7px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.5px}
+.side-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.side-grid .card{background:#fff;border-radius:20px;padding:12px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,.06);cursor:pointer;transition:.3s;border:2px solid transparent}
+.side-grid .card:hover{transform:translateY(-4px);box-shadow:0 15px 35px rgba(0,0,0,.12)}
+.side-grid .card.active{border-color:#000}
+.side-grid .card img{width:100%;border-radius:12px}
+.side-grid .card span{font-size:12px;font-weight:600;display:block;margin-top:8px;color:#1d1d1f}
+.full-row{grid-column:1 / -1; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; margin-top:4px}
+@media(max-width:800px){.hero{grid-template-columns:1fr} .full-row{grid-template-columns:1fr 1fr}}
+.explain{max-width:1200px;margin:10px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.explain .item{background:#fff;border-radius:18px;padding:16px 18px;text-align:left;border:1px solid #eee}
+.explain .item b{font-size:14px} .explain .item p{font-size:13px;color:#666;margin:6px 0 0;line-height:1.4}
+.btn-wrap{text-align:center;padding:30px 20px}
+.btn{background:#000;color:#fff;padding:18px 38px;border-radius:30px;text-decoration:none;font-weight:700;font-size:18px;display:inline-block;box-shadow:0 10px 25px rgba(0,0,0,.2)}
+.btn-wa{background:#25D366; margin-left:10px}
+#zoom{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:99;padding:20px}
+#zoom img{max-width:95%;max-height:95%;border-radius:20px}
 </style>
 </head>
 <body>
@@ -37,163 +38,52 @@ body{margin:0;font-family:Arial,sans-serif;background:#fff;text-align:center;col
 <div class="header">
   <div class="logo-central"><img src="./logo.png" alt="MEMORA"></div>
   <div class="titulo">MEMORA AEI</div>
-  <div class="subtitulo">Vista 3D Explosiva - Toca para girar</div>
+  <div class="sub">Reloj inteligente con GPS - Vistas reales del producto</div>
 </div>
 
-<div id="container3d">
-  <canvas id="canvas3d"></canvas>
-  <div id="progress"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
-  <div id="explicacion"><h3 id="ex-title">Reloj Inteligente MEMORA AEI</h3><p id="ex-text">Girando en 360°... En 3 segundos se desarma para mostrarte cada pieza.</p></div>
+<div class="hero">
+  <div class="main-view">
+    <div class="badge">VISTA REAL HD</div>
+    <img id="mainImg" src="./reloj.png" alt="Reloj MEMORA">
+  </div>
+  <div>
+    <div class="side-grid">
+      <div class="card active" onclick="setView(0)"><img src="./reloj.png" style="object-fit:cover; object-position:0 0; aspect-ratio:1"><span>Vista Completa</span></div>
+      <div class="card" onclick="alert('Haz zoom en la imagen principal para ver detalle frontal')"><img src="./reloj.png" style="object-position:80% 10%"><span>Vista Frontal</span></div>
+      <div class="card" onclick="alert('En la foto principal, mira el lateral derecho - Botones')"><img src="./reloj.png" style="object-position:80% 40%"><span>Vista Lateral</span></div>
+      <div class="card" onclick="alert('En la parte inferior izquierda de la foto se ve la parte trasera')"><img src="./reloj.png" style="object-position:10% 90%"><span>Vista Posterior</span></div>
+    </div>
+    <div style="background:#000;color:#fff;border-radius:18px;padding:18px;margin-top:14px;text-align:left">
+      <div style="font-size:13px;opacity:.7">PANTALLA</div>
+      <div style="font-size:20px;font-weight:800;margin:4px 0">10:24 - Lun 26 May</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;font-size:12px">
+        <div style="background:#1c1c1e;padding:10px;border-radius:12px">📍 Mi ubicación</div>
+        <div style="background:#1c1c1e;padding:10px;border-radius:12px">👤 Contactar cuidador</div>
+        <div style="background:#1c1c1e;padding:10px;border-radius:12px">🧭 Orientación</div>
+        <div style="background:#ff3b30;padding:10px;border-radius:12px">🆘 Emergencia</div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div style="text-align:center"><button class="btn-replay" onclick="restart()">🔄 Ver de nuevo</button></div>
-
-<div class="features">
-  <div class="card">📍<br><b>Mi ubicación</b></div>
-  <div class="card">📞<br><b>Contactar</b></div>
-  <div class="card">🧠<br><b>Orientación</b></div>
-  <div class="card">🆘<br><b>SOS</b></div>
+<div class="explain">
+  <div class="item"><b>Botón 1 - Función Principal</b><p>Botón superior lateral mecanizado en acero negro, acceso rápido al menú.</p></div>
+  <div class="item"><b>Botón 2 - Emergencia SOS</b><p>Botón inferior, pulsación larga activa llamada SOS + GPS a cuidador.</p></div>
+  <div class="item"><b>Correa de Metal Real</b><p>Acero inoxidable cepillado, cierre de mariposa, no es plástico ni silicón barato.</p></div>
+  <div class="item"><b>Vista Posterior - Sensores</b><p>Sensores ópticos + pines de carga magnética, contacto médico real.</p></div>
 </div>
 
-<a class="btn" href="https://wa.me/573106109423?text=Hola,%20quiero%20el%20reloj%20MEMORA">💬 Pídelo por WhatsApp</a>
+<div class="btn-wrap">
+  <a class="btn" href="#" onclick="document.getElementById('zoom').style.display='flex'; document.getElementById('zoomImg').src=document.getElementById('mainImg').src; return false;">🔍 Ver en HD</a>
+  <a class="btn btn-wa" href="https://wa.me/573106109423?text=Hola%20vi%20el%20reloj%20MEMORA%20en%20HD%20y%20lo%20quiero">💬 WhatsApp 3106109423</a>
+</div>
 
-<script type="module">
-import * as THREE from 'three';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+<div id="zoom" onclick="this.style.display='none'"><img id="zoomImg" src=""></div>
 
-const canvas = document.getElementById('canvas3d');
-const container = document.getElementById('container3d');
-const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xfdf8f1);
-
-const renderer = new THREE.WebGLRenderer({canvas, antialias:true});
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(container.clientWidth, container.clientHeight);
-renderer.shadowMap.enabled = true;
-
-const camera = new THREE.PerspectiveCamera(35, container.clientWidth/container.clientHeight, 0.1, 100);
-camera.position.set(0,0.6,2.8);
-
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping=true; controls.autoRotate=true; controls.autoRotateSpeed=1.0;
-
-// Luces premium
-scene.add(new THREE.AmbientLight(0xffffff,1.1));
-const light1 = new THREE.DirectionalLight(0xffffff,1.2); light1.position.set(2,3,2); light1.castShadow=true; scene.add(light1);
-const light2 = new THREE.DirectionalLight(0xfff0d0,0.6); light2.position.set(-2,-1,-2); scene.add(light2);
-
-// Materiales
-const matCase = new THREE.MeshStandardMaterial({color:0x1a1a1a, metalness:0.7, roughness:0.3});
-const matScreen = new THREE.MeshStandardMaterial({color:0x111111, metalness:0.1, roughness:0.1, emissive:0x002200, emissiveIntensity:0.2});
-const matScreenOn = new THREE.MeshStandardMaterial({color:0x00ff88, emissive:0x00ff88, emissiveIntensity:0.6});
-const matBack = new THREE.MeshStandardMaterial({color:0x2a2a2a, metalness:0.5, roughness:0.5});
-const matSensor = new THREE.MeshStandardMaterial({color:0x00d084, emissive:0x00d084, emissiveIntensity:0.8});
-const matStrap = new THREE.MeshStandardMaterial({color:0x111111, roughness:0.8});
-const matButton = new THREE.MeshStandardMaterial({color:0xff3b30, metalness:0.6, roughness:0.4});
-const matBattery = new THREE.MeshStandardMaterial({color:0x3a3a3a});
-const matBoard = new THREE.MeshStandardMaterial({color:0x1e5f2a});
-
-// GRUPO RELOJ
-const watch = new THREE.Group();
-scene.add(watch);
-
-// 1. Pantalla / Cristal
-const screenGeo = new THREE.BoxGeometry(0.9,1.15,0.06);
-const screen = new THREE.Mesh(screenGeo, matScreen); screen.position.z=0.18; screen.name="screen"; watch.add(screen);
-const display = new THREE.Mesh(new THREE.PlaneGeometry(0.7,0.8), matScreenOn); display.position.set(0,0.05,0.22); watch.add(display);
-
-// 2. Caja principal
-const caseGeo = new THREE.BoxGeometry(1.0,1.28,0.32);
-const caseMesh = new THREE.Mesh(caseGeo, matCase); caseMesh.position.z=0; caseMesh.name="case"; watch.add(caseMesh);
-
-// 3. Botones laterales
-const btn1 = new THREE.Mesh(new THREE.CylinderGeometry(0.06,0.06,0.12,16), matButton); btn1.rotation.z=Math.PI/2; btn1.position.set(0.55,0.2,0.05); btn1.name="btn"; watch.add(btn1);
-const btn2 = new THREE.Mesh(new THREE.CylinderGeometry(0.05,0.05,0.1,16), matCase); btn2.rotation.z=Math.PI/2; btn2.position.set(0.55,-0.2,0.05); watch.add(btn2);
-
-// 4. Tapa trasera + sensor
-const back = new THREE.Mesh(new THREE.BoxGeometry(0.9,1.15,0.08), matBack); back.position.z=-0.2; back.name="back"; watch.add(back);
-const sensor = new THREE.Mesh(new THREE.CylinderGeometry(0.22,0.22,0.04,32), matSensor); sensor.rotation.x=Math.PI/2; sensor.position.set(0,0,-0.26); sensor.name="sensor"; watch.add(sensor);
-
-// 5. Batería interna
-const battery = new THREE.Mesh(new THREE.BoxGeometry(0.6,0.8,0.08), matBattery); battery.position.z=-0.05; battery.name="battery"; battery.visible=false; watch.add(battery);
-
-// 6. Placa madre
-const board = new THREE.Mesh(new THREE.BoxGeometry(0.65,0.85,0.05), matBoard); board.position.z=0.08; board.name="board"; board.visible=false; watch.add(board);
-
-// 7. Correas
-const strapTop = new THREE.Mesh(new THREE.BoxGeometry(0.6,0.9,0.12), matStrap); strapTop.position.set(0,1.05,0); strapTop.name="strapTop"; watch.add(strapTop);
-const strapBottom = new THREE.Mesh(new THREE.BoxGeometry(0.6,0.9,0.12), matStrap); strapBottom.position.set(0,-1.05,0); strapBottom.name="strapBottom"; watch.add(strapBottom);
-
-// Animación
-let phase=0; let t=0;
-const textos=[
-  {t:"Reloj Inteligente MEMORA AEI", d:"Girando en 360°... diseño premium resistente al agua.", dot:0},
-  {t:"1. Correa de Silicona Médica", d:"Hipoalergénica, suave y no irrita la piel del adulto mayor. Ajuste cómodo 24h.", dot:1},
-  {t:"2. Botón SOS de Emergencia", d:"Botón rojo lateral. Un toque llama al cuidador y envía ubicación GPS exacta.", dot:2},
-  {t:"3. Tapa Trasera + Sensores", d:"Sensores ópticos de frecuencia cardíaca y temperatura. Contacto directo con la piel.", dot:2},
-  {t:"4. Batería de Larga Duración", d:"Hasta 72 horas. No necesitas cargarlo todos los días, ideal para Alzheimer.", dot:3},
-  {t:"5. Cerebro MEMORA: GPS + 4G", d:"Placa con GPS real, chip 4G y alerta de zona segura. Siempre conectado.", dot:4},
-  {t:"6. Pantalla Táctil 2.02''", d:"Pantalla grande, iconos de 4 colores: Mi ubicación, Contactar, Orientación y SOS.", dot:5},
-];
-
-function updateText(i){
-  document.getElementById('ex-title').innerText=textos[i].t;
-  document.getElementById('ex-text').innerText=textos[i].d;
-  document.querySelectorAll('.dot').forEach((d,idx)=>d.classList.toggle('active', idx<=textos[i].dot));
-}
-
-function animate(){
-  requestAnimationFrame(animate);
-  t+=0.016;
-
-  if(phase===0){ // Gira completo 4 seg
-    watch.rotation.y+=0.015;
-    if(t>4){ phase=1; t=0; controls.autoRotate=false; updateText(1); }
-  } else if(phase===1){
-    // Explosión progresiva
-    const p = Math.min(t/8,1); // 0 a 1 en 8 seg
-    strapTop.position.y = 1.05 + p*0.9;
-    strapBottom.position.y = -1.05 - p*0.9;
-    btn1.position.x = 0.55 + p*0.7; btn2.position.x = 0.55 + p*0.5;
-    back.position.z = -0.2 - p*0.9;
-    sensor.position.z = -0.26 - p*1.3;
-    screen.position.z = 0.18 + p*0.8;
-    display.position.z = 0.22 + p*0.8;
-
-    if(p>0.4){ battery.visible=true; board.visible=true; battery.position.z=-0.05 - (p-0.4)*1.0; board.position.z=0.08 + (p-0.4)*0.6; }
-
-    // Textos por tiempo
-    if(t>1 && t<2.2) updateText(1);
-    else if(t>=2.2 && t<3.5) updateText(2);
-    else if(t>=3.5 && t<5) updateText(3);
-    else if(t>=5 && t<6.5) updateText(4);
-    else if(t>=6.5) updateText(5);
-
-    if(p>=1) { phase=2; watch.rotation.y+=0.002; } // queda flotando
-  }
-
-  controls.update();
-  renderer.render(scene,camera);
-}
-animate();
-
-window.restart=()=>{
-  t=0; phase=0; controls.autoRotate=true;
-  [strapTop,strapBottom,btn1,btn2,back,sensor,screen,display,battery,board].forEach(m=>{ m.visible=true; });
-  strapTop.position.set(0,1.05,0); strapBottom.position.set(0,-1.05,0);
-  btn1.position.set(0.55,0.2,0.05); btn2.position.set(0.55,-0.2,0.05);
-  back.position.set(0,0,-0.2); sensor.position.set(0,0,-0.26);
-  screen.position.set(0,0,0.18); display.position.set(0,0.05,0.22);
-  battery.position.set(0,0,-0.05); board.position.set(0,0,0.08);
-  battery.visible=false; board.visible=false;
-  watch.rotation.set(0,0,0); updateText(0);
-};
-
-window.addEventListener('resize',()=>{
-  camera.aspect=container.clientWidth/container.clientHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(container.clientWidth,container.clientHeight);
-});
+<script>
+function setView(n){ document.querySelectorAll('.card').forEach(c=>c.classList.remove('active')); event.currentTarget.classList.add('active'); document.getElementById('mainImg').style.transform='scale(1.1)'; setTimeout(()=>document.getElementById('mainImg').style.transform='scale(1)',300); }
+document.getElementById('mainImg').onclick=function(){ document.getElementById('zoom').style.display='flex'; document.getElementById('zoomImg').src=this.src; }
 </script>
+
 </body>
 </html>
