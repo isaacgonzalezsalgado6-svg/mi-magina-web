@@ -1,89 +1,25 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MEMORA AEI - Reloj Real</title>
-<style>
-*{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Arial,sans-serif;background:#f5f5f7;color:#1d1d1f}
-.header{padding:20px;text-align:center;background:#fff;border-bottom:1px solid #e5e5e5}
-.logo-central img{width:180px}
-.titulo{font-size:28px;font-weight:800;letter-spacing:-1px;margin:8px 0 2px}
-.sub{color:#86868b;font-size:14px}
-.hero{display:grid;grid-template-columns:1.3fr 0.7fr;gap:20px;max-width:1200px;margin:25px auto;padding:0 20px}
-.main-view{background:#e8e8ed;border-radius:28px;padding:20px;position:relative;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.12)}
-.main-view img{width:100%;border-radius:18px;transition:transform .6s cubic-bezier(.2,.8,.2,1);cursor:zoom-in}
-.main-view img:hover{transform:scale(1.06)}
-.badge{position:absolute;top:18px;left:18px;background:#000;color:#fff;padding:7px 14px;border-radius:20px;font-size:11px;font-weight:700;letter-spacing:.5px}
-.side-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.side-grid .card{background:#fff;border-radius:20px;padding:12px;text-align:center;box-shadow:0 8px 25px rgba(0,0,0,.06);cursor:pointer;transition:.3s;border:2px solid transparent}
-.side-grid .card:hover{transform:translateY(-4px);box-shadow:0 15px 35px rgba(0,0,0,.12)}
-.side-grid .card.active{border-color:#000}
-.side-grid .card img{width:100%;border-radius:12px}
-.side-grid .card span{font-size:12px;font-weight:600;display:block;margin-top:8px;color:#1d1d1f}
-.full-row{grid-column:1 / -1; display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; margin-top:4px}
-@media(max-width:800px){.hero{grid-template-columns:1fr} .full-row{grid-template-columns:1fr 1fr}}
-.explain{max-width:1200px;margin:10px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
-.explain .item{background:#fff;border-radius:18px;padding:16px 18px;text-align:left;border:1px solid #eee}
-.explain .item b{font-size:14px} .explain .item p{font-size:13px;color:#666;margin:6px 0 0;line-height:1.4}
-.btn-wrap{text-align:center;padding:30px 20px}
-.btn{background:#000;color:#fff;padding:18px 38px;border-radius:30px;text-decoration:none;font-weight:700;font-size:18px;display:inline-block;box-shadow:0 10px 25px rgba(0,0,0,.2)}
-.btn-wa{background:#25D366; margin-left:10px}
-#zoom{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:99;padding:20px}
-#zoom img{max-width:95%;max-height:95%;border-radius:20px}
-</style>
-</head>
-<body>
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
-<div class="header">
-  <div class="logo-central"><img src="./logo.png" alt="MEMORA"></div>
-  <div class="titulo">MEMORA AEI</div>
-  <div class="sub">Reloj inteligente con GPS - Vistas reales del producto</div>
-</div>
-
-<div class="hero">
-  <div class="main-view">
-    <div class="badge">VISTA REAL HD</div>
-    <img id="mainImg" src="./reloj.png" alt="Reloj MEMORA">
-  </div>
-  <div>
-    <div class="side-grid">
-      <div class="card active" onclick="setView(0)"><img src="./reloj.png" style="object-fit:cover; object-position:0 0; aspect-ratio:1"><span>Vista Completa</span></div>
-      <div class="card" onclick="alert('Haz zoom en la imagen principal para ver detalle frontal')"><img src="./reloj.png" style="object-position:80% 10%"><span>Vista Frontal</span></div>
-      <div class="card" onclick="alert('En la foto principal, mira el lateral derecho - Botones')"><img src="./reloj.png" style="object-position:80% 40%"><span>Vista Lateral</span></div>
-      <div class="card" onclick="alert('En la parte inferior izquierda de la foto se ve la parte trasera')"><img src="./reloj.png" style="object-position:10% 90%"><span>Vista Posterior</span></div>
-    </div>
-    <div style="background:#000;color:#fff;border-radius:18px;padding:18px;margin-top:14px;text-align:left">
-      <div style="font-size:13px;opacity:.7">PANTALLA</div>
-      <div style="font-size:20px;font-weight:800;margin:4px 0">10:24 - Lun 26 May</div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;font-size:12px">
-        <div style="background:#1c1c1e;padding:10px;border-radius:12px">📍 Mi ubicación</div>
-        <div style="background:#1c1c1e;padding:10px;border-radius:12px">👤 Contactar cuidador</div>
-        <div style="background:#1c1c1e;padding:10px;border-radius:12px">🧭 Orientación</div>
-        <div style="background:#ff3b30;padding:10px;border-radius:12px">🆘 Emergencia</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="explain">
-  <div class="item"><b>Botón 1 - Función Principal</b><p>Botón superior lateral mecanizado en acero negro, acceso rápido al menú.</p></div>
-  <div class="item"><b>Botón 2 - Emergencia SOS</b><p>Botón inferior, pulsación larga activa llamada SOS + GPS a cuidador.</p></div>
-  <div class="item"><b>Correa de Metal Real</b><p>Acero inoxidable cepillado, cierre de mariposa, no es plástico ni silicón barato.</p></div>
-  <div class="item"><b>Vista Posterior - Sensores</b><p>Sensores ópticos + pines de carga magnética, contacto médico real.</p></div>
-</div>
-
-<div class="btn-wrap">
-  <a class="btn" href="#" onclick="document.getElementById('zoom').style.display='flex'; document.getElementById('zoomImg').src=document.getElementById('mainImg').src; return false;">🔍 Ver en HD</a>
-  <a class="btn btn-wa" href="https://wa.me/573106109423?text=Hola%20vi%20el%20reloj%20MEMORA%20en%20HD%20y%20lo%20quiero">💬 WhatsApp 3106109423</a>
-</div>
-
-<div id="zoom" onclick="this.style.display='none'"><img id="zoomImg" src=""></div>
+<model-viewer
+  id="reloj"
+  src="https://tmpfiles.org/dl/wSw3m95rObSi/white_mesh.glb"
+  auto-rotate
+  camera-controls
+  auto-rotate-delay="0"
+  rotation-per-second="30deg"
+  shadow-intensity="1.5"
+  environment-image="neutral"
+  exposure="0.8"
+  style="width:100%; height:700px; background-color:#0a0a0a; border-radius:24px;">
+</model-viewer>
 
 <script>
-function setView(n){ document.querySelectorAll('.card').forEach(c=>c.classList.remove('active')); event.currentTarget.classList.add('active'); document.getElementById('mainImg').style.transform='scale(1.1)'; setTimeout(()=>document.getElementById('mainImg').style.transform='scale(1)',300); }
-document.getElementById('mainImg').onclick=function(){ document.getElementById('zoom').style.display='flex'; document.getElementById('zoomImg').src=this.src; }
+  const viewer = document.querySelector("#reloj");
+  viewer.addEventListener('load', () => {
+    const mat = viewer.model.materials[0];
+    // Lo pintamos de negro
+    mat.pbrMetallicRoughness.setBaseColorFactor([0.05, 0.05, 0.05, 1]);
+    mat.pbrMetallicRoughness.setMetallicFactor(0.8);
+    mat.pbrMetallicRoughness.setRoughnessFactor(0.25);
+  });
 </script>
-
-</body>
-</html>
