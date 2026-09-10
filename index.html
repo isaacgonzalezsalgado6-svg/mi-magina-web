@@ -6,49 +6,42 @@
 <title>Reloj T800</title>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <style>
-  html,body{margin:0;height:100%;background:#c2c2c2}
-  #wrap{position:relative;width:100%;height:100vh;background:#c2c2c2}
-  model-viewer{width:100%;height:100vh;background:#c2c2c2}
-  #screen{
-    position:absolute;left:50%;top:46.5%;
-    width:30%;max-width:270px;aspect-ratio:0.88;
-    transform:translate(-50%,-50%);
-    border-radius:14px;overflow:hidden;
-    pointer-events:none;background:#000;
-    display:flex;flex-direction:column;padding:6px;
-    box-shadow:0 0 0 2px #222;
-    font-family:Arial,sans-serif;
+  html,body{margin:0;height:100%;background:#c8c8c8}
+  #wrap{position:relative;width:100%;height:100vh;display:flex;align-items:center;justify-content:center;background:#c8c8c8}
+  model-viewer{width:100%;height:100vh;background:#c8c8c8}
+  #ui{
+    position:absolute;left:50%;top:46%;
+    width:255px;height:340px;transform:translate(-50%,-50%);
+    background:#050505;border-radius:18px;
+    pointer-events:none;display:flex;flex-direction:column;
+    padding:10px;box-sizing:border-box;
+    box-shadow:inset 0 0 0 2px #222;
+    font-family:system-ui,Arial;
   }
-  #screen .time{color:#fff;text-align:center;font-size:22px;font-weight:bold;padding:8px 0}
-  #screen .btn{margin:3px 0;padding:7px;border-radius:6px;text-align:center;font-size:11px;border:1px solid #333}
-  .green{color:#4ade80;background:#111}
-  .white{color:#fff;background:#1a1a1a}
-  .sos{color:#ff5555;background:#2a1111}
+  .t{color:#fff;text-align:center;font-size:28px;font-weight:700;margin:10px 0 14px}
+  .b{border:1px solid #333;border-radius:10px;padding:10px 0;margin:4px 0;text-align:center;font-size:13px}
+  .g{color:#4ade80;background:#141414}
+  .w{color:#eee;background:#1e1e1e}
+  .r{color:#ff6b6b;background:#281414}
 </style>
 </head>
 <body>
 <div id="wrap">
-  <model-viewer id="reloj" src="white_mesh%202.glb" camera-controls auto-rotate shadow-intensity="1.5" environment-image="neutral" exposure="0.65" camera-orbit="0deg 75deg 2.3m"></model-viewer>
-  <div id="screen">
-    <div class="time">10:24</div>
-    <div class="btn green">📍 Mi ubicación</div>
-    <div class="btn white">Contactar cuidador</div>
-    <div class="btn white">Contactar familiar</div>
-    <div style="display:flex;gap:4px;margin-top:3px">
-      <div class="btn sos" style="flex:1">SOS</div>
-      <div class="btn white" style="flex:1">Más</div>
+  <model-viewer id="m" src="white_mesh%202.glb" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="0.7" camera-orbit="0deg 70deg 2.2m"></model-viewer>
+  <div id="ui">
+    <div class="t">10:24</div>
+    <div class="b g">📍 Mi ubicación</div>
+    <div class="b w">Contactar cuidador</div>
+    <div class="b w">Contactar familiar</div>
+    <div style="display:flex;gap:6px;margin-top:6px">
+      <div class="b r" style="flex:1">SOS</div>
+      <div class="b w" style="flex:1">Más</div>
     </div>
   </div>
 </div>
 <script>
-  const reloj=document.getElementById('reloj');
-  reloj.addEventListener('load',()=>{
-    reloj.model.materials.forEach(m=>{
-      m.pbrMetallicRoughness.setBaseColorFactor([0.07,0.07,0.08,1]);
-      m.pbrMetallicRoughness.setMetallicFactor(0.85);
-      m.pbrMetallicRoughness.setRoughnessFactor(0.22);
-    });
-  });
+  const m=document.getElementById('m');
+  m.addEventListener('load',()=>{m.model.materials.forEach(x=>{x.pbrMetallicRoughness.setBaseColorFactor([0.07,0.07,0.08,1]);x.pbrMetallicRoughness.setMetallicFactor(0.85);x.pbrMetallicRoughness.setRoughnessFactor(0.2)})});
 </script>
 </body>
 </html>
