@@ -6,72 +6,49 @@
 <title>Reloj T800</title>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <style>
-  html,body{margin:0;height:100%;background:#c2c2c2;overflow:hidden}
+  html,body{margin:0;height:100%;background:#c2c2c2}
   #wrap{position:relative;width:100%;height:100vh;background:#c2c2c2}
   model-viewer{width:100%;height:100vh;background:#c2c2c2}
-  #pantalla{
-    position:absolute;
-    left:50%; top:47%;
-    width:34%; max-width:320px;
-    aspect-ratio: 0.85;
-    transform: translate(-50%,-50%) perspective(800px) rotateY(0deg);
-    border-radius:18px;
-    overflow:hidden;
-    pointer-events:none;
-    box-shadow:0 0 20px rgba(0,0,0,0.8);
-    transition: opacity 0.3s;
+  #screen{
+    position:absolute;left:50%;top:46.5%;
+    width:30%;max-width:270px;aspect-ratio:0.88;
+    transform:translate(-50%,-50%);
+    border-radius:14px;overflow:hidden;
+    pointer-events:none;background:#000;
+    display:flex;flex-direction:column;padding:6px;
+    box-shadow:0 0 0 2px #222;
+    font-family:Arial,sans-serif;
   }
-  #pantalla img{width:100%;height:100%;object-fit:cover;display:block}
+  #screen .time{color:#fff;text-align:center;font-size:22px;font-weight:bold;padding:8px 0}
+  #screen .btn{margin:3px 0;padding:7px;border-radius:6px;text-align:center;font-size:11px;border:1px solid #333}
+  .green{color:#4ade80;background:#111}
+  .white{color:#fff;background:#1a1a1a}
+  .sos{color:#ff5555;background:#2a1111}
 </style>
 </head>
 <body>
-
 <div id="wrap">
-  <model-viewer
-    id="reloj"
-    src="white_mesh%202.glb"
-    camera-controls
-    touch-action="pan-y"
-    auto-rotate
-    shadow-intensity="1.5"
-    environment-image="neutral"
-    exposure="0.7"
-    camera-orbit="0deg 75deg 2.5m"
-    min-camera-orbit="auto auto 1m"
-    max-camera-orbit="auto auto 4m"
-    field-of-view="22deg">
-  </model-viewer>
-  
-  <div id="pantalla">
-    <img src="pantalla.jpg" alt="pantalla">
+  <model-viewer id="reloj" src="white_mesh%202.glb" camera-controls auto-rotate shadow-intensity="1.5" environment-image="neutral" exposure="0.65" camera-orbit="0deg 75deg 2.3m"></model-viewer>
+  <div id="screen">
+    <div class="time">10:24</div>
+    <div class="btn green">📍 Mi ubicación</div>
+    <div class="btn white">Contactar cuidador</div>
+    <div class="btn white">Contactar familiar</div>
+    <div style="display:flex;gap:4px;margin-top:3px">
+      <div class="btn sos" style="flex:1">SOS</div>
+      <div class="btn white" style="flex:1">Más</div>
+    </div>
   </div>
 </div>
-
 <script>
-  const reloj = document.getElementById('reloj');
-  const pantalla = document.getElementById('pantalla');
-
-  // Pintar reloj negro
-  reloj.addEventListener('load', () => {
+  const reloj=document.getElementById('reloj');
+  reloj.addEventListener('load',()=>{
     reloj.model.materials.forEach(m=>{
       m.pbrMetallicRoughness.setBaseColorFactor([0.07,0.07,0.08,1]);
-      m.pbrMetallicRoughness.setMetallicFactor(0.8);
-      m.pbrMetallicRoughness.setRoughnessFactor(0.25);
+      m.pbrMetallicRoughness.setMetallicFactor(0.85);
+      m.pbrMetallicRoughness.setRoughnessFactor(0.22);
     });
   });
-
-  // Cuando giras mucho, ocultamos la pantalla para que no se vea flotando
-  reloj.addEventListener('camera-change', () => {
-    const orbit = reloj.getCameraOrbit();
-    const azimuth = Math.abs(orbit.theta % (2*Math.PI));
-    // Si está de frente (0°), muestra pantalla. Si gira >60°, la oculta
-    if (azimuth < 1.0 || azimuth > 5.2) {
-      pantalla.style.opacity = "1";
-    } else {
-      pantalla.style.opacity = "0";
-    }
-  });
 </script>
-
 </body>
 </html>
