@@ -6,40 +6,70 @@
 <title>Reloj T800</title>
 <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 <style>
-  html,body{margin:0;height:100%;background:#c2c2c2;}
-  model-viewer{width:100%;height:100vh;background:#c2c2c2;}
+  html,body{margin:0;height:100%;background:#c2c2c2;overflow:hidden}
+  #wrap{position:relative;width:100%;height:100vh;background:#c2c2c2}
+  model-viewer{width:100%;height:100vh;background:#c2c2c2}
+  #pantalla{
+    position:absolute;
+    left:50%; top:47%;
+    width:34%; max-width:320px;
+    aspect-ratio: 0.85;
+    transform: translate(-50%,-50%) perspective(800px) rotateY(0deg);
+    border-radius:18px;
+    overflow:hidden;
+    pointer-events:none;
+    box-shadow:0 0 20px rgba(0,0,0,0.8);
+    transition: opacity 0.3s;
+  }
+  #pantalla img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
 
-<model-viewer
-  id="reloj"
-  src="white_mesh%202.glb"
-  poster="reloj_hero.jpg"
-  camera-controls
-  touch-action="pan-y"
-  auto-rotate
-  auto-rotate-delay="0"
-  rotation-per-second="25deg"
-  shadow-intensity="1.5"
-  shadow-softness="1"
-  environment-image="neutral"
-  exposure="0.7"
-  camera-orbit="0deg 75deg 2.5m"
-  min-camera-orbit="auto auto 1m"
-  max-camera-orbit="auto auto 6m"
-  field-of-view="22deg"
-  alt="Reloj T800">
-</model-viewer>
+<div id="wrap">
+  <model-viewer
+    id="reloj"
+    src="white_mesh%202.glb"
+    camera-controls
+    touch-action="pan-y"
+    auto-rotate
+    shadow-intensity="1.5"
+    environment-image="neutral"
+    exposure="0.7"
+    camera-orbit="0deg 75deg 2.5m"
+    min-camera-orbit="auto auto 1m"
+    max-camera-orbit="auto auto 4m"
+    field-of-view="22deg">
+  </model-viewer>
+  
+  <div id="pantalla">
+    <img src="pantalla.jpg" alt="pantalla">
+  </div>
+</div>
 
 <script>
   const reloj = document.getElementById('reloj');
+  const pantalla = document.getElementById('pantalla');
+
+  // Pintar reloj negro
   reloj.addEventListener('load', () => {
     reloj.model.materials.forEach(m=>{
-      m.pbrMetallicRoughness.setBaseColorFactor([0.06,0.06,0.07,1]);
+      m.pbrMetallicRoughness.setBaseColorFactor([0.07,0.07,0.08,1]);
       m.pbrMetallicRoughness.setMetallicFactor(0.8);
       m.pbrMetallicRoughness.setRoughnessFactor(0.25);
     });
+  });
+
+  // Cuando giras mucho, ocultamos la pantalla para que no se vea flotando
+  reloj.addEventListener('camera-change', () => {
+    const orbit = reloj.getCameraOrbit();
+    const azimuth = Math.abs(orbit.theta % (2*Math.PI));
+    // Si está de frente (0°), muestra pantalla. Si gira >60°, la oculta
+    if (azimuth < 1.0 || azimuth > 5.2) {
+      pantalla.style.opacity = "1";
+    } else {
+      pantalla.style.opacity = "0";
+    }
   });
 </script>
 
