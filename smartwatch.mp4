@@ -1,1 +1,4 @@
 
+<video autoplay loop muted playsinline controls style="width:100%; border-radius:20px;">
+  <source src="smartwatch.mp4.mp4" type="video/mp4">
+</video>
