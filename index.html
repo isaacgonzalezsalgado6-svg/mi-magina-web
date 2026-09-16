@@ -1,47 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reloj T800</title>
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MEMORA AEI</title>
 <style>
-  html,body{margin:0;height:100%;background:#c8c8c8}
-  #wrap{position:relative;width:100%;height:100vh;display:flex;align-items:center;justify-content:center;background:#c8c8c8}
-  model-viewer{width:100%;height:100vh;background:#c8c8c8}
-  #ui{
-    position:absolute;left:50%;top:46%;
-    width:255px;height:340px;transform:translate(-50%,-50%);
-    background:#050505;border-radius:18px;
-    pointer-events:none;display:flex;flex-direction:column;
-    padding:10px;box-sizing:border-box;
-    box-shadow:inset 0 0 0 2px #222;
-    font-family:system-ui,Arial;
+  :root {
+    --bg: #050505;
+    --ink: #ececec;
+    --muted: #8a8a8a;
+    --accent: #c9a24b;
   }
-  .t{color:#fff;text-align:center;font-size:28px;font-weight:700;margin:10px 0 14px}
-  .b{border:1px solid #333;border-radius:10px;padding:10px 0;margin:4px 0;text-align:center;font-size:13px}
-  .g{color:#4ade80;background:#141414}
-  .w{color:#eee;background:#1e1e1e}
-  .r{color:#ff6b6b;background:#281414}
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    width: 100%;
+    overflow-x: hidden;
+  }
+  body {
+    font-family: 'Georgia', 'Iowan Old Style', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6vh 6vw;
+    text-align: center;
+  }
+  .eyebrow {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    margin-bottom: 1.4rem;
+    font-weight: 500;
+  }
+  h1 {
+    font-size: clamp(2.6rem, 8vw, 5.5rem);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin: 0 0 0.6rem 0;
+    line-height: 1.02;
+  }
+  h1 span {
+    display: block;
+    font-style: italic;
+    color: var(--muted);
+    font-size: 0.42em;
+    margin-top: 0.5rem;
+    letter-spacing: 0.05em;
+  }
+  .frame {
+    margin-top: 4vh;
+    max-width: 520px;
+    width: 100%;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(201, 162, 75, 0.25);
+    box-shadow: 0 0 60px rgba(201, 162, 75, 0.08);
+  }
+  .frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .foot {
+    margin-top: 4vh;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 0.8rem;
+    color: var(--muted);
+    max-width: 420px;
+    line-height: 1.6;
+  }
+  @media (max-width: 480px) {
+    .frame { border-radius: 12px; }
+  }
 </style>
 </head>
 <body>
-<div id="wrap">
-  <model-viewer id="m" src="white_mesh%202.glb" camera-controls auto-rotate shadow-intensity="1" environment-image="neutral" exposure="0.7" camera-orbit="0deg 70deg 2.2m"></model-viewer>
-  <div id="ui">
-    <div class="t">10:24</div>
-    <div class="b g">📍 Mi ubicación</div>
-    <div class="b w">Contactar cuidador</div>
-    <div class="b w">Contactar familiar</div>
-    <div style="display:flex;gap:6px;margin-top:6px">
-      <div class="b r" style="flex:1">SOS</div>
-      <div class="b w" style="flex:1">Más</div>
-    </div>
+  <div class="eyebrow">Precisión en la muñeca</div>
+  <h1>MEMORA<span>AEI</span></h1>
+  <div class="frame">
+    <img src="memora.gif" alt="MEMORA AEI smartwatch">
   </div>
-</div>
-<script>
-  const m=document.getElementById('m');
-  m.addEventListener('load',()=>{m.model.materials.forEach(x=>{x.pbrMetallicRoughness.setBaseColorFactor([0.07,0.07,0.08,1]);x.pbrMetallicRoughness.setMetallicFactor(0.85);x.pbrMetallicRoughness.setRoughnessFactor(0.2)})});
-</script>
+  <div class="foot">Cada segundo, registrado. Cada dato, presente.</div>
 </body>
 </html>
