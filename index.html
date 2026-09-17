@@ -5,87 +5,96 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MEMORA AEI</title>
 <style>
-  :root {
-    --bg: #050505;
-    --ink: #ececec;
-    --muted: #8a8a8a;
-    --accent: #c9a24b;
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:#000;
+    color:#fff;
+    font-family: 'Georgia', serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    text-align:center;
   }
-  * { box-sizing: border-box; }
-  html, body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg);
-    color: var(--ink);
-    width: 100%;
-    overflow-x: hidden;
+  .container{
+    width:100%;
+    max-width:700px;
+    padding:40px 20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
   }
-  body {
-    font-family: 'Georgia', 'Iowan Old Style', serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 6vh 6vw;
-    text-align: center;
+  /* LOGO */
+  .logo{
+    width:120px;
+    height:120px;
+    object-fit:contain;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,0.15));
+    animation: float 3s ease-in-out infinite;
   }
-  .eyebrow {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.28em;
-    color: var(--accent);
-    margin-bottom: 1.4rem;
-    font-weight: 500;
+  @keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
   }
-  h1 {
-    font-size: clamp(2.6rem, 8vw, 5.5rem);
-    font-weight: 400;
-    letter-spacing: 0.02em;
-    margin: 0 0 0.6rem 0;
-    line-height: 1.02;
+  /* NOMBRE EMPRESA */
+  h1{
+    font-size:42px;
+    letter-spacing:8px;
+    font-weight:300;
+    color:#ececec;
   }
-  h1 span {
-    display: block;
-    font-style: italic;
-    color: var(--muted);
-    font-size: 0.42em;
-    margin-top: 0.5rem;
-    letter-spacing: 0.05em;
+  h1 span{
+    display:block;
+    font-size:12px;
+    letter-spacing:6px;
+    color:#c9a24b;
+    margin-top:10px;
+    font-family: monospace;
   }
-  .frame {
-    margin-top: 4vh;
-    max-width: 520px;
-    width: 100%;
-    border-radius: 18px;
-    overflow: hidden;
-    border: 1px solid rgba(201, 162, 75, 0.25);
-    box-shadow: 0 0 60px rgba(201, 162, 75, 0.08);
+  /* VIDEO */
+  .video-box{
+    width:100%;
+    margin-top:10px;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid #ffffff15;
+    box-shadow: 0 0 50px rgba(255,255,255,0.07);
+    background:#0a0a0a;
   }
-  .frame img {
-    display: block;
-    width: 100%;
-    height: auto;
+  video{
+    width:100%;
+    display:block;
   }
-  .foot {
-    margin-top: 4vh;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: 0.8rem;
-    color: var(--muted);
-    max-width: 420px;
-    line-height: 1.6;
-  }
-  @media (max-width: 480px) {
-    .frame { border-radius: 12px; }
+  p{
+    color:#777;
+    font-size:13px;
+    letter-spacing:2px;
+    font-family: monospace;
+    margin-top:10px;
   }
 </style>
 </head>
 <body>
-  <div class="eyebrow">Precisión en la muñeca</div>
-  <h1>MEMORA<span>AEI</span></h1>
-  <div class="frame">
-    <img src="memora.gif" alt="MEMORA AEI smartwatch">
+
+  <div class="container">
+    <!-- 1. LOGO -->
+    <img src="logo.png" alt="MEMORA AEI Logo" class="logo">
+
+    <!-- 2. NOMBRE -->
+    <h1>MEMORA AEI <span>SMART TECHNOLOGY</span></h1>
+
+    <!-- 3. VIDEO -->
+    <div class="video-box">
+      <video autoplay loop muted playsinline controls>
+        <source src="smartwatch.mp4" type="video/mp4">
+        Tu navegador no soporta video.
+      </video>
+    </div>
+
+    <p>EXPLODED VIEW // AEI-01</p>
   </div>
-  <div class="foot">Cada segundo, registrado. Cada dato, presente.</div>
+
 </body>
 </html>
