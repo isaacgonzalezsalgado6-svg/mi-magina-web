@@ -2,16 +2,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Alzheimer Watch | Tecnología que acompaña</title>
+    <title>MEMORA AEI | Tecnología que acompaña</title>
 
     <style>
-
-        /* =========================
-           CONFIGURACIÓN GENERAL
-        ========================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -34,43 +30,30 @@
             color: inherit;
         }
 
-
-        /* =========================
-           BARRA DE NAVEGACIÓN
-        ========================= */
-
         header {
             position: fixed;
             top: 0;
             left: 0;
-
             width: 100%;
-
             padding: 22px 7%;
-
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             background: rgba(0, 0, 0, 0.75);
             backdrop-filter: blur(12px);
-
             border-bottom: 1px solid rgba(255,255,255,0.08);
-
             z-index: 1000;
         }
 
-        .logo {
+        .logo-text {
             font-size: 20px;
             font-weight: bold;
-
             letter-spacing: 2px;
-
             color: white;
         }
 
-        .logo span {
-            color: #00e5ff;
+        .logo-text span {
+            color: #a58bd4;
         }
 
         nav {
@@ -80,100 +63,78 @@
 
         nav a {
             color: #ccc;
-
             font-size: 14px;
-
             transition: 0.3s;
         }
 
         nav a:hover {
-            color: #00e5ff;
+            color: #a58bd4;
         }
-
-
-        /* =========================
-           SECCIÓN PRINCIPAL
-        ========================= */
 
         .hero {
             min-height: 100vh;
-
             display: flex;
             flex-direction: column;
-
             justify-content: center;
             align-items: center;
-
             text-align: center;
-
             padding: 140px 20px 80px;
-
             position: relative;
 
             background:
                 radial-gradient(
                     circle at center,
-                    rgba(0,229,255,0.08),
+                    rgba(165,139,212,0.10),
                     transparent 45%
                 );
         }
 
         .small-title {
-            color: #00e5ff;
-
+            color: #a58bd4;
             font-size: 13px;
-
             letter-spacing: 4px;
-
             text-transform: uppercase;
-
             margin-bottom: 20px;
         }
 
         .hero h1 {
             font-size: clamp(45px, 7vw, 90px);
-
             line-height: 1;
-
             margin-bottom: 25px;
-
             letter-spacing: -2px;
         }
 
         .hero h1 span {
-            color: #00e5ff;
+            color: #a58bd4;
         }
 
         .hero p {
             max-width: 720px;
-
             color: #aaa;
-
             font-size: 18px;
-
             line-height: 1.7;
-
-            margin-bottom: 45px;
+            margin-bottom: 35px;
         }
 
+        /* LOGO MEMORA */
 
-        /* =========================
-           VIDEO
-        ========================= */
+        .memora-logo {
+            width: 190px;
+            max-width: 70%;
+            margin-bottom: 35px;
+            border-radius: 10px;
+            box-shadow: 0 0 45px rgba(165,139,212,0.10);
+        }
 
         .video-container {
             width: min(950px, 94%);
-
             border-radius: 24px;
-
             overflow: hidden;
-
             background: #080808;
-
             border: 1px solid rgba(255,255,255,0.12);
 
             box-shadow:
-                0 0 80px rgba(0,229,255,0.08),
+                0 0 80px rgba(165,139,212,0.08),
                 0 20px 60px rgba(0,0,0,0.8);
 
             transition: 0.4s;
@@ -182,82 +143,54 @@
         .video-container:hover {
             transform: translateY(-5px);
 
-            border-color: rgba(0,229,255,0.4);
+            border-color: rgba(165,139,212,0.4);
 
             box-shadow:
-                0 0 100px rgba(0,229,255,0.12),
+                0 0 100px rgba(165,139,212,0.12),
                 0 25px 70px rgba(0,0,0,0.9);
         }
 
         video {
             width: 100%;
-
             display: block;
-
             background: #000;
         }
 
-
-        /* =========================
-           BOTONES
-        ========================= */
-
         .buttons {
             display: flex;
-
             gap: 15px;
-
             margin-top: 35px;
-
             flex-wrap: wrap;
-
             justify-content: center;
         }
 
         .button {
             padding: 14px 28px;
-
             border-radius: 30px;
-
-            background: #00e5ff;
-
+            background: #a58bd4;
             color: #000;
-
             font-weight: bold;
-
             transition: 0.3s;
         }
 
         .button:hover {
             transform: translateY(-3px);
-
             background: white;
-
-            box-shadow: 0 10px 30px rgba(0,229,255,0.2);
+            box-shadow: 0 10px 30px rgba(165,139,212,0.2);
         }
 
         .button-secondary {
             padding: 14px 28px;
-
             border-radius: 30px;
-
             border: 1px solid #333;
-
             color: white;
-
             transition: 0.3s;
         }
 
         .button-secondary:hover {
-            border-color: #00e5ff;
-
-            color: #00e5ff;
+            border-color: #a58bd4;
+            color: #a58bd4;
         }
-
-
-        /* =========================
-           SECCIONES
-        ========================= */
 
         section {
             padding: 110px 8%;
@@ -265,112 +198,75 @@
 
         .section-title {
             text-align: center;
-
             margin-bottom: 60px;
         }
 
         .section-title small {
-            color: #00e5ff;
-
+            color: #a58bd4;
             letter-spacing: 3px;
-
             text-transform: uppercase;
         }
 
         .section-title h2 {
-            font-size: clamp(35px, 5vw, 55px);
-
+            font-size: 36px;
             margin-top: 15px;
         }
 
         .section-title p {
             max-width: 650px;
-
             margin: 20px auto 0;
-
             color: #999;
-
             line-height: 1.7;
         }
 
-
-        /* =========================
-           CARDS
-        ========================= */
-
         .cards {
             max-width: 1100px;
-
             margin: auto;
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
         }
 
         .card {
             padding: 35px;
-
             background: #080808;
-
             border: 1px solid #1c1c1c;
-
             border-radius: 20px;
-
             transition: 0.35s;
         }
 
         .card:hover {
             transform: translateY(-8px);
-
-            border-color: rgba(0,229,255,0.4);
-
+            border-color: rgba(165,139,212,0.4);
             background: #0b0b0b;
         }
 
         .icon {
             width: 55px;
-
             height: 55px;
-
             border-radius: 15px;
 
             display: flex;
-
             justify-content: center;
-
             align-items: center;
 
-            background: rgba(0,229,255,0.08);
-
-            color: #00e5ff;
+            background: rgba(165,139,212,0.08);
+            color: #a58bd4;
 
             font-size: 25px;
-
             margin-bottom: 25px;
         }
 
         .card h3 {
             font-size: 22px;
-
             margin-bottom: 15px;
         }
 
         .card p {
             color: #999;
-
             line-height: 1.7;
-
             font-size: 15px;
         }
-
-
-        /* =========================
-           SECCIÓN SOS
-        ========================= */
 
         .sos-section {
             background:
@@ -386,7 +282,6 @@
 
         .sos-button {
             width: 150px;
-
             height: 150px;
 
             margin: 40px auto;
@@ -394,9 +289,7 @@
             border-radius: 50%;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             background: #170000;
@@ -406,7 +299,6 @@
             color: #ff3333;
 
             font-size: 30px;
-
             font-weight: bold;
 
             box-shadow:
@@ -424,18 +316,10 @@
 
         .sos-section p {
             max-width: 650px;
-
             margin: auto;
-
             color: #999;
-
             line-height: 1.7;
         }
-
-
-        /* =========================
-           INFORMACIÓN DEL PROYECTO
-        ========================= */
 
         .about {
             background: #050505;
@@ -443,13 +327,10 @@
 
         .about-content {
             max-width: 1000px;
-
             margin: auto;
 
             display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
+            grid-template-columns: 1fr 1fr;
 
             gap: 60px;
 
@@ -458,19 +339,16 @@
 
         .about-text h2 {
             font-size: 45px;
-
             margin-bottom: 20px;
         }
 
         .about-text h2 span {
-            color: #00e5ff;
+            color: #a58bd4;
         }
 
         .about-text p {
             color: #999;
-
             line-height: 1.8;
-
             margin-bottom: 20px;
         }
 
@@ -509,15 +387,10 @@
 
             left: 0;
 
-            color: #00e5ff;
+            color: #a58bd4;
 
             font-weight: bold;
         }
-
-
-        /* =========================
-           PIE DE PÁGINA
-        ========================= */
 
         footer {
             padding: 40px 20px;
@@ -535,11 +408,6 @@
             color: white;
         }
 
-
-        /* =========================
-           ANIMACIONES
-        ========================= */
-
         .fade {
             animation: aparecer 1s ease forwards;
         }
@@ -548,22 +416,15 @@
 
             from {
                 opacity: 0;
-
                 transform: translateY(25px);
             }
 
             to {
                 opacity: 1;
-
                 transform: translateY(0);
             }
 
         }
-
-
-        /* =========================
-           CELULAR
-        ========================= */
 
         @media (max-width: 800px) {
 
@@ -603,66 +464,61 @@
                 font-size: 38px;
             }
 
+            .memora-logo {
+                width: 160px;
+            }
         }
-
     </style>
 </head>
 
-
 <body>
-
-
-    <!-- =========================
-         MENÚ
-    ========================= -->
 
     <header>
 
-        <div class="logo">
-            ALZHEIMER<span>WATCH</span>
+        <div class="logo-text">
+            MEMORA<span> AEI</span>
         </div>
 
         <nav>
-
             <a href="#inicio">Inicio</a>
-
             <a href="#funciones">Funciones</a>
-
             <a href="#sos">SOS</a>
-
             <a href="#proyecto">Proyecto</a>
-
         </nav>
 
     </header>
 
-
-
-    <!-- =========================
-         INICIO
-    ========================= -->
 
     <main>
 
         <section class="hero fade" id="inicio">
 
             <div class="small-title">
-                Tecnología para el cuidado
+                Orientación · Compañía · Cuidado
             </div>
 
             <h1>
-                Un reloj que<br>
+                Tecnología que<br>
                 <span>acompaña.</span>
             </h1>
 
             <p>
                 Un proyecto tecnológico diseñado para brindar
-                apoyo, seguridad y acompañamiento a personas
-                con Alzheimer y a sus familias.
+                orientación, seguridad y acompañamiento a
+                personas con Alzheimer y a sus familias.
             </p>
 
 
-            <!-- VIDEO -->
+            <!-- LOGO MEMORA AEI -->
+
+            <img
+                src="memora-logo.jpeg"
+                alt="Logo MEMORA AEI"
+                class="memora-logo"
+            >
+
+
+            <!-- VIDEO DEL RELOJ -->
 
             <div class="video-container">
 
@@ -707,11 +563,6 @@
         </section>
 
 
-
-        <!-- =========================
-             FUNCIONES
-        ========================= -->
-
         <section id="funciones">
 
             <div class="section-title">
@@ -735,9 +586,6 @@
 
             <div class="cards">
 
-
-                <!-- GPS -->
-
                 <div class="card">
 
                     <div class="icon">
@@ -756,8 +604,6 @@
 
                 </div>
 
-
-                <!-- SOS -->
 
                 <div class="card">
 
@@ -778,8 +624,6 @@
                 </div>
 
 
-                <!-- PANEL SOLAR -->
-
                 <div class="card">
 
                     <div class="icon">
@@ -798,16 +642,10 @@
 
                 </div>
 
-
             </div>
 
         </section>
 
-
-
-        <!-- =========================
-             SOS
-        ========================= -->
 
         <section
             class="sos-section"
@@ -827,27 +665,18 @@
 
 
             <div class="sos-button">
-
                 SOS
-
             </div>
 
 
             <p>
-
                 El botón SOS está pensado para permitir
                 que el usuario solicite ayuda rápidamente
                 en una situación de emergencia.
-
             </p>
 
         </section>
 
-
-
-        <!-- =========================
-             PROYECTO
-        ========================= -->
 
         <section
             class="about"
@@ -868,22 +697,18 @@
                     </h2>
 
                     <p>
-
-                        Alzheimer Watch nace como una propuesta
+                        MEMORA AEI nace como una propuesta
                         tecnológica enfocada en apoyar a las
                         personas con Alzheimer y facilitar
                         el acompañamiento por parte de sus
                         familiares y cuidadores.
-
                     </p>
 
                     <p>
-
                         El objetivo es integrar diferentes
                         funciones en un dispositivo de uso
                         cotidiano, buscando que la tecnología
                         sea sencilla y útil.
-
                     </p>
 
                 </div>
@@ -925,28 +750,21 @@
 
         </section>
 
-
     </main>
 
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
 
     <footer>
 
         <p>
-            <strong>Alzheimer Watch</strong>
+            <strong>MEMORA AEI</strong>
             — Proyecto tecnológico
         </p>
 
         <p style="margin-top: 10px;">
-            Tecnología diseñada para acompañar.
+            Orientación, compañía y cuidado.
         </p>
 
     </footer>
-
 
 </body>
 </html>
