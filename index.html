@@ -2,75 +2,42 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Alzheimer Watch | Tecnología que acompaña</title>
+    <title>Reloj de asistencia</title>
 
     <style>
-
-        /* =========================
-           CONFIGURACIÓN GENERAL
-        ========================= */
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            background: #000;
+            background: #000000;
             color: white;
             font-family: Arial, Helvetica, sans-serif;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-
-        /* =========================
-           BARRA DE NAVEGACIÓN
-        ========================= */
-
+        /* Barra superior */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-
             width: 100%;
-
-            padding: 22px 7%;
-
+            padding: 25px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(12px);
-
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-
-            z-index: 1000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 10;
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 24px;
             font-weight: bold;
-
             letter-spacing: 2px;
-
-            color: white;
-        }
-
-        .logo span {
-            color: #00e5ff;
         }
 
         nav {
@@ -79,10 +46,9 @@
         }
 
         nav a {
-            color: #ccc;
-
-            font-size: 14px;
-
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
             transition: 0.3s;
         }
 
@@ -90,485 +56,89 @@
             color: #00e5ff;
         }
 
-
-        /* =========================
-           SECCIÓN PRINCIPAL
-        ========================= */
-
+        /* Sección principal */
         .hero {
             min-height: 100vh;
-
             display: flex;
             flex-direction: column;
-
             justify-content: center;
             align-items: center;
-
             text-align: center;
-
-            padding: 140px 20px 80px;
-
-            position: relative;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(0,229,255,0.08),
-                    transparent 45%
-                );
-        }
-
-        .small-title {
-            color: #00e5ff;
-
-            font-size: 13px;
-
-            letter-spacing: 4px;
-
-            text-transform: uppercase;
-
-            margin-bottom: 20px;
+            padding: 100px 20px 50px;
         }
 
         .hero h1 {
-            font-size: clamp(45px, 7vw, 90px);
-
-            line-height: 1;
-
-            margin-bottom: 25px;
-
-            letter-spacing: -2px;
-        }
-
-        .hero h1 span {
-            color: #00e5ff;
+            font-size: clamp(40px, 6vw, 80px);
+            margin-bottom: 15px;
+            letter-spacing: 3px;
         }
 
         .hero p {
-            max-width: 720px;
-
-            color: #aaa;
-
+            max-width: 700px;
+            color: #bdbdbd;
             font-size: 18px;
-
-            line-height: 1.7;
-
-            margin-bottom: 45px;
+            line-height: 1.6;
+            margin-bottom: 35px;
         }
 
-
-        /* =========================
-           VIDEO
-        ========================= */
-
+        /* Contenedor del video */
         .video-container {
-            width: min(950px, 94%);
-
-            border-radius: 24px;
-
+            width: min(900px, 95%);
+            border-radius: 20px;
             overflow: hidden;
-
-            background: #080808;
-
-            border: 1px solid rgba(255,255,255,0.12);
-
-            box-shadow:
-                0 0 80px rgba(0,229,255,0.08),
-                0 20px 60px rgba(0,0,0,0.8);
-
-            transition: 0.4s;
-        }
-
-        .video-container:hover {
-            transform: translateY(-5px);
-
-            border-color: rgba(0,229,255,0.4);
-
-            box-shadow:
-                0 0 100px rgba(0,229,255,0.12),
-                0 25px 70px rgba(0,0,0,0.9);
+            background: #111;
+            box-shadow: 0 0 40px rgba(0, 229, 255, 0.15);
+            border: 1px solid #222;
         }
 
         video {
             width: 100%;
-
             display: block;
-
-            background: #000;
+            background: black;
         }
 
-
-        /* =========================
-           BOTONES
-        ========================= */
-
-        .buttons {
-            display: flex;
-
-            gap: 15px;
-
-            margin-top: 35px;
-
-            flex-wrap: wrap;
-
-            justify-content: center;
-        }
-
+        /* Botón */
         .button {
-            padding: 14px 28px;
-
+            margin-top: 30px;
+            padding: 14px 30px;
             border-radius: 30px;
-
             background: #00e5ff;
-
             color: #000;
-
+            text-decoration: none;
             font-weight: bold;
-
             transition: 0.3s;
         }
 
         .button:hover {
-            transform: translateY(-3px);
-
+            transform: scale(1.05);
             background: white;
-
-            box-shadow: 0 10px 30px rgba(0,229,255,0.2);
         }
 
-        .button-secondary {
-            padding: 14px 28px;
-
-            border-radius: 30px;
-
-            border: 1px solid #333;
-
-            color: white;
-
-            transition: 0.3s;
-        }
-
-        .button-secondary:hover {
-            border-color: #00e5ff;
-
-            color: #00e5ff;
-        }
-
-
-        /* =========================
-           SECCIONES
-        ========================= */
-
-        section {
-            padding: 110px 8%;
-        }
-
-        .section-title {
+        /* Sección inferior */
+        .info {
+            padding: 80px 8%;
             text-align: center;
-
-            margin-bottom: 60px;
-        }
-
-        .section-title small {
-            color: #00e5ff;
-
-            letter-spacing: 3px;
-
-            text-transform: uppercase;
-        }
-
-        .section-title h2 {
-            font-size: clamp(35px, 5vw, 55px);
-
-            margin-top: 15px;
-        }
-
-        .section-title p {
-            max-width: 650px;
-
-            margin: 20px auto 0;
-
-            color: #999;
-
-            line-height: 1.7;
-        }
-
-
-        /* =========================
-           CARDS
-        ========================= */
-
-        .cards {
-            max-width: 1100px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            gap: 20px;
-        }
-
-        .card {
-            padding: 35px;
-
-            background: #080808;
-
-            border: 1px solid #1c1c1c;
-
-            border-radius: 20px;
-
-            transition: 0.35s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-
-            border-color: rgba(0,229,255,0.4);
-
-            background: #0b0b0b;
-        }
-
-        .icon {
-            width: 55px;
-
-            height: 55px;
-
-            border-radius: 15px;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            background: rgba(0,229,255,0.08);
-
-            color: #00e5ff;
-
-            font-size: 25px;
-
-            margin-bottom: 25px;
-        }
-
-        .card h3 {
-            font-size: 22px;
-
-            margin-bottom: 15px;
-        }
-
-        .card p {
-            color: #999;
-
-            line-height: 1.7;
-
-            font-size: 15px;
-        }
-
-
-        /* =========================
-           SECCIÓN SOS
-        ========================= */
-
-        .sos-section {
-            background:
-                linear-gradient(
-                    180deg,
-                    #000,
-                    #080000,
-                    #000
-                );
-
-            text-align: center;
-        }
-
-        .sos-button {
-            width: 150px;
-
-            height: 150px;
-
-            margin: 40px auto;
-
-            border-radius: 50%;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            background: #170000;
-
-            border: 2px solid #ff3333;
-
-            color: #ff3333;
-
-            font-size: 30px;
-
-            font-weight: bold;
-
-            box-shadow:
-                0 0 40px rgba(255,0,0,0.15);
-
-            transition: 0.4s;
-        }
-
-        .sos-button:hover {
-            transform: scale(1.08);
-
-            box-shadow:
-                0 0 70px rgba(255,0,0,0.3);
-        }
-
-        .sos-section p {
-            max-width: 650px;
-
-            margin: auto;
-
-            color: #999;
-
-            line-height: 1.7;
-        }
-
-
-        /* =========================
-           INFORMACIÓN DEL PROYECTO
-        ========================= */
-
-        .about {
             background: #050505;
         }
 
-        .about-content {
-            max-width: 1000px;
+        .info h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
 
+        .info p {
+            max-width: 750px;
             margin: auto;
-
-            display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
-            gap: 60px;
-
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 45px;
-
-            margin-bottom: 20px;
-        }
-
-        .about-text h2 span {
-            color: #00e5ff;
-        }
-
-        .about-text p {
-            color: #999;
-
-            line-height: 1.8;
-
-            margin-bottom: 20px;
-        }
-
-        .about-box {
-            padding: 40px;
-
-            border-radius: 25px;
-
-            background: #0b0b0b;
-
-            border: 1px solid #1c1c1c;
-        }
-
-        .about-box h3 {
-            margin-bottom: 20px;
-        }
-
-        .about-box ul {
-            list-style: none;
-        }
-
-        .about-box li {
             color: #aaa;
-
-            margin: 18px 0;
-
-            padding-left: 25px;
-
-            position: relative;
+            line-height: 1.7;
+            font-size: 17px;
         }
 
-        .about-box li::before {
-            content: "✓";
-
-            position: absolute;
-
-            left: 0;
-
-            color: #00e5ff;
-
-            font-weight: bold;
-        }
-
-
-        /* =========================
-           PIE DE PÁGINA
-        ========================= */
-
-        footer {
-            padding: 40px 20px;
-
-            text-align: center;
-
-            border-top: 1px solid #151515;
-
-            color: #666;
-
-            font-size: 14px;
-        }
-
-        footer strong {
-            color: white;
-        }
-
-
-        /* =========================
-           ANIMACIONES
-        ========================= */
-
-        .fade {
-            animation: aparecer 1s ease forwards;
-        }
-
-        @keyframes aparecer {
-
-            from {
-                opacity: 0;
-
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-
-                transform: translateY(0);
-            }
-
-        }
-
-
-        /* =========================
-           CELULAR
-        ========================= */
-
-        @media (max-width: 800px) {
+        /* Adaptación para celular */
+        @media (max-width: 700px) {
 
             header {
-                padding: 18px 5%;
+                padding: 20px;
             }
 
             nav {
@@ -576,376 +146,88 @@
             }
 
             .hero {
-                padding-top: 120px;
+                padding-top: 100px;
             }
 
             .hero h1 {
-                font-size: 48px;
+                font-size: 42px;
             }
 
             .hero p {
                 font-size: 16px;
             }
 
-            section {
-                padding: 80px 6%;
+            .video-container {
+                border-radius: 12px;
             }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-text h2 {
-                font-size: 38px;
-            }
-
         }
-
     </style>
 </head>
 
-
 <body>
 
-
-    <!-- =========================
-         MENÚ
-    ========================= -->
-
+    <!-- MENÚ -->
     <header>
-
-        <div class="logo">
-            ALZHEIMER<span>WATCH</span>
-        </div>
+        <div class="logo">ALZHEIMER WATCH</div>
 
         <nav>
-
             <a href="#inicio">Inicio</a>
-
-            <a href="#funciones">Funciones</a>
-
-            <a href="#sos">SOS</a>
-
-            <a href="#proyecto">Proyecto</a>
-
+            <a href="#video">Diseño</a>
+            <a href="#informacion">Información</a>
         </nav>
-
     </header>
 
 
+    <!-- INICIO -->
+    <section class="hero" id="inicio">
 
-    <!-- =========================
-         INICIO
-    ========================= -->
-
-    <main>
-
-        <section class="hero fade" id="inicio">
-
-            <div class="small-title">
-                Tecnología para el cuidado
-            </div>
-
-            <h1>
-                Un reloj que<br>
-                <span>acompaña.</span>
-            </h1>
-
-            <p>
-                Un proyecto tecnológico diseñado para brindar
-                apoyo, seguridad y acompañamiento a personas
-                con Alzheimer y a sus familias.
-            </p>
-
-
-            <!-- VIDEO -->
-
-            <div class="video-container">
-
-                <video
-                    controls
-                    autoplay
-                    muted
-                    loop
-                    playsinline>
-
-                    <source
-                        src="reloj.mp4"
-                        type="video/mp4">
-
-                    Tu navegador no puede reproducir este video.
-
-                </video>
-
-            </div>
-
-
-            <div class="buttons">
-
-                <a
-                    href="#funciones"
-                    class="button">
-
-                    Conocer el proyecto
-
-                </a>
-
-                <a
-                    href="#sos"
-                    class="button-secondary">
-
-                    Ver función SOS
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             FUNCIONES
-        ========================= -->
-
-        <section id="funciones">
-
-            <div class="section-title">
-
-                <small>
-                    Tecnología integrada
-                </small>
-
-                <h2>
-                    Pensado para proteger
-                </h2>
-
-                <p>
-                    El reloj reúne diferentes tecnologías
-                    para facilitar el acompañamiento y
-                    aumentar la seguridad del usuario.
-                </p>
-
-            </div>
-
-
-            <div class="cards">
-
-
-                <!-- GPS -->
-
-                <div class="card">
-
-                    <div class="icon">
-                        📍
-                    </div>
-
-                    <h3>
-                        Ubicación GPS
-                    </h3>
-
-                    <p>
-                        Permite conocer la ubicación del
-                        usuario y facilitar su localización
-                        cuando sea necesario.
-                    </p>
-
-                </div>
-
-
-                <!-- SOS -->
-
-                <div class="card">
-
-                    <div class="icon">
-                        🚨
-                    </div>
-
-                    <h3>
-                        Botón SOS
-                    </h3>
-
-                    <p>
-                        Un botón de emergencia pensado para
-                        enviar una alerta cuando el usuario
-                        necesita ayuda.
-                    </p>
-
-                </div>
-
-
-                <!-- PANEL SOLAR -->
-
-                <div class="card">
-
-                    <div class="icon">
-                        ☀️
-                    </div>
-
-                    <h3>
-                        Energía solar
-                    </h3>
-
-                    <p>
-                        El proyecto incorpora un pequeño
-                        panel capaz de aprovechar luz solar
-                        y luz artificial.
-                    </p>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             SOS
-        ========================= -->
-
-        <section
-            class="sos-section"
-            id="sos">
-
-            <div class="section-title">
-
-                <small>
-                    Sistema de emergencia
-                </small>
-
-                <h2>
-                    Botón SOS
-                </h2>
-
-            </div>
-
-
-            <div class="sos-button">
-
-                SOS
-
-            </div>
-
-
-            <p>
-
-                El botón SOS está pensado para permitir
-                que el usuario solicite ayuda rápidamente
-                en una situación de emergencia.
-
-            </p>
-
-        </section>
-
-
-
-        <!-- =========================
-             PROYECTO
-        ========================= -->
-
-        <section
-            class="about"
-            id="proyecto">
-
-            <div class="about-content">
-
-
-                <div class="about-text">
-
-                    <div class="small-title">
-                        Nuestro proyecto
-                    </div>
-
-                    <h2>
-                        Tecnología con
-                        <span>propósito.</span>
-                    </h2>
-
-                    <p>
-
-                        Alzheimer Watch nace como una propuesta
-                        tecnológica enfocada en apoyar a las
-                        personas con Alzheimer y facilitar
-                        el acompañamiento por parte de sus
-                        familiares y cuidadores.
-
-                    </p>
-
-                    <p>
-
-                        El objetivo es integrar diferentes
-                        funciones en un dispositivo de uso
-                        cotidiano, buscando que la tecnología
-                        sea sencilla y útil.
-
-                    </p>
-
-                </div>
-
-
-                <div class="about-box">
-
-                    <h3>
-                        Características
-                    </h3>
-
-                    <ul>
-
-                        <li>
-                            Diseño pensado para uso diario
-                        </li>
-
-                        <li>
-                            Sistema de alerta SOS
-                        </li>
-
-                        <li>
-                            Tecnología de localización
-                        </li>
-
-                        <li>
-                            Panel para aprovechar la luz
-                        </li>
-
-                        <li>
-                            Concepto de asistencia inteligente
-                        </li>
-
-                    </ul>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
+        <h1>Un reloj que cuida</h1>
 
         <p>
-            <strong>Alzheimer Watch</strong>
-            — Proyecto tecnológico
+            Tecnología diseñada para brindar asistencia,
+            seguridad y acompañamiento a personas con Alzheimer.
         </p>
 
-        <p style="margin-top: 10px;">
-            Tecnología diseñada para acompañar.
+
+        <!-- VIDEO -->
+        <div class="video-container" id="video">
+
+            <video
+                controls
+                autoplay
+                muted
+                loop
+                playsinline
+                poster="">
+
+                <source src="video/reloj.mp4" type="video/mp4">
+
+                Tu navegador no puede reproducir este video.
+            </video>
+
+        </div>
+
+
+        <a href="#informacion" class="button">
+            Conoce el proyecto
+        </a>
+
+    </section>
+
+
+    <!-- INFORMACIÓN -->
+    <section class="info" id="informacion">
+
+        <h2>Alzheimer Watch</h2>
+
+        <p>
+            Nuestro proyecto busca utilizar la tecnología para
+            proporcionar herramientas de apoyo y seguridad.
+            El reloj integra diferentes funciones pensadas para
+            facilitar el cuidado y acompañamiento de sus usuarios.
         </p>
 
-    </footer>
+    </section>
 
 
 </body>
