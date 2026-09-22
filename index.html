@@ -1,524 +1,1393 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>MEMORA AEI | Tecnología que acompaña</title>
+    <title>MEMORA AEI | Orientación, compañía y cuidado</title>
+
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
-            background: #000;
+
+            background: #030303;
+
             color: white;
-            font-family: Arial, Helvetica, sans-serif;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
             overflow-x: hidden;
         }
+
 
         a {
             text-decoration: none;
             color: inherit;
         }
 
-        header {
+
+        /* ==============================
+           FONDO GENERAL
+        ============================== */
+
+        body::before {
+
+            content: "";
+
             position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background:
+
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(135, 91, 190, 0.13),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 80% 60%,
+                    rgba(110, 70, 170, 0.09),
+                    transparent 30%
+                );
+
+            z-index: -2;
+        }
+
+
+        /* GRID SUTIL */
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            background-image:
+
+                linear-gradient(
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    90deg,
+                    rgba(255,255,255,0.025) 1px,
+                    transparent 1px
+                );
+
+            background-size: 70px 70px;
+
+            mask-image:
+                linear-gradient(
+                    to bottom,
+                    black,
+                    transparent 80%
+                );
+
+            z-index: -1;
+        }
+
+
+        /* ==============================
+           NAVBAR
+        ============================== */
+
+        header {
+
+            position: fixed;
+
             top: 0;
             left: 0;
+
             width: 100%;
-            padding: 22px 7%;
+
+            padding: 20px 7%;
+
             display: flex;
+
             justify-content: space-between;
+
             align-items: center;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+
+            background:
+                rgba(3,3,3,0.72);
+
+            backdrop-filter: blur(18px);
+
+            border-bottom:
+                1px solid rgba(255,255,255,0.08);
+
             z-index: 1000;
         }
 
-        .logo-text {
-            font-size: 20px;
+
+        .brand {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 18px;
+
             font-weight: bold;
+
             letter-spacing: 2px;
-            color: white;
         }
 
-        .logo-text span {
-            color: #a58bd4;
+
+        .brand-dot {
+
+            width: 9px;
+
+            height: 9px;
+
+            background: #a98bd5;
+
+            border-radius: 50%;
+
+            box-shadow:
+                0 0 15px #a98bd5;
         }
+
+
+        .brand span {
+            color: #a98bd5;
+        }
+
 
         nav {
+
             display: flex;
+
             gap: 30px;
         }
 
+
         nav a {
-            color: #ccc;
+
+            color: #aaa;
+
             font-size: 14px;
+
             transition: 0.3s;
         }
 
+
         nav a:hover {
-            color: #a58bd4;
+
+            color: #b99be5;
         }
+
+
+        /* ==============================
+           HERO
+        ============================== */
 
         .hero {
+
             min-height: 100vh;
+
+            padding:
+                150px 20px 100px;
+
             display: flex;
+
             flex-direction: column;
-            justify-content: center;
+
             align-items: center;
+
+            justify-content: center;
+
             text-align: center;
-            padding: 140px 20px 80px;
+
             position: relative;
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 600px;
+
+            height: 600px;
+
+            border-radius: 50%;
 
             background:
-                radial-gradient(
-                    circle at center,
-                    rgba(165,139,212,0.10),
-                    transparent 45%
-                );
+                rgba(147, 91, 205, 0.08);
+
+            filter: blur(100px);
+
+            z-index: -1;
         }
 
-        .small-title {
-            color: #a58bd4;
-            font-size: 13px;
-            letter-spacing: 4px;
+
+        .eyebrow {
+
+            color: #b79ae0;
+
+            font-size: 12px;
+
+            letter-spacing: 5px;
+
             text-transform: uppercase;
-            margin-bottom: 20px;
+
+            margin-bottom: 25px;
         }
+
 
         .hero h1 {
-            font-size: clamp(45px, 7vw, 90px);
-            line-height: 1;
-            margin-bottom: 25px;
-            letter-spacing: -2px;
+
+            font-size:
+                clamp(52px, 8vw, 105px);
+
+            line-height: 0.95;
+
+            letter-spacing: -5px;
+
+            max-width: 1000px;
+
+            margin-bottom: 30px;
         }
+
 
         .hero h1 span {
-            color: #a58bd4;
+
+            color: #b79ae0;
+
+            text-shadow:
+                0 0 35px rgba(183,154,224,0.18);
         }
 
-        .hero p {
-            max-width: 720px;
-            color: #aaa;
+
+        .hero-description {
+
+            max-width: 700px;
+
+            color: #999;
+
             font-size: 18px;
-            line-height: 1.7;
+
+            line-height: 1.8;
+
             margin-bottom: 35px;
         }
 
-        /* LOGO MEMORA */
+
+        /* ==============================
+           LOGO
+        ============================== */
 
         .memora-logo {
-            width: 190px;
-            max-width: 70%;
-            margin-bottom: 35px;
-            border-radius: 10px;
-            box-shadow: 0 0 45px rgba(165,139,212,0.10);
-        }
 
-        .video-container {
-            width: min(950px, 94%);
-            border-radius: 24px;
-            overflow: hidden;
-            background: #080808;
-            border: 1px solid rgba(255,255,255,0.12);
+            width: 190px;
+
+            height: auto;
+
+            margin-bottom: 38px;
+
+            border-radius: 12px;
 
             box-shadow:
-                0 0 80px rgba(165,139,212,0.08),
-                0 20px 60px rgba(0,0,0,0.8);
+                0 0 50px rgba(170,130,220,0.10);
 
             transition: 0.4s;
         }
 
-        .video-container:hover {
-            transform: translateY(-5px);
 
-            border-color: rgba(165,139,212,0.4);
+        .memora-logo:hover {
+
+            transform: scale(1.04);
 
             box-shadow:
-                0 0 100px rgba(165,139,212,0.12),
-                0 25px 70px rgba(0,0,0,0.9);
+                0 0 70px rgba(170,130,220,0.18);
         }
 
+
+        /* ==============================
+           VIDEO
+        ============================== */
+
+        .video-wrapper {
+
+            position: relative;
+
+            width: min(1000px, 94%);
+
+            padding: 1px;
+
+            border-radius: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(183,154,224,0.5),
+                    rgba(255,255,255,0.05),
+                    rgba(183,154,224,0.2)
+                );
+
+            box-shadow:
+                0 30px 100px rgba(0,0,0,0.8);
+        }
+
+
+        .video-container {
+
+            border-radius: 27px;
+
+            overflow: hidden;
+
+            background: #050505;
+        }
+
+
         video {
+
             width: 100%;
+
             display: block;
+
             background: #000;
         }
 
+
+        .video-label {
+
+            position: absolute;
+
+            top: 18px;
+
+            left: 18px;
+
+            padding: 8px 14px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(0,0,0,0.65);
+
+            backdrop-filter: blur(10px);
+
+            border:
+                1px solid rgba(255,255,255,0.1);
+
+            color: #ddd;
+
+            font-size: 11px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* ==============================
+           BOTONES
+        ============================== */
+
         .buttons {
+
             display: flex;
+
             gap: 15px;
+
             margin-top: 35px;
+
             flex-wrap: wrap;
+
             justify-content: center;
         }
 
+
         .button {
-            padding: 14px 28px;
-            border-radius: 30px;
-            background: #a58bd4;
-            color: #000;
+
+            padding: 15px 30px;
+
+            border-radius: 40px;
+
+            background: #b79ae0;
+
+            color: #090909;
+
             font-weight: bold;
+
             transition: 0.3s;
         }
+
 
         .button:hover {
-            transform: translateY(-3px);
+
+            transform: translateY(-4px);
+
             background: white;
-            box-shadow: 0 10px 30px rgba(165,139,212,0.2);
+
+            box-shadow:
+                0 15px 40px rgba(183,154,224,0.2);
         }
 
+
         .button-secondary {
-            padding: 14px 28px;
-            border-radius: 30px;
-            border: 1px solid #333;
+
+            padding: 15px 30px;
+
+            border-radius: 40px;
+
+            border:
+                1px solid #333;
+
             color: white;
+
             transition: 0.3s;
         }
 
+
         .button-secondary:hover {
-            border-color: #a58bd4;
-            color: #a58bd4;
+
+            border-color: #b79ae0;
+
+            color: #b79ae0;
+
+            transform: translateY(-4px);
         }
+
+
+        /* ==============================
+           ESTADÍSTICAS
+        ============================== */
+
+        .stats {
+
+            width: min(900px, 90%);
+
+            margin-top: 70px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3,1fr);
+
+            border-top:
+                1px solid #1c1c1c;
+
+            border-bottom:
+                1px solid #1c1c1c;
+        }
+
+
+        .stat {
+
+            padding: 25px;
+
+            border-right:
+                1px solid #1c1c1c;
+        }
+
+
+        .stat:last-child {
+            border-right: none;
+        }
+
+
+        .stat strong {
+
+            display: block;
+
+            font-size: 25px;
+
+            color: #ddd;
+
+            margin-bottom: 7px;
+        }
+
+
+        .stat span {
+
+            color: #777;
+
+            font-size: 12px;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* ==============================
+           SECCIONES
+        ============================== */
 
         section {
-            padding: 110px 8%;
+
+            padding:
+                120px 8%;
         }
 
-        .section-title {
+
+        .section-header {
+
             text-align: center;
-            margin-bottom: 60px;
+
+            max-width: 750px;
+
+            margin:
+                0 auto 70px;
         }
 
-        .section-title small {
-            color: #a58bd4;
-            letter-spacing: 3px;
+
+        .section-header small {
+
+            color: #b79ae0;
+
             text-transform: uppercase;
+
+            letter-spacing: 4px;
+
+            font-size: 11px;
         }
 
-        .section-title h2 {
-            font-size: 36px;
+
+        .section-header h2 {
+
+            font-size:
+                clamp(35px,5vw,58px);
+
             margin-top: 15px;
+
+            letter-spacing: -2px;
         }
 
-        .section-title p {
-            max-width: 650px;
-            margin: 20px auto 0;
-            color: #999;
-            line-height: 1.7;
+
+        .section-header p {
+
+            color: #888;
+
+            line-height: 1.8;
+
+            margin-top: 20px;
         }
 
-        .cards {
-            max-width: 1100px;
+
+        /* ==============================
+           FUNCIONES
+        ============================== */
+
+        .features {
+
+            max-width: 1150px;
+
             margin: auto;
+
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3,1fr);
+
             gap: 20px;
         }
 
-        .card {
-            padding: 35px;
-            background: #080808;
-            border: 1px solid #1c1c1c;
-            border-radius: 20px;
-            transition: 0.35s;
+
+        .feature {
+
+            position: relative;
+
+            padding: 38px;
+
+            min-height: 270px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #101010,
+                    #070707
+                );
+
+            border:
+                1px solid #202020;
+
+            border-radius: 25px;
+
+            overflow: hidden;
+
+            transition: 0.4s;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(165,139,212,0.4);
-            background: #0b0b0b;
+
+        .feature::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 150px;
+
+            height: 150px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(183,154,224,0.08);
+
+            filter: blur(40px);
+
+            right: -70px;
+
+            top: -70px;
         }
 
-        .icon {
-            width: 55px;
-            height: 55px;
-            border-radius: 15px;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .feature:hover {
 
-            background: rgba(165,139,212,0.08);
-            color: #a58bd4;
+            transform:
+                translateY(-8px);
 
-            font-size: 25px;
+            border-color:
+                rgba(183,154,224,0.35);
+        }
+
+
+        .feature-number {
+
+            color: #555;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 35px;
+        }
+
+
+        .feature-icon {
+
+            font-size: 32px;
+
             margin-bottom: 25px;
         }
 
-        .card h3 {
-            font-size: 22px;
+
+        .feature h3 {
+
+            font-size: 23px;
+
             margin-bottom: 15px;
         }
 
-        .card p {
-            color: #999;
+
+        .feature p {
+
+            color: #888;
+
             line-height: 1.7;
-            font-size: 15px;
+
+            font-size: 14px;
         }
 
-        .sos-section {
-            background:
-                linear-gradient(
-                    180deg,
-                    #000,
-                    #080000,
-                    #000
-                );
+
+        /* ==============================
+           COMO FUNCIONA
+        ============================== */
+
+        .steps {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4,1fr);
+
+            gap: 15px;
+        }
+
+
+        .step {
+
+            padding: 30px 20px;
 
             text-align: center;
+
+            border:
+                1px solid #1b1b1b;
+
+            border-radius: 20px;
+
+            background: #080808;
         }
 
-        .sos-button {
-            width: 150px;
-            height: 150px;
 
-            margin: 40px auto;
+        .step-number {
+
+            width: 45px;
+
+            height: 45px;
+
+            margin:
+                0 auto 20px;
 
             border-radius: 50%;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
-            background: #170000;
+            background:
+                rgba(183,154,224,0.1);
 
-            border: 2px solid #ff3333;
+            color: #b79ae0;
+
+            font-weight: bold;
+        }
+
+
+        .step h3 {
+
+            font-size: 17px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .step p {
+
+            color: #777;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* ==============================
+           SOS
+        ============================== */
+
+        .sos-section {
+
+            position: relative;
+
+            text-align: center;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(150,0,0,0.13),
+                    transparent 50%
+                );
+        }
+
+
+        .sos-ring {
+
+            width: 230px;
+
+            height: 230px;
+
+            margin: 50px auto;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(255,60,60,0.3);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            box-shadow:
+                0 0 80px rgba(255,0,0,0.08);
+        }
+
+
+        .sos-button {
+
+            width: 155px;
+
+            height: 155px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle,
+                    #260000,
+                    #100000
+                );
+
+            border:
+                2px solid #ff3333;
 
             color: #ff3333;
 
             font-size: 30px;
+
             font-weight: bold;
 
             box-shadow:
-                0 0 40px rgba(255,0,0,0.15);
-
-            transition: 0.4s;
+                inset 0 0 30px rgba(255,0,0,0.12),
+                0 0 50px rgba(255,0,0,0.12);
         }
 
-        .sos-button:hover {
-            transform: scale(1.08);
 
-            box-shadow:
-                0 0 70px rgba(255,0,0,0.3);
-        }
+        .sos-text {
 
-        .sos-section p {
             max-width: 650px;
+
             margin: auto;
-            color: #999;
-            line-height: 1.7;
+
+            color: #888;
+
+            line-height: 1.8;
         }
 
-        .about {
-            background: #050505;
-        }
 
-        .about-content {
-            max-width: 1000px;
+        /* ==============================
+           SOLAR
+        ============================== */
+
+        .solar {
+
+            max-width: 1100px;
+
             margin: auto;
 
             display: grid;
-            grid-template-columns: 1fr 1fr;
 
-            gap: 60px;
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 70px;
 
             align-items: center;
         }
 
-        .about-text h2 {
-            font-size: 45px;
-            margin-bottom: 20px;
+
+        .solar-visual {
+
+            min-height: 400px;
+
+            border-radius: 30px;
+
+            border:
+                1px solid #242424;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(183,154,224,0.13),
+                    transparent 45%
+                ),
+
+                #080808;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            overflow: hidden;
         }
 
-        .about-text h2 span {
-            color: #a58bd4;
+
+        .solar-circle {
+
+            width: 230px;
+
+            height: 230px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid rgba(183,154,224,0.3);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 65px;
+
+            box-shadow:
+                0 0 80px rgba(183,154,224,0.12);
         }
 
-        .about-text p {
-            color: #999;
+
+        .solar-content h2 {
+
+            font-size:
+                clamp(35px,5vw,55px);
+
+            margin-bottom: 25px;
+        }
+
+
+        .solar-content h2 span {
+
+            color: #b79ae0;
+        }
+
+
+        .solar-content p {
+
+            color: #888;
+
             line-height: 1.8;
+
             margin-bottom: 20px;
         }
 
-        .about-box {
-            padding: 40px;
 
-            border-radius: 25px;
+        .solar-list {
 
-            background: #0b0b0b;
-
-            border: 1px solid #1c1c1c;
-        }
-
-        .about-box h3 {
-            margin-bottom: 20px;
-        }
-
-        .about-box ul {
             list-style: none;
+
+            margin-top: 25px;
         }
 
-        .about-box li {
+
+        .solar-list li {
+
             color: #aaa;
 
-            margin: 18px 0;
+            margin: 16px 0;
 
             padding-left: 25px;
 
             position: relative;
         }
 
-        .about-box li::before {
+
+        .solar-list li::before {
+
             content: "✓";
 
             position: absolute;
 
             left: 0;
 
-            color: #a58bd4;
-
-            font-weight: bold;
+            color: #b79ae0;
         }
 
+
+        /* ==============================
+           PROYECTO
+        ============================== */
+
+        .about {
+
+            background:
+                linear-gradient(
+                    180deg,
+                    #030303,
+                    #090909,
+                    #030303
+                );
+        }
+
+
+        .about-content {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                1.1fr 0.9fr;
+
+            gap: 70px;
+
+            align-items: center;
+        }
+
+
+        .about-text h2 {
+
+            font-size:
+                clamp(40px,5vw,65px);
+
+            line-height: 1;
+
+            margin:
+                15px 0 25px;
+        }
+
+
+        .about-text h2 span {
+
+            color: #b79ae0;
+        }
+
+
+        .about-text p {
+
+            color: #888;
+
+            line-height: 1.8;
+
+            margin-bottom: 20px;
+        }
+
+
+        .about-box {
+
+            padding: 40px;
+
+            border-radius: 25px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #111,
+                    #070707
+                );
+
+            border:
+                1px solid #222;
+        }
+
+
+        .about-box h3 {
+
+            margin-bottom: 25px;
+        }
+
+
+        .about-box li {
+
+            list-style: none;
+
+            color: #999;
+
+            padding: 15px 0;
+
+            border-bottom:
+                1px solid #1c1c1c;
+        }
+
+
+        .about-box li:last-child {
+            border-bottom: none;
+        }
+
+
+        .about-box li::before {
+
+            content: "→";
+
+            color: #b79ae0;
+
+            margin-right: 12px;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
         footer {
-            padding: 40px 20px;
+
+            padding: 45px 20px;
 
             text-align: center;
 
-            border-top: 1px solid #151515;
+            border-top:
+                1px solid #181818;
 
             color: #666;
 
-            font-size: 14px;
+            font-size: 13px;
         }
+
 
         footer strong {
             color: white;
         }
 
+
+        /* ==============================
+           ANIMACIONES
+        ============================== */
+
         .fade {
-            animation: aparecer 1s ease forwards;
+
+            animation:
+                fadeUp 1s ease forwards;
         }
 
-        @keyframes aparecer {
+
+        @keyframes fadeUp {
 
             from {
+
                 opacity: 0;
-                transform: translateY(25px);
+
+                transform:
+                    translateY(25px);
             }
 
             to {
-                opacity: 1;
-                transform: translateY(0);
-            }
 
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
         }
 
-        @media (max-width: 800px) {
 
-            header {
-                padding: 18px 5%;
-            }
+        /* ==============================
+           RESPONSIVE
+        ============================== */
+
+        @media(max-width:850px) {
 
             nav {
                 display: none;
             }
 
+
             .hero {
-                padding-top: 120px;
+
+                padding-top: 130px;
             }
 
+
             .hero h1 {
+
+                letter-spacing: -3px;
+            }
+
+
+            .features {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .steps {
+
+                grid-template-columns:
+                    repeat(2,1fr);
+            }
+
+
+            .solar {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .about-content {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .stat {
+
+                border-right: none;
+
+                border-bottom:
+                    1px solid #1c1c1c;
+            }
+
+
+            .stat:last-child {
+
+                border-bottom: none;
+            }
+        }
+
+
+        @media(max-width:500px) {
+
+            .hero h1 {
+
                 font-size: 48px;
             }
 
-            .hero p {
-                font-size: 16px;
-            }
-
-            section {
-                padding: 80px 6%;
-            }
-
-            .cards {
-                grid-template-columns: 1fr;
-            }
-
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-
-            .about-text h2 {
-                font-size: 38px;
-            }
 
             .memora-logo {
+
                 width: 160px;
             }
+
+
+            .steps {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            section {
+
+                padding:
+                    90px 6%;
+            }
+
+
+            .video-wrapper {
+
+                width: 96%;
+            }
         }
+
     </style>
+
 </head>
+
 
 <body>
 
+
+    <!-- ==============================
+         NAVBAR
+    ============================== -->
+
     <header>
 
-        <div class="logo-text">
+        <div class="brand">
+
+            <div class="brand-dot"></div>
+
             MEMORA<span> AEI</span>
+
         </div>
 
+
         <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#funciones">Funciones</a>
-            <a href="#sos">SOS</a>
-            <a href="#proyecto">Proyecto</a>
+
+            <a href="#inicio">
+                Inicio
+            </a>
+
+            <a href="#funciones">
+                Funciones
+            </a>
+
+            <a href="#como-funciona">
+                Cómo funciona
+            </a>
+
+            <a href="#proyecto">
+                Proyecto
+            </a>
+
         </nav>
 
     </header>
 
 
-    <main>
 
-        <section class="hero fade" id="inicio">
+    <!-- ==============================
+         HERO
+    ============================== -->
 
-            <div class="small-title">
-                Orientación · Compañía · Cuidado
+    <section
+        class="hero fade"
+        id="inicio">
+
+
+        <div class="eyebrow">
+
+            Orientación · Compañía · Cuidado
+
+        </div>
+
+
+        <h1>
+
+            Tecnología que<br>
+
+            <span>acompaña.</span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Un proyecto tecnológico diseñado para brindar
+            orientación, seguridad y acompañamiento a
+            personas con Alzheimer y a sus familias.
+
+        </p>
+
+
+        <!-- LOGO -->
+
+        <img
+            src="memora-logo.jpeg"
+            alt="Logo MEMORA AEI"
+            class="memora-logo"
+        >
+
+
+        <!-- VIDEO -->
+
+        <div class="video-wrapper">
+
+            <div class="video-label">
+
+                MEMORA AEI · WATCH
+
             </div>
 
-            <h1>
-                Tecnología que<br>
-                <span>acompaña.</span>
-            </h1>
-
-            <p>
-                Un proyecto tecnológico diseñado para brindar
-                orientación, seguridad y acompañamiento a
-                personas con Alzheimer y a sus familias.
-            </p>
-
-
-            <!-- LOGO MEMORA AEI -->
-
-            <img
-                src="memora-logo.jpeg"
-                alt="Logo MEMORA AEI"
-                class="memora-logo"
-            >
-
-
-            <!-- VIDEO DEL RELOJ -->
 
             <div class="video-container">
 
@@ -533,238 +1402,563 @@
                         src="reloj.mp4"
                         type="video/mp4">
 
-                    Tu navegador no puede reproducir este video.
+                    Tu navegador no puede reproducir
+                    este video.
 
                 </video>
 
             </div>
 
+        </div>
 
-            <div class="buttons">
 
-                <a
-                    href="#funciones"
-                    class="button">
+        <div class="buttons">
 
-                    Conocer el proyecto
+            <a
+                href="#funciones"
+                class="button">
 
-                </a>
+                Explorar el proyecto
 
-                <a
-                    href="#sos"
-                    class="button-secondary">
+            </a>
 
-                    Ver función SOS
 
-                </a>
+            <a
+                href="#sos"
+                class="button-secondary">
+
+                Conocer SOS
+
+            </a>
+
+        </div>
+
+
+        <!-- DATOS -->
+
+        <div class="stats">
+
+            <div class="stat">
+
+                <strong>GPS</strong>
+
+                <span>
+                    Localización
+                </span>
 
             </div>
 
-        </section>
+
+            <div class="stat">
+
+                <strong>SOS</strong>
+
+                <span>
+                    Emergencia
+                </span>
+
+            </div>
 
 
-        <section id="funciones">
+            <div class="stat">
 
-            <div class="section-title">
+                <strong>Solar</strong>
 
-                <small>
-                    Tecnología integrada
-                </small>
+                <span>
+                    Energía
+                </span>
 
-                <h2>
-                    Pensado para proteger
-                </h2>
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==============================
+         FUNCIONES
+    ============================== -->
+
+    <section id="funciones">
+
+
+        <div class="section-header">
+
+            <small>
+                Tecnología integrada
+            </small>
+
+
+            <h2>
+                Diseñado para acompañar.
+            </h2>
+
+
+            <p>
+
+                MEMORA AEI integra diferentes funciones
+                pensadas para facilitar la seguridad,
+                orientación y cuidado del usuario.
+
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+
+            <div class="feature">
+
+                <div class="feature-number">
+                    01 / LOCALIZACIÓN
+                </div>
+
+                <div class="feature-icon">
+                    📍
+                </div>
+
+                <h3>
+                    Ubicación GPS
+                </h3>
 
                 <p>
-                    El reloj reúne diferentes tecnologías
-                    para facilitar el acompañamiento y
-                    aumentar la seguridad del usuario.
+
+                    Permite conocer la ubicación del
+                    usuario para facilitar su localización
+                    cuando sea necesario.
+
                 </p>
 
             </div>
 
 
-            <div class="cards">
+            <div class="feature">
 
-                <div class="card">
-
-                    <div class="icon">
-                        📍
-                    </div>
-
-                    <h3>
-                        Ubicación GPS
-                    </h3>
-
-                    <p>
-                        Permite conocer la ubicación del
-                        usuario y facilitar su localización
-                        cuando sea necesario.
-                    </p>
-
+                <div class="feature-number">
+                    02 / EMERGENCIA
                 </div>
 
-
-                <div class="card">
-
-                    <div class="icon">
-                        🚨
-                    </div>
-
-                    <h3>
-                        Botón SOS
-                    </h3>
-
-                    <p>
-                        Un botón de emergencia pensado para
-                        enviar una alerta cuando el usuario
-                        necesita ayuda.
-                    </p>
-
+                <div class="feature-icon">
+                    🚨
                 </div>
 
-
-                <div class="card">
-
-                    <div class="icon">
-                        ☀️
-                    </div>
-
-                    <h3>
-                        Energía solar
-                    </h3>
-
-                    <p>
-                        El proyecto incorpora un pequeño
-                        panel capaz de aprovechar luz solar
-                        y luz artificial.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <section
-            class="sos-section"
-            id="sos">
-
-            <div class="section-title">
-
-                <small>
-                    Sistema de emergencia
-                </small>
-
-                <h2>
+                <h3>
                     Botón SOS
-                </h2>
+                </h3>
+
+                <p>
+
+                    Un sistema de emergencia pensado
+                    para que el usuario pueda solicitar
+                    ayuda rápidamente.
+
+                </p>
 
             </div>
 
 
-            <div class="sos-button">
-                SOS
+            <div class="feature">
+
+                <div class="feature-number">
+                    03 / ENERGÍA
+                </div>
+
+                <div class="feature-icon">
+                    ☀️
+                </div>
+
+                <h3>
+                    Energía solar
+                </h3>
+
+                <p>
+
+                    Un pequeño panel aprovecha la luz
+                    solar y la luz artificial para
+                    contribuir a la alimentación del
+                    dispositivo.
+
+                </p>
+
             </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==============================
+         COMO FUNCIONA
+    ============================== -->
+
+    <section id="como-funciona">
+
+
+        <div class="section-header">
+
+            <small>
+                Una experiencia sencilla
+            </small>
+
+
+            <h2>
+                ¿Cómo funciona?
+            </h2>
 
 
             <p>
-                El botón SOS está pensado para permitir
-                que el usuario solicite ayuda rápidamente
-                en una situación de emergencia.
+
+                La idea es que la tecnología sea sencilla
+                tanto para el usuario como para quienes
+                lo acompañan.
+
             </p>
 
-        </section>
+        </div>
 
 
-        <section
-            class="about"
-            id="proyecto">
-
-            <div class="about-content">
+        <div class="steps">
 
 
-                <div class="about-text">
+            <div class="step">
 
-                    <div class="small-title">
-                        Nuestro proyecto
-                    </div>
-
-                    <h2>
-                        Tecnología con
-                        <span>propósito.</span>
-                    </h2>
-
-                    <p>
-                        MEMORA AEI nace como una propuesta
-                        tecnológica enfocada en apoyar a las
-                        personas con Alzheimer y facilitar
-                        el acompañamiento por parte de sus
-                        familiares y cuidadores.
-                    </p>
-
-                    <p>
-                        El objetivo es integrar diferentes
-                        funciones en un dispositivo de uso
-                        cotidiano, buscando que la tecnología
-                        sea sencilla y útil.
-                    </p>
-
+                <div class="step-number">
+                    01
                 </div>
 
+                <h3>
+                    El usuario lleva el reloj
+                </h3>
 
-                <div class="about-box">
+                <p>
+                    Diseñado para formar parte
+                    del uso cotidiano.
+                </p>
 
-                    <h3>
-                        Características
-                    </h3>
+            </div>
 
-                    <ul>
 
-                        <li>
-                            Diseño pensado para uso diario
-                        </li>
+            <div class="step">
 
-                        <li>
-                            Sistema de alerta SOS
-                        </li>
+                <div class="step-number">
+                    02
+                </div>
 
-                        <li>
-                            Tecnología de localización
-                        </li>
+                <h3>
+                    El reloj acompaña
+                </h3>
 
-                        <li>
-                            Panel para aprovechar la luz
-                        </li>
+                <p>
+                    Sus funciones permiten
+                    brindar apoyo y seguridad.
+                </p>
 
-                        <li>
-                            Concepto de asistencia inteligente
-                        </li>
+            </div>
 
-                    </ul>
+
+            <div class="step">
+
+                <div class="step-number">
+                    03
+                </div>
+
+                <h3>
+                    Se activa una alerta
+                </h3>
+
+                <p>
+                    El botón SOS puede utilizarse
+                    en una situación de emergencia.
+                </p>
+
+            </div>
+
+
+            <div class="step">
+
+                <div class="step-number">
+                    04
+                </div>
+
+                <h3>
+                    Se facilita el cuidado
+                </h3>
+
+                <p>
+                    La tecnología busca apoyar
+                    al usuario y a sus cuidadores.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==============================
+         SOS
+    ============================== -->
+
+    <section
+        class="sos-section"
+        id="sos">
+
+
+        <div class="section-header">
+
+            <small>
+                Sistema de emergencia
+            </small>
+
+
+            <h2>
+                Un botón cuando más importa.
+            </h2>
+
+
+            <p>
+
+                MEMORA AEI incorpora un botón SOS
+                pensado para permitir al usuario
+                solicitar ayuda de manera rápida.
+
+            </p>
+
+        </div>
+
+
+        <div class="sos-ring">
+
+            <div class="sos-button">
+
+                SOS
+
+            </div>
+
+        </div>
+
+
+        <p class="sos-text">
+
+            La función de emergencia forma parte del
+            concepto central del proyecto: utilizar la
+            tecnología como una herramienta de apoyo
+            para el usuario y su entorno.
+
+        </p>
+
+
+    </section>
+
+
+
+    <!-- ==============================
+         ENERGÍA SOLAR
+    ============================== -->
+
+    <section>
+
+
+        <div class="solar">
+
+
+            <div class="solar-visual">
+
+                <div class="solar-circle">
+
+                    ☀️
 
                 </div>
 
             </div>
 
-        </section>
 
-    </main>
+            <div class="solar-content">
 
+
+                <div class="eyebrow">
+
+                    Energía inteligente
+
+                </div>
+
+
+                <h2>
+
+                    Energía que
+                    <span>aprovecha la luz.</span>
+
+                </h2>
+
+
+                <p>
+
+                    El concepto del reloj incorpora un
+                    pequeño panel solar diseñado para
+                    aprovechar diferentes fuentes de luz.
+
+                </p>
+
+
+                <ul class="solar-list">
+
+                    <li>
+                        Aprovechamiento de luz solar
+                    </li>
+
+                    <li>
+                        Aprovechamiento de luz artificial
+                    </li>
+
+                    <li>
+                        Integración en el diseño del reloj
+                    </li>
+
+                </ul>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==============================
+         PROYECTO
+    ============================== -->
+
+    <section
+        class="about"
+        id="proyecto">
+
+
+        <div class="about-content">
+
+
+            <div class="about-text">
+
+
+                <div class="eyebrow">
+
+                    Nuestro proyecto
+
+                </div>
+
+
+                <h2>
+
+                    Tecnología con
+                    <span>propósito.</span>
+
+                </h2>
+
+
+                <p>
+
+                    MEMORA AEI nace como una propuesta
+                    tecnológica enfocada en apoyar a las
+                    personas con Alzheimer y facilitar
+                    el acompañamiento por parte de sus
+                    familiares y cuidadores.
+
+                </p>
+
+
+                <p>
+
+                    El objetivo es integrar diferentes
+                    funciones en un dispositivo cotidiano,
+                    buscando que la tecnología sea sencilla,
+                    útil y pensada para las necesidades
+                    de sus usuarios.
+
+                </p>
+
+
+            </div>
+
+
+            <div class="about-box">
+
+
+                <h3>
+                    MEMORA AEI
+                </h3>
+
+
+                <ul>
+
+                    <li>
+                        Orientación
+                    </li>
+
+                    <li>
+                        Compañía
+                    </li>
+
+                    <li>
+                        Sistema SOS
+                    </li>
+
+                    <li>
+                        Localización
+                    </li>
+
+                    <li>
+                        Aprovechamiento de la luz
+                    </li>
+
+                </ul>
+
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==============================
+         FOOTER
+    ============================== -->
 
     <footer>
 
         <p>
-            <strong>MEMORA AEI</strong>
-            — Proyecto tecnológico
+
+            <strong>
+                MEMORA AEI
+            </strong>
+
+            — Orientación, compañía y cuidado.
+
         </p>
 
-        <p style="margin-top: 10px;">
-            Orientación, compañía y cuidado.
+
+        <p style="margin-top:10px;">
+
+            Proyecto tecnológico
+
         </p>
 
     </footer>
 
+
 </body>
+
 </html>
