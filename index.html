@@ -9,9 +9,9 @@
 
 <style>
 
-/* =========================================================
-   CONFIGURACIÓN GENERAL
-========================================================= */
+/* =====================================================
+   RESET
+===================================================== */
 
 * {
     margin: 0;
@@ -36,92 +36,107 @@ a {
 }
 
 
-/* =========================================================
-   FONDO TECNOLÓGICO
-========================================================= */
+/* =====================================================
+   FONDO
+===================================================== */
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
+    pointer-events: none;
+    z-index: -2;
 
     background:
         radial-gradient(
-            circle at 20% 20%,
-            rgba(165,139,212,0.12),
-            transparent 30%
+            circle at 15% 15%,
+            rgba(165,139,212,.13),
+            transparent 28%
         ),
         radial-gradient(
-            circle at 80% 60%,
-            rgba(100,70,160,0.08),
-            transparent 35%
+            circle at 85% 55%,
+            rgba(100,60,160,.08),
+            transparent 32%
         );
-
-    pointer-events: none;
-    z-index: -2;
 }
 
 body::after {
     content: "";
-
     position: fixed;
     inset: 0;
+    pointer-events: none;
+    z-index: -1;
 
     background-image:
         linear-gradient(
-            rgba(255,255,255,0.025) 1px,
+            rgba(255,255,255,.018) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255,255,255,0.025) 1px,
+            rgba(255,255,255,.018) 1px,
             transparent 1px
         );
 
     background-size: 70px 70px;
 
-    pointer-events: none;
-    z-index: -1;
-
-    mask-image: linear-gradient(
-        to bottom,
-        black,
-        transparent 90%
-    );
+    mask-image:
+        linear-gradient(
+            to bottom,
+            black,
+            transparent 90%
+        );
 }
 
 
-/* =========================================================
+/* =====================================================
    NAVBAR
-========================================================= */
+===================================================== */
 
 header {
     position: fixed;
-
     top: 0;
     left: 0;
 
     width: 100%;
 
-    padding: 20px 7%;
+    padding: 18px 7%;
 
     display: flex;
     justify-content: space-between;
     align-items: center;
 
-    background: rgba(0,0,0,0.72);
+    background: rgba(0,0,0,.72);
 
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(16px);
 
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom:
+        1px solid rgba(255,255,255,.07);
 
     z-index: 1000;
 }
 
 .logo-text {
-    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    font-size: 19px;
     font-weight: bold;
+
     letter-spacing: 2px;
+}
+
+.logo-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+
+    background: #a58bd4;
+
+    box-shadow:
+        0 0 15px #a58bd4;
 }
 
 .logo-text span {
@@ -130,23 +145,47 @@ header {
 
 nav {
     display: flex;
-    gap: 30px;
+    gap: 28px;
 }
 
 nav a {
     color: #aaa;
-    font-size: 14px;
-    transition: 0.3s;
+
+    font-size: 13px;
+
+    transition: .3s;
+
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -7px;
+
+    width: 0;
+    height: 1px;
+
+    background: #a58bd4;
+
+    transition: .3s;
 }
 
 nav a:hover {
-    color: #a58bd4;
+    color: #fff;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 
-/* =========================================================
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero {
     min-height: 100vh;
@@ -159,7 +198,7 @@ nav a:hover {
 
     text-align: center;
 
-    padding: 150px 20px 100px;
+    padding: 145px 20px 100px;
 
     position: relative;
 }
@@ -167,19 +206,19 @@ nav a:hover {
 .eyebrow {
     color: #a58bd4;
 
-    font-size: 12px;
+    font-size: 11px;
 
     letter-spacing: 4px;
 
     text-transform: uppercase;
 
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
 .hero h1 {
     font-size: clamp(48px, 8vw, 100px);
 
-    line-height: 0.95;
+    line-height: .94;
 
     letter-spacing: -4px;
 
@@ -188,12 +227,15 @@ nav a:hover {
 
 .hero h1 span {
     color: #a58bd4;
+
+    text-shadow:
+        0 0 45px rgba(165,139,212,.18);
 }
 
 .hero-description {
     max-width: 720px;
 
-    color: #999;
+    color: #929292;
 
     font-size: 18px;
 
@@ -203,65 +245,63 @@ nav a:hover {
 }
 
 
-/* =========================================================
+/* =====================================================
    LOGO
-========================================================= */
+===================================================== */
 
 .memora-logo {
     width: 210px;
-
     max-width: 70%;
 
     height: auto;
 
     display: block;
 
-    margin: 0 auto 45px;
+    margin: 0 auto 42px;
 
     border-radius: 12px;
 
     box-shadow:
-        0 0 50px rgba(165,139,212,0.15);
+        0 0 55px rgba(165,139,212,.14);
 }
 
 
-/* =========================================================
+/* =====================================================
    VIDEO
-========================================================= */
+===================================================== */
 
 .video-container {
     width: min(950px, 94%);
 
-    border-radius: 25px;
-
     overflow: hidden;
 
-    background: #080808;
+    border-radius: 25px;
 
-    border: 1px solid rgba(255,255,255,0.12);
+    background: #070707;
+
+    border:
+        1px solid rgba(255,255,255,.11);
 
     box-shadow:
-        0 0 100px rgba(165,139,212,0.10),
-        0 25px 70px rgba(0,0,0,0.9);
+        0 0 90px rgba(165,139,212,.08),
+        0 30px 80px rgba(0,0,0,.9);
 }
 
 video {
     width: 100%;
-
     display: block;
-
     background: #000;
 }
 
 
-/* =========================================================
+/* =====================================================
    BOTONES
-========================================================= */
+===================================================== */
 
 .buttons {
     display: flex;
 
-    gap: 15px;
+    gap: 14px;
 
     margin-top: 35px;
 
@@ -281,7 +321,7 @@ video {
 
     font-weight: bold;
 
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .button:hover {
@@ -290,7 +330,7 @@ video {
     background: #fff;
 
     box-shadow:
-        0 10px 35px rgba(165,139,212,0.25);
+        0 12px 35px rgba(165,139,212,.25);
 }
 
 .button-secondary {
@@ -302,28 +342,30 @@ video {
 
     color: #fff;
 
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .button-secondary:hover {
     border-color: #a58bd4;
 
     color: #a58bd4;
+
+    transform: translateY(-3px);
 }
 
 
-/* =========================================================
-   ESTADÍSTICAS
-========================================================= */
+/* =====================================================
+   STATS
+===================================================== */
 
 .stats {
     display: flex;
 
     justify-content: center;
 
-    gap: 70px;
+    gap: 65px;
 
-    margin-top: 70px;
+    margin-top: 65px;
 
     flex-wrap: wrap;
 }
@@ -335,23 +377,23 @@ video {
 .stat strong {
     display: block;
 
-    font-size: 30px;
+    font-size: 27px;
 
-    color: #fff;
+    margin-bottom: 5px;
 }
 
 .stat span {
-    color: #666;
+    color: #555;
 
-    font-size: 12px;
+    font-size: 10px;
 
-    letter-spacing: 1px;
+    letter-spacing: 2px;
 }
 
 
-/* =========================================================
+/* =====================================================
    SECCIONES
-========================================================= */
+===================================================== */
 
 section {
     padding: 120px 8%;
@@ -382,15 +424,15 @@ section {
 
     margin: 20px auto 0;
 
-    color: #888;
+    color: #858585;
 
     line-height: 1.7;
 }
 
 
-/* =========================================================
+/* =====================================================
    CARDS
-========================================================= */
+===================================================== */
 
 .cards {
     max-width: 1150px;
@@ -400,9 +442,9 @@ section {
     display: grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-    gap: 22px;
+    gap: 20px;
 }
 
 .card {
@@ -415,26 +457,26 @@ section {
             #070707
         );
 
-    border: 1px solid #1d1d1d;
+    border:
+        1px solid #1c1c1c;
 
     border-radius: 22px;
 
-    transition: 0.4s;
+    transition: .4s;
 }
 
 .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-9px);
 
     border-color:
-        rgba(165,139,212,0.45);
+        rgba(165,139,212,.45);
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,0.5);
+        0 25px 70px rgba(0,0,0,.5);
 }
 
 .icon {
     width: 58px;
-
     height: 58px;
 
     border-radius: 16px;
@@ -442,27 +484,26 @@ section {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 
     background:
-        rgba(165,139,212,0.08);
+        rgba(165,139,212,.08);
 
     color: #a58bd4;
 
-    font-size: 25px;
+    font-size: 24px;
 
     margin-bottom: 25px;
 }
 
 .card h3 {
-    font-size: 22px;
+    font-size: 21px;
 
-    margin-bottom: 15px;
+    margin-bottom: 14px;
 }
 
 .card p {
-    color: #888;
+    color: #858585;
 
     line-height: 1.7;
 
@@ -470,29 +511,30 @@ section {
 }
 
 
-/* =========================================================
-   NUEVA SECCIÓN DEL RELOJ
-========================================================= */
+/* =====================================================
+   RELOJ — SECCIÓN PRINCIPAL
+===================================================== */
 
-.watch-showcase {
+.watch-section {
     position: relative;
 
+    padding-top: 145px;
+    padding-bottom: 145px;
+}
+
+.watch-showcase {
     max-width: 1250px;
 
-    margin: 0 auto;
+    margin: auto;
 
     display: grid;
 
     grid-template-columns:
-        1.1fr 0.9fr;
+        1.1fr .9fr;
 
     align-items: center;
 
     gap: 80px;
-
-    padding-top: 140px;
-
-    padding-bottom: 140px;
 }
 
 
@@ -514,7 +556,6 @@ section {
     position: absolute;
 
     width: 430px;
-
     height: 430px;
 
     border-radius: 50%;
@@ -522,11 +563,11 @@ section {
     background:
         radial-gradient(
             circle,
-            rgba(165,139,212,0.22),
+            rgba(165,139,212,.23),
             transparent 65%
         );
 
-    filter: blur(10px);
+    filter: blur(8px);
 
     z-index: -1;
 }
@@ -536,25 +577,28 @@ section {
 
     max-width: 570px;
 
-    border-radius: 25px;
-
     display: block;
 
-    box-shadow:
-        0 30px 100px rgba(0,0,0,0.8);
+    border-radius: 24px;
 
-    transition: 0.5s;
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.8);
+
+    transition: .5s;
 }
 
 .watch-image:hover {
-    transform: scale(1.025) translateY(-5px);
+    transform:
+        translateY(-7px)
+        scale(1.02);
 
     box-shadow:
-        0 40px 120px rgba(165,139,212,0.12);
+        0 40px 110px
+        rgba(165,139,212,.13);
 }
 
 
-/* Información */
+/* Texto */
 
 .watch-info {
     max-width: 520px;
@@ -563,7 +607,7 @@ section {
 .watch-info h2 {
     font-size: 55px;
 
-    line-height: 1.05;
+    line-height: 1.04;
 
     letter-spacing: -2px;
 
@@ -574,12 +618,10 @@ section {
     color: #a58bd4;
 }
 
-.watch-info p {
-    color: #8c8c8c;
+.watch-info > p {
+    color: #858585;
 
     line-height: 1.8;
-
-    font-size: 16px;
 
     margin-bottom: 35px;
 }
@@ -591,7 +633,7 @@ section {
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(2,1fr);
 
     gap: 12px;
 }
@@ -599,38 +641,62 @@ section {
 .watch-point {
     padding: 18px;
 
-    background: #090909;
-
-    border: 1px solid #1c1c1c;
-
     border-radius: 15px;
 
-    transition: 0.3s;
+    background: #090909;
+
+    border:
+        1px solid #1c1c1c;
+
+    transition: .3s;
 }
 
 .watch-point:hover {
+    transform: translateY(-3px);
+
     border-color:
-        rgba(165,139,212,0.4);
+        rgba(165,139,212,.4);
 }
 
 .watch-point strong {
     display: block;
 
-    color: #fff;
-
-    margin-bottom: 5px;
+    margin-bottom: 6px;
 }
 
 .watch-point span {
-    color: #777;
+    color: #666;
 
-    font-size: 13px;
+    font-size: 12px;
 }
 
 
-/* =========================================================
-   LÍNEA DE FUNCIONAMIENTO
-========================================================= */
+/* =====================================================
+   LÍNEA DECORATIVA
+===================================================== */
+
+.divider {
+    width: 100%;
+
+    max-width: 900px;
+
+    height: 1px;
+
+    margin: 0 auto;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #252525,
+            transparent
+        );
+}
+
+
+/* =====================================================
+   CÓMO FUNCIONA
+===================================================== */
 
 .how-section {
     background:
@@ -650,7 +716,7 @@ section {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
     gap: 20px;
 }
@@ -659,29 +725,38 @@ section {
     text-align: center;
 
     padding: 30px 20px;
+
+    transition: .3s;
+}
+
+.step:hover {
+    transform: translateY(-5px);
 }
 
 .step-number {
-    width: 60px;
-
-    height: 60px;
+    width: 62px;
+    height: 62px;
 
     margin: 0 auto 20px;
 
     border-radius: 50%;
 
-    border: 1px solid
-        rgba(165,139,212,0.5);
+    border:
+        1px solid
+        rgba(165,139,212,.5);
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     color: #a58bd4;
 
     font-weight: bold;
+
+    box-shadow:
+        0 0 25px
+        rgba(165,139,212,.05);
 }
 
 .step h3 {
@@ -689,17 +764,17 @@ section {
 }
 
 .step p {
-    color: #777;
-
-    line-height: 1.6;
+    color: #727272;
 
     font-size: 14px;
+
+    line-height: 1.7;
 }
 
 
-/* =========================================================
+/* =====================================================
    SOS
-========================================================= */
+===================================================== */
 
 .sos-section {
     text-align: center;
@@ -707,14 +782,13 @@ section {
     background:
         radial-gradient(
             circle at center,
-            rgba(120,0,0,0.13),
-            transparent 50%
+            rgba(120,0,0,.14),
+            transparent 52%
         );
 }
 
 .sos-ring {
     width: 190px;
-
     height: 190px;
 
     margin: 45px auto;
@@ -723,29 +797,28 @@ section {
 
     display: flex;
 
+    justify-content: center;
     align-items: center;
 
-    justify-content: center;
-
-    border: 2px solid #ff3333;
+    border:
+        2px solid #ff3333;
 
     box-shadow:
-        0 0 40px rgba(255,0,0,0.12),
-        inset 0 0 35px rgba(255,0,0,0.08);
+        0 0 40px rgba(255,0,0,.12),
+        inset 0 0 35px rgba(255,0,0,.08);
 
-    transition: 0.4s;
+    transition: .4s;
 }
 
 .sos-ring:hover {
     transform: scale(1.06);
 
     box-shadow:
-        0 0 80px rgba(255,0,0,0.25);
+        0 0 80px rgba(255,0,0,.25);
 }
 
 .sos-button {
     width: 125px;
-
     height: 125px;
 
     border-radius: 50%;
@@ -753,7 +826,6 @@ section {
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     background: #180000;
@@ -770,15 +842,15 @@ section {
 
     margin: auto;
 
-    color: #888;
+    color: #858585;
 
     line-height: 1.7;
 }
 
 
-/* =========================================================
+/* =====================================================
    ENERGÍA SOLAR
-========================================================= */
+===================================================== */
 
 .solar-section {
     background: #050505;
@@ -804,12 +876,13 @@ section {
 
     border-radius: 25px;
 
-    border: 1px solid #1c1c1c;
+    border:
+        1px solid #1c1c1c;
 
     background:
         radial-gradient(
             circle at center,
-            rgba(165,139,212,0.12),
+            rgba(165,139,212,.12),
             #080808 60%
         );
 
@@ -817,9 +890,9 @@ section {
 
     flex-direction: column;
 
-    align-items: center;
-
     justify-content: center;
+
+    align-items: center;
 }
 
 .solar-icon {
@@ -829,16 +902,17 @@ section {
 
     filter:
         drop-shadow(
-            0 0 25px rgba(165,139,212,0.25)
+            0 0 25px
+            rgba(165,139,212,.25)
         );
 }
 
 .solar-visual strong {
-    font-size: 22px;
+    font-size: 21px;
 }
 
 .solar-visual span {
-    color: #777;
+    color: #666;
 
     margin-top: 10px;
 }
@@ -854,7 +928,7 @@ section {
 }
 
 .solar-text p {
-    color: #888;
+    color: #858585;
 
     line-height: 1.8;
 
@@ -866,7 +940,8 @@ section {
 
     padding: 12px 18px;
 
-    border: 1px solid #292929;
+    border:
+        1px solid #292929;
 
     border-radius: 30px;
 
@@ -876,9 +951,9 @@ section {
 }
 
 
-/* =========================================================
+/* =====================================================
    PROYECTO
-========================================================= */
+===================================================== */
 
 .about {
     background: #000;
@@ -910,7 +985,7 @@ section {
 }
 
 .about-text p {
-    color: #888;
+    color: #858585;
 
     line-height: 1.8;
 
@@ -924,7 +999,8 @@ section {
 
     background: #090909;
 
-    border: 1px solid #1d1d1d;
+    border:
+        1px solid #1d1d1d;
 }
 
 .about-box h3 {
@@ -936,7 +1012,7 @@ section {
 }
 
 .about-box li {
-    color: #999;
+    color: #909090;
 
     margin: 18px 0;
 
@@ -958,30 +1034,90 @@ section {
 }
 
 
-/* =========================================================
+/* =====================================================
+   BOTÓN VOLVER ARRIBA
+===================================================== */
+
+.top-button {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    width: 45px;
+    height: 45px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(20,20,20,.9);
+
+    border:
+        1px solid #292929;
+
+    color: #a58bd4;
+
+    font-size: 20px;
+
+    z-index: 500;
+
+    transition: .3s;
+}
+
+.top-button:hover {
+    transform: translateY(-4px);
+
+    border-color: #a58bd4;
+
+    box-shadow:
+        0 10px 30px
+        rgba(165,139,212,.15);
+}
+
+
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 footer {
-    padding: 50px 20px;
+    padding: 55px 20px;
 
     text-align: center;
 
-    border-top: 1px solid #151515;
+    border-top:
+        1px solid #151515;
 
     color: #555;
 
-    font-size: 14px;
+    font-size: 13px;
 }
 
 footer strong {
     color: #fff;
+
+    letter-spacing: 1px;
+}
+
+.footer-brand {
+    color: #a58bd4;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 12px;
 }
 
 
-/* =========================================================
-   ANIMACIÓN
-========================================================= */
+/* =====================================================
+   ANIMACIONES
+===================================================== */
 
 .fade {
     animation:
@@ -1006,9 +1142,9 @@ footer strong {
 }
 
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+/* =====================================================
+   TABLET
+===================================================== */
 
 @media (max-width: 900px) {
 
@@ -1025,7 +1161,7 @@ footer strong {
     }
 
     .hero h1 {
-        font-size: 55px;
+        font-size: 56px;
 
         letter-spacing: -2px;
     }
@@ -1041,7 +1177,7 @@ footer strong {
     .watch-showcase {
         grid-template-columns: 1fr;
 
-        gap: 50px;
+        gap: 55px;
 
         text-align: center;
     }
@@ -1052,13 +1188,9 @@ footer strong {
         margin: auto;
     }
 
-    .watch-info h2 {
-        font-size: 42px;
-    }
-
     .steps {
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
     .solar-content {
@@ -1071,10 +1203,28 @@ footer strong {
 }
 
 
+/* =====================================================
+   CELULAR
+===================================================== */
+
 @media (max-width: 600px) {
 
+    header {
+        padding: 16px 5%;
+    }
+
+    .logo-text {
+        font-size: 16px;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+
     .hero h1 {
-        font-size: 45px;
+        font-size: 44px;
+
+        letter-spacing: -1.5px;
     }
 
     .hero-description {
@@ -1086,23 +1236,30 @@ footer strong {
     }
 
     .stats {
-        gap: 35px;
+        gap: 30px;
     }
 
     .section-title h2 {
         font-size: 34px;
     }
 
+    .watch-info h2 {
+        font-size: 39px;
+    }
+
     .watch-points {
         grid-template-columns: 1fr;
+
+        text-align: left;
+    }
+
+    .watch-image-wrap::before {
+        width: 300px;
+        height: 300px;
     }
 
     .steps {
         grid-template-columns: 1fr;
-    }
-
-    .watch-info h2 {
-        font-size: 38px;
     }
 
     .solar-text h2 {
@@ -1111,6 +1268,21 @@ footer strong {
 
     .about-text h2 {
         font-size: 38px;
+    }
+
+    .sos-ring {
+        width: 165px;
+        height: 165px;
+    }
+
+    .sos-button {
+        width: 110px;
+        height: 110px;
+    }
+
+    .top-button {
+        right: 18px;
+        bottom: 18px;
     }
 }
 
@@ -1122,42 +1294,41 @@ footer strong {
 
 
 <!-- =====================================================
-     MENÚ
+     NAVBAR
 ===================================================== -->
 
 <header>
 
     <div class="logo-text">
+
+        <div class="logo-dot"></div>
+
         MEMORA<span> AEI</span>
+
     </div>
+
 
     <nav>
 
-        <a href="#inicio">
-            Inicio
-        </a>
+        <a href="#inicio">Inicio</a>
 
-        <a href="#reloj">
-            El reloj
-        </a>
+        <a href="#reloj">El reloj</a>
 
-        <a href="#funciones">
-            Funciones
-        </a>
+        <a href="#funciones">Funciones</a>
 
-        <a href="#sos">
-            SOS
-        </a>
+        <a href="#sos">SOS</a>
 
-        <a href="#proyecto">
-            Proyecto
-        </a>
+        <a href="#proyecto">Proyecto</a>
 
     </nav>
 
 </header>
 
 
+
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
 
 <main>
 
@@ -1172,10 +1343,15 @@ footer strong {
         Orientación · Compañía · Cuidado
     </div>
 
+
     <h1>
+
         Tecnología que<br>
+
         <span>acompaña.</span>
+
     </h1>
+
 
     <p class="hero-description">
 
@@ -1192,6 +1368,8 @@ footer strong {
         class="memora-logo"
     >
 
+
+    <!-- VIDEO SE MANTIENE IGUAL -->
 
     <div class="video-container">
 
@@ -1223,6 +1401,7 @@ footer strong {
         >
             Conocer el reloj
         </a>
+
 
         <a
             href="#sos"
@@ -1268,10 +1447,13 @@ footer strong {
 
         </div>
 
-
     </div>
 
 </section>
+
+
+
+<div class="divider"></div>
 
 
 
@@ -1359,8 +1541,8 @@ footer strong {
 
             <p>
 
-                El diseño contempla una función para
-                facilitar el contacto entre el usuario
+                Una función pensada para facilitar
+                la comunicación entre el usuario
                 y su cuidador.
 
             </p>
@@ -1378,7 +1560,11 @@ footer strong {
      RELOJ
 ===================================================== -->
 
-<section id="reloj">
+<section
+    class="watch-section"
+    id="reloj"
+>
+
 
     <div class="watch-showcase">
 
@@ -1387,7 +1573,7 @@ footer strong {
 
             <img
                 src="reloj-modelo.jpeg"
-                alt="Reloj inteligente MEMORA AEI"
+                alt="Reloj MEMORA AEI"
                 class="watch-image"
             >
 
@@ -1396,14 +1582,19 @@ footer strong {
 
         <div class="watch-info">
 
+
             <div class="eyebrow">
                 El dispositivo
             </div>
 
+
             <h2>
 
                 Diseñado para
-                <span>acompañar.</span>
+
+                <span>
+                    acompañar.
+                </span>
 
             </h2>
 
@@ -1411,9 +1602,10 @@ footer strong {
             <p>
 
                 MEMORA AEI propone un reloj inteligente
-                pensado para integrar en un solo dispositivo
-                funciones de orientación, ubicación,
-                comunicación y emergencia.
+                pensado para integrar funciones de
+                orientación, ubicación, comunicación
+                y emergencia en un dispositivo de
+                uso cotidiano.
 
             </p>
 
@@ -1501,9 +1693,8 @@ footer strong {
 
         <p>
 
-            El concepto busca que las funciones
-            principales sean fáciles de reconocer
-            y utilizar.
+            Las funciones principales están planteadas
+            para ser sencillas de reconocer y utilizar.
 
         </p>
 
@@ -1524,8 +1715,10 @@ footer strong {
             </h3>
 
             <p>
-                El usuario puede acceder a una
-                interfaz sencilla y clara.
+
+                Una interfaz sencilla busca facilitar
+                el uso cotidiano del dispositivo.
+
             </p>
 
         </div>
@@ -1542,8 +1735,10 @@ footer strong {
             </h3>
 
             <p>
-                El sistema contempla una función
+
+                La función de ubicación está pensada
                 para facilitar la localización.
+
             </p>
 
         </div>
@@ -1560,8 +1755,10 @@ footer strong {
             </h3>
 
             <p>
-                Permite plantear una conexión
-                rápida con el cuidador.
+
+                El concepto contempla comunicación
+                con el cuidador.
+
             </p>
 
         </div>
@@ -1578,8 +1775,10 @@ footer strong {
             </h3>
 
             <p>
-                El botón SOS está pensado para
-                solicitar ayuda.
+
+                El botón SOS permite plantear una
+                solicitud rápida de ayuda.
+
             </p>
 
         </div>
@@ -1595,7 +1794,11 @@ footer strong {
      SOS
 ===================================================== -->
 
-<section class="sos-section" id="sos">
+<section
+    class="sos-section"
+    id="sos"
+>
+
 
     <div class="section-title">
 
@@ -1633,7 +1836,7 @@ footer strong {
 
 
 <!-- =====================================================
-     ENERGÍA
+     ENERGÍA SOLAR
 ===================================================== -->
 
 <section class="solar-section">
@@ -1664,6 +1867,7 @@ footer strong {
                 Energía y autonomía
             </div>
 
+
             <h2>
 
                 Una idea pensada
@@ -1684,8 +1888,8 @@ footer strong {
 
             <p>
 
-                El sistema está planteado para aprovechar
-                tanto la luz solar como la luz artificial.
+                Está planteado para aprovechar tanto
+                la luz solar como la luz artificial.
 
             </p>
 
@@ -1698,7 +1902,6 @@ footer strong {
 
         </div>
 
-
     </div>
 
 </section>
@@ -1709,7 +1912,11 @@ footer strong {
      PROYECTO
 ===================================================== -->
 
-<section class="about" id="proyecto">
+<section
+    class="about"
+    id="proyecto"
+>
+
 
     <div class="about-content">
 
@@ -1720,10 +1927,14 @@ footer strong {
                 Nuestro proyecto
             </div>
 
+
             <h2>
 
                 Tecnología con
-                <span>propósito.</span>
+
+                <span>
+                    propósito.
+                </span>
 
             </h2>
 
@@ -1788,7 +1999,6 @@ footer strong {
 
         </div>
 
-
     </div>
 
 </section>
@@ -1799,24 +2009,42 @@ footer strong {
 
 
 <!-- =====================================================
+     VOLVER ARRIBA
+===================================================== -->
+
+<a
+    href="#inicio"
+    class="top-button"
+    aria-label="Volver arriba"
+>
+    ↑
+</a>
+
+
+
+<!-- =====================================================
      FOOTER
 ===================================================== -->
 
 <footer>
 
+    <div class="footer-brand">
+        MEMORA AEI
+    </div>
+
+
     <p>
 
         <strong>
-            MEMORA AEI
+            Tecnología que acompaña.
         </strong>
-
-        — Proyecto tecnológico
 
     </p>
 
+
     <p style="margin-top:10px;">
 
-        Orientación, compañía y cuidado.
+        Orientación · Compañía · Cuidado
 
     </p>
 
