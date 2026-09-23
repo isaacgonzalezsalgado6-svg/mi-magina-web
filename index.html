@@ -2187,7 +2187,22 @@ nav a:hover,
     min-height: 0;
     padding: 0;
     background: #02040c;
-    border-color: rgba(181,108,255,.18);
+    border: 1px solid rgba(181,108,255,.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.inside-watch-exploded img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 30px 45px rgba(0,0,0,.65));
 }
 
 .inside-watch-exploded::before {
@@ -2330,7 +2345,8 @@ nav a:hover,
     .problem-section,.inside-section,.caregiver-section,.roles-section,.process-section { padding:60px 6%; }
     .problem-grid,.process-grid { grid-template-columns:1fr; }
     .inside-watch { min-height:360px; }
-    .inside-watch img { width:70%; }
+    .inside-watch img { width:100%; max-width:100%; }
+    .inside-watch-exploded img { width:100%; max-width:100%; }
     .phone { width:250px; }
 }
 
@@ -2709,7 +2725,7 @@ nav a:hover,
     </div>
     <div class="inside-layout">
         <div class="inside-watch inside-watch-exploded">
-            <img src="memora-reloj-desarmado.png" alt="Reloj MEMORA AEI desarmado por partes y funciones">
+            <img src="reloj-desarmado.png" alt="Reloj MEMORA AEI desarmado por partes y funciones">
         </div>
         <div class="inside-labels">
             <div class="inside-card"><div class="inside-icon">📍</div><strong>GPS integrado</strong><span>Ayuda a representar la función de <b>ubicación</b> del dispositivo.</span></div>
