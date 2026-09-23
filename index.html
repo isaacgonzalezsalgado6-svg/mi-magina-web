@@ -4,7 +4,6 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MEMORA AEI | Tecnología que acompaña</title>
@@ -44,12 +43,9 @@ a {
 
 body::before {
     content: "";
-
     position: fixed;
     inset: 0;
-
     pointer-events: none;
-
     z-index: -3;
 
     background:
@@ -72,12 +68,9 @@ body::before {
 
 body::after {
     content: "";
-
     position: fixed;
     inset: 0;
-
     pointer-events: none;
-
     z-index: -2;
 
     background-image:
@@ -108,40 +101,31 @@ body::after {
 
 header {
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
 
     padding: 18px 7%;
 
     display: flex;
-
     justify-content: space-between;
     align-items: center;
 
     background: rgba(0,0,0,.68);
-
     backdrop-filter: blur(18px);
 
-    border-bottom:
-        1px solid rgba(255,255,255,.07);
+    border-bottom: 1px solid rgba(255,255,255,.07);
 
     z-index: 1000;
 }
 
 .logo-text {
     display: flex;
-
     align-items: center;
-
     gap: 9px;
 
     font-size: 19px;
-
     font-weight: bold;
-
     letter-spacing: 2px;
 }
 
@@ -169,17 +153,13 @@ nav {
 
 nav a {
     color: #aaa;
-
     font-size: 13px;
-
     transition: .3s;
-
     position: relative;
 }
 
 nav a::after {
     content: "";
-
     position: absolute;
 
     left: 0;
@@ -210,7 +190,6 @@ nav a:hover::after {
     min-height: 100vh;
 
     display: flex;
-
     flex-direction: column;
 
     justify-content: center;
@@ -218,10 +197,9 @@ nav a:hover::after {
 
     text-align: center;
 
-    padding: 145px 20px 100px;
+    padding: 125px 20px 90px;
 
     position: relative;
-
     overflow: hidden;
 }
 
@@ -230,15 +208,15 @@ nav a:hover::after {
 
     position: absolute;
 
-    width: 650px;
-    height: 650px;
+    width: 700px;
+    height: 700px;
 
     border-radius: 50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(165,139,212,.14),
+            rgba(165,139,212,.17),
             transparent 65%
         );
 
@@ -247,166 +225,285 @@ nav a:hover::after {
     z-index: -1;
 }
 
-.eyebrow {
-    color: #a58bd4;
-
-    font-size: 11px;
-
-    letter-spacing: 4px;
-
-    text-transform: uppercase;
-
-    margin-bottom: 20px;
-}
-
-.hero h1 {
-    font-size: clamp(50px, 8vw, 105px);
-
-    line-height: .91;
-
-    letter-spacing: -5px;
-
-    margin-bottom: 30px;
-
-    text-shadow:
-        0 15px 60px rgba(0,0,0,.8);
-}
-
-.hero h1 span {
-    color: #a58bd4;
-
-    text-shadow:
-        0 0 45px rgba(165,139,212,.22);
-}
-
-.hero-description {
-    max-width: 720px;
-
-    color: #929292;
-
-    font-size: 18px;
-
-    line-height: 1.7;
-
-    margin-bottom: 40px;
-}
-
 
 /* =====================================================
-   LOGO
+   LOGO SUPERIOR
 ===================================================== */
 
 .memora-logo {
-    width: 210px;
+    position: absolute;
 
-    max-width: 70%;
+    top: 105px;
+    right: 7%;
+
+    width: 150px;
+    max-width: 18vw;
 
     height: auto;
 
     display: block;
 
-    margin: 0 auto 42px;
-
     border-radius: 12px;
 
+    opacity: .9;
+
     box-shadow:
-        0 0 55px rgba(165,139,212,.14);
+        0 0 45px rgba(165,139,212,.16);
+
+    transition: .4s;
+
+    z-index: 5;
+}
+
+.memora-logo:hover {
+    transform: translateY(-4px) scale(1.03);
+
+    box-shadow:
+        0 0 70px rgba(165,139,212,.28);
 }
 
 
 /* =====================================================
-   VIDEO
+   VIDEO PRINCIPAL
 ===================================================== */
 
 .video-container {
-    width: min(950px, 94%);
+    width: min(1050px, 94%);
 
     overflow: hidden;
 
-    border-radius: 25px;
+    border-radius: 28px;
 
     background: #070707;
 
     border:
-        1px solid rgba(255,255,255,.11);
+        1px solid rgba(165,139,212,.25);
 
     box-shadow:
-        0 0 90px rgba(165,139,212,.08),
-        0 30px 80px rgba(0,0,0,.9);
+        0 0 100px rgba(165,139,212,.13),
+        0 35px 100px rgba(0,0,0,.95);
+
+    position: relative;
+
+    z-index: 2;
+
+    transform: translateY(0);
+
+    transition: .5s;
+}
+
+.video-container::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: 28px;
+
+    pointer-events: none;
+
+    box-shadow:
+        inset 0 0 80px rgba(165,139,212,.08);
+
+    z-index: 2;
+}
+
+.video-container:hover {
+    transform: translateY(-7px) scale(1.008);
+
+    border-color:
+        rgba(165,139,212,.45);
+
+    box-shadow:
+        0 0 130px rgba(165,139,212,.18),
+        0 40px 110px rgba(0,0,0,1);
 }
 
 video {
     width: 100%;
-
     display: block;
-
     background: #000;
 }
 
 
 /* =====================================================
-   BOTONES
+   BOTONES PRINCIPALES
 ===================================================== */
 
 .buttons {
     display: flex;
 
-    gap: 14px;
+    gap: 18px;
 
     margin-top: 35px;
 
     flex-wrap: wrap;
 
     justify-content: center;
+
+    position: relative;
+
+    z-index: 5;
 }
 
-.button {
-    padding: 14px 28px;
+.button,
+.button-secondary {
+    min-width: 220px;
 
-    border-radius: 30px;
+    padding: 17px 32px;
 
-    background: #a58bd4;
+    border-radius: 40px;
 
-    color: #000;
+    font-size: 14px;
 
     font-weight: bold;
 
+    letter-spacing: .4px;
+
+    text-align: center;
+
     transition: .35s;
 
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* BOTÓN CONOCER */
+
+.button {
+    background:
+        linear-gradient(
+            135deg,
+            #bca5e8,
+            #8d6dc4
+        );
+
+    color: #050505;
+
+    border:
+        1px solid rgba(255,255,255,.25);
+
     box-shadow:
-        0 0 0 rgba(165,139,212,0);
+        0 0 25px rgba(165,139,212,.25),
+        0 12px 35px rgba(0,0,0,.45);
+}
+
+.button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.45),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: .6s;
+}
+
+.button:hover::before {
+    left: 140%;
 }
 
 .button:hover {
-    transform: translateY(-5px);
+    transform:
+        translateY(-6px)
+        scale(1.04);
 
     background: #fff;
 
     box-shadow:
-        0 12px 40px rgba(165,139,212,.25);
+        0 0 45px rgba(165,139,212,.38),
+        0 18px 50px rgba(0,0,0,.65);
 }
 
+
+/* BOTÓN SOS */
+
 .button-secondary {
-    padding: 14px 28px;
-
-    border-radius: 30px;
-
-    border: 1px solid #333;
+    border:
+        1px solid rgba(255,55,55,.65);
 
     color: #fff;
 
-    transition: .35s;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(90,0,0,.65),
+            rgba(30,0,0,.85)
+        );
+
+    box-shadow:
+        0 0 25px rgba(255,0,0,.10),
+        inset 0 0 25px rgba(255,0,0,.05);
+}
+
+.button-secondary::before {
+    content: "SOS";
+
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 25px;
+    height: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #ff3333;
+
+    color: #fff;
+
+    font-size: 9px;
+
+    box-shadow:
+        0 0 18px rgba(255,0,0,.45);
+}
+
+.button-secondary {
+    padding-left: 55px;
 }
 
 .button-secondary:hover {
-    border-color: #a58bd4;
+    transform:
+        translateY(-6px)
+        scale(1.04);
 
-    color: #a58bd4;
+    border-color: #ff3333;
 
-    transform: translateY(-4px);
+    color: #fff;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(130,0,0,.8),
+            rgba(45,0,0,.95)
+        );
 
     box-shadow:
-        0 10px 30px rgba(165,139,212,.08);
+        0 0 45px rgba(255,0,0,.22),
+        0 18px 50px rgba(0,0,0,.65);
 }
 
 
@@ -421,7 +518,7 @@ video {
 
     gap: 65px;
 
-    margin-top: 65px;
+    margin-top: 55px;
 
     flex-wrap: wrap;
 }
@@ -457,7 +554,6 @@ section {
 
 .section-title {
     text-align: center;
-
     margin-bottom: 65px;
 }
 
@@ -471,7 +567,6 @@ section {
 
 .section-title h2 {
     font-size: 42px;
-
     margin-top: 15px;
 }
 
@@ -587,7 +682,6 @@ section {
 
 .card h3 {
     font-size: 21px;
-
     margin-bottom: 14px;
 }
 
@@ -653,7 +747,7 @@ section {
 
 
 /* =====================================================
-   RELOJ — IMAGEN
+   IMAGEN RELOJ
 ===================================================== */
 
 .watch-image-wrap {
@@ -662,7 +756,6 @@ section {
     display: flex;
 
     justify-content: center;
-
     align-items: center;
 }
 
@@ -702,7 +795,6 @@ section {
         transform: scale(1.08);
         opacity: 1;
     }
-
 }
 
 .watch-image {
@@ -767,7 +859,7 @@ section {
 
 
 /* =====================================================
-   FUNCIONES
+   PUNTOS FUNCIONES
 ===================================================== */
 
 .watch-points {
@@ -811,7 +903,6 @@ section {
     position: absolute;
 
     left: -100%;
-
     top: 0;
 
     width: 100%;
@@ -881,7 +972,7 @@ section {
 
 
 /* =====================================================
-   INDICADORES DEL PRODUCTO
+   INDICADORES
 ===================================================== */
 
 .product-label {
@@ -1064,7 +1155,6 @@ section {
 
 .function-detail h3 {
     font-size: 30px;
-
     margin-bottom: 6px;
 }
 
@@ -1090,7 +1180,6 @@ section {
 
 .function-list {
     list-style: none;
-
     margin-top: 20px;
 }
 
@@ -1279,7 +1368,6 @@ section {
             0 0 75px rgba(255,0,0,.22),
             inset 0 0 45px rgba(255,0,0,.12);
     }
-
 }
 
 .sos-ring:hover {
@@ -1402,7 +1490,6 @@ section {
     50% {
         transform: scale(1.15);
     }
-
 }
 
 .solar-icon {
@@ -1430,7 +1517,6 @@ section {
 
 .solar-visual span {
     color: #666;
-
     margin-top: 10px;
 }
 
@@ -1611,7 +1697,8 @@ section {
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     border-radius: 50%;
 
@@ -1640,7 +1727,8 @@ section {
 
     margin: 25px auto;
 
-    font-size: clamp(38px, 6vw, 75px);
+    font-size:
+        clamp(38px, 6vw, 75px);
 
     line-height: 1;
 
@@ -1787,13 +1875,28 @@ footer strong {
     }
 
     .hero {
-        padding-top: 130px;
+        padding-top: 120px;
     }
 
-    .hero h1 {
-        font-size: 56px;
+    .memora-logo {
+        top: 90px;
+        right: 5%;
 
-        letter-spacing: -2px;
+        width: 125px;
+        max-width: 22vw;
+    }
+
+    .video-container {
+        width: 96%;
+    }
+
+    .buttons {
+        gap: 15px;
+    }
+
+    .button,
+    .button-secondary {
+        min-width: 210px;
     }
 
     section {
@@ -1842,7 +1945,6 @@ footer strong {
     .label-sos {
         left: 8%;
     }
-
 }
 
 
@@ -1861,25 +1963,53 @@ footer strong {
     }
 
     .hero {
-        padding-top: 120px;
-    }
-
-    .hero h1 {
-        font-size: 44px;
-
-        letter-spacing: -1.5px;
-    }
-
-    .hero-description {
-        font-size: 16px;
+        padding:
+            105px 12px 70px;
     }
 
     .memora-logo {
-        width: 170px;
+        top: 78px;
+        right: 5%;
+
+        width: 95px;
+        max-width: 25vw;
+    }
+
+    .video-container {
+        width: 100%;
+
+        border-radius: 20px;
+    }
+
+    .video-container::before {
+        border-radius: 20px;
+    }
+
+    .buttons {
+        width: 100%;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 14px;
+
+        margin-top: 28px;
+    }
+
+    .button,
+    .button-secondary {
+        width: min(330px, 92%);
+
+        min-width: 0;
+
+        padding: 16px 24px;
     }
 
     .stats {
         gap: 30px;
+
+        margin-top: 45px;
     }
 
     .section-title h2 {
@@ -1978,7 +2108,6 @@ footer strong {
     .final-message h2 {
         letter-spacing: -1.5px;
     }
-
 }
 
 </style>
@@ -1986,6 +2115,11 @@ footer strong {
 </head>
 
 <body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
 
 <header>
 
@@ -2013,40 +2147,30 @@ footer strong {
 
 </header>
 
+
 <main>
+
+
+<!-- =====================================================
+     PORTADA
+===================================================== -->
 
 <section
     class="hero fade"
     id="inicio"
 >
 
-    <div class="eyebrow">
-        Orientación · Compañía · Cuidado
-    </div>
 
-    <h1>
-
-        Tecnología que<br>
-
-        <span>
-            acompaña.
-        </span>
-
-    </h1>
-
-    <p class="hero-description">
-
-        Un proyecto tecnológico diseñado para brindar
-        orientación, seguridad y acompañamiento a
-        personas con Alzheimer y a sus familias.
-
-    </p>
+    <!-- LOGO DESPLAZADO -->
 
     <img
         src="memora-logo.jpeg"
         alt="Logo MEMORA AEI"
         class="memora-logo"
     >
+
+
+    <!-- VIDEO PRINCIPAL -->
 
     <div class="video-container">
 
@@ -2069,6 +2193,9 @@ footer strong {
 
     </div>
 
+
+    <!-- BOTONES -->
+
     <div class="buttons">
 
         <a
@@ -2087,6 +2214,9 @@ footer strong {
 
     </div>
 
+
+    <!-- ESTADÍSTICAS -->
+
     <div class="stats">
 
         <div class="stat">
@@ -2101,6 +2231,7 @@ footer strong {
 
         </div>
 
+
         <div class="stat">
 
             <strong>
@@ -2112,6 +2243,7 @@ footer strong {
             </span>
 
         </div>
+
 
         <div class="stat">
 
@@ -2127,9 +2259,16 @@ footer strong {
 
     </div>
 
+
 </section>
 
+
 <div class="divider"></div>
+
+
+<!-- =====================================================
+     FUNCIONES
+===================================================== -->
 
 <section id="funciones">
 
@@ -2144,16 +2283,16 @@ footer strong {
         </h2>
 
         <p>
-
             El concepto reúne diferentes funciones
             destinadas a facilitar el acompañamiento
             y aumentar la seguridad del usuario.
-
         </p>
 
     </div>
 
+
     <div class="cards">
+
 
         <div class="card">
 
@@ -2166,14 +2305,13 @@ footer strong {
             </h3>
 
             <p>
-
                 El proyecto contempla tecnología de
                 localización para facilitar la ubicación
                 del usuario cuando sea necesario.
-
             </p>
 
         </div>
+
 
         <div class="card">
 
@@ -2186,14 +2324,13 @@ footer strong {
             </h3>
 
             <p>
-
                 Un botón de emergencia pensado para
                 permitir que el usuario solicite ayuda
                 rápidamente.
-
             </p>
 
         </div>
+
 
         <div class="card">
 
@@ -2206,18 +2343,22 @@ footer strong {
             </h3>
 
             <p>
-
                 Una función pensada para facilitar
                 la comunicación entre el usuario
                 y su cuidador.
-
             </p>
 
         </div>
 
+
     </div>
 
 </section>
+
+
+<!-- =====================================================
+     RELOJ
+===================================================== -->
 
 <section
     class="watch-section"
@@ -2226,19 +2367,24 @@ footer strong {
 
     <div class="watch-showcase">
 
+
         <div class="watch-image-wrap">
+
 
             <div class="product-label label-gps">
                 ● GPS INTEGRADO
             </div>
 
+
             <div class="product-label label-sos">
                 ● SISTEMA SOS
             </div>
 
+
             <div class="product-label label-solar">
                 ● ENERGÍA
             </div>
+
 
             <img
                 src="reloj-modelo.jpeg"
@@ -2246,13 +2392,17 @@ footer strong {
                 class="watch-image"
             >
 
+
         </div>
 
+
         <div class="watch-info">
+
 
             <div class="eyebrow">
                 El dispositivo
             </div>
+
 
             <h2>
 
@@ -2264,6 +2414,7 @@ footer strong {
 
             </h2>
 
+
             <p>
 
                 MEMORA AEI propone un reloj inteligente
@@ -2274,7 +2425,9 @@ footer strong {
 
             </p>
 
+
             <div class="watch-points">
+
 
                 <a
                     href="#gps"
@@ -2291,6 +2444,7 @@ footer strong {
 
                 </a>
 
+
                 <a
                     href="#sos-resumen"
                     class="watch-point"
@@ -2305,6 +2459,7 @@ footer strong {
                     </span>
 
                 </a>
+
 
                 <a
                     href="#contacto"
@@ -2321,6 +2476,7 @@ footer strong {
 
                 </a>
 
+
                 <a
                     href="#orientacion"
                     class="watch-point"
@@ -2336,18 +2492,27 @@ footer strong {
 
                 </a>
 
+
             </div>
 
+
         </div>
+
 
     </div>
 
 </section>
 
+
+<!-- =====================================================
+     FUNCIONES DETALLADAS
+===================================================== -->
+
 <section
     class="function-details"
     id="resumen-funciones"
 >
+
 
     <div class="section-title">
 
@@ -2360,13 +2525,14 @@ footer strong {
         </h2>
 
         <p>
-
             Cada herramienta tiene un propósito dentro
             del concepto MEMORA AEI.
-
         </p>
 
     </div>
+
+
+    <!-- GPS -->
 
     <div
         class="function-detail"
@@ -2393,15 +2559,15 @@ footer strong {
 
         </div>
 
-        <p>
 
+        <p>
             La función GPS está planteada para facilitar
             la localización del usuario. Desde el concepto
             del reloj, esta herramienta busca permitir que
             el cuidador pueda conocer la ubicación del
             dispositivo cuando sea necesario.
-
         </p>
+
 
         <ul class="function-list">
 
@@ -2425,6 +2591,7 @@ footer strong {
 
         </ul>
 
+
         <a
             href="#reloj"
             class="back-watch"
@@ -2433,6 +2600,9 @@ footer strong {
         </a>
 
     </div>
+
+
+    <!-- SOS -->
 
     <div
         class="function-detail"
@@ -2459,15 +2629,15 @@ footer strong {
 
         </div>
 
-        <p>
 
+        <p>
             El botón SOS está pensado para ofrecer una
             forma sencilla y rápida de solicitar ayuda.
             El usuario podría utilizarlo cuando se
             encuentre ante una situación que requiera
             atención.
-
         </p>
+
 
         <ul class="function-list">
 
@@ -2490,6 +2660,7 @@ footer strong {
 
         </ul>
 
+
         <a
             href="#reloj"
             class="back-watch"
@@ -2498,6 +2669,9 @@ footer strong {
         </a>
 
     </div>
+
+
+    <!-- CONTACTO -->
 
     <div
         class="function-detail"
@@ -2524,13 +2698,13 @@ footer strong {
 
         </div>
 
-        <p>
 
+        <p>
             La función de contacto está planteada para
             facilitar la comunicación entre la persona
             que utiliza el reloj y su cuidador o familiar.
-
         </p>
+
 
         <ul class="function-list">
 
@@ -2554,6 +2728,7 @@ footer strong {
 
         </ul>
 
+
         <a
             href="#reloj"
             class="back-watch"
@@ -2562,6 +2737,9 @@ footer strong {
         </a>
 
     </div>
+
+
+    <!-- ORIENTACIÓN -->
 
     <div
         class="function-detail"
@@ -2588,14 +2766,14 @@ footer strong {
 
         </div>
 
-        <p>
 
+        <p>
             La función de orientación busca ofrecer una
             interfaz clara que ayude al usuario a
             encontrar opciones importantes dentro del
             dispositivo.
-
         </p>
+
 
         <ul class="function-list">
 
@@ -2620,6 +2798,7 @@ footer strong {
 
         </ul>
 
+
         <a
             href="#reloj"
             class="back-watch"
@@ -2629,7 +2808,13 @@ footer strong {
 
     </div>
 
+
 </section>
+
+
+<!-- =====================================================
+     CÓMO FUNCIONA
+===================================================== -->
 
 <section class="how-section">
 
@@ -2644,15 +2829,15 @@ footer strong {
         </h2>
 
         <p>
-
             Las funciones principales están planteadas
             para ser sencillas de reconocer y utilizar.
-
         </p>
 
     </div>
 
+
     <div class="steps">
+
 
         <div class="step">
 
@@ -2665,13 +2850,12 @@ footer strong {
             </h3>
 
             <p>
-
                 Una interfaz sencilla busca facilitar
                 el uso cotidiano del dispositivo.
-
             </p>
 
         </div>
+
 
         <div class="step">
 
@@ -2684,13 +2868,12 @@ footer strong {
             </h3>
 
             <p>
-
                 La función de ubicación está pensada
                 para facilitar la localización.
-
             </p>
 
         </div>
+
 
         <div class="step">
 
@@ -2703,13 +2886,12 @@ footer strong {
             </h3>
 
             <p>
-
                 El concepto contempla comunicación
                 con el cuidador.
-
             </p>
 
         </div>
+
 
         <div class="step">
 
@@ -2722,22 +2904,27 @@ footer strong {
             </h3>
 
             <p>
-
                 El botón SOS permite plantear una
                 solicitud rápida de ayuda.
-
             </p>
 
         </div>
+
 
     </div>
 
 </section>
 
+
+<!-- =====================================================
+     SOS
+===================================================== -->
+
 <section
     class="sos-section"
     id="sos"
 >
+
 
     <div class="section-title">
 
@@ -2751,6 +2938,7 @@ footer strong {
 
     </div>
 
+
     <div class="sos-ring">
 
         <div class="sos-button">
@@ -2758,6 +2946,7 @@ footer strong {
         </div>
 
     </div>
+
 
     <p class="sos-description">
 
@@ -2768,57 +2957,79 @@ footer strong {
 
     </p>
 
+
 </section>
+
+
+<!-- =====================================================
+     ENERGÍA SOLAR
+===================================================== -->
 
 <section class="solar-section">
 
+
     <div class="solar-content">
 
+
         <div class="solar-visual">
+
 
             <div class="solar-icon">
                 ☀️
             </div>
 
+
             <strong>
                 Energía mediante luz
             </strong>
+
 
             <span>
                 Luz solar + luz artificial
             </span>
 
+
             <div class="energy-flow">
+
 
                 <span>
                     ☀ Luz
                 </span>
 
+
                 <b>
                     →
                 </b>
+
 
                 <span>
                     Panel
                 </span>
 
+
                 <b>
                     →
                 </b>
+
 
                 <span>
                     Reloj
                 </span>
 
+
             </div>
+
 
         </div>
 
+
         <div class="solar-text">
+
 
             <div class="eyebrow">
                 Energía y autonomía
             </div>
+
 
             <h2>
 
@@ -2826,6 +3037,7 @@ footer strong {
                 para <span>acompañar.</span>
 
             </h2>
+
 
             <p>
 
@@ -2836,6 +3048,7 @@ footer strong {
 
             </p>
 
+
             <p>
 
                 Está planteado para aprovechar tanto
@@ -2843,30 +3056,42 @@ footer strong {
 
             </p>
 
+
             <div class="light-box">
 
                 ☀ Funciona con luz solar y artificial
 
             </div>
 
+
         </div>
+
 
     </div>
 
 </section>
+
+
+<!-- =====================================================
+     PROYECTO
+===================================================== -->
 
 <section
     class="about"
     id="proyecto"
 >
 
+
     <div class="about-content">
 
+
         <div class="about-text">
+
 
             <div class="eyebrow">
                 Nuestro proyecto
             </div>
+
 
             <h2>
 
@@ -2878,6 +3103,7 @@ footer strong {
 
             </h2>
 
+
             <p>
 
                 MEMORA AEI nace como una propuesta
@@ -2888,6 +3114,7 @@ footer strong {
 
             </p>
 
+
             <p>
 
                 El objetivo es integrar diferentes
@@ -2897,53 +3124,73 @@ footer strong {
 
             </p>
 
+
         </div>
 
+
         <div class="about-box">
+
 
             <h3>
                 Características
             </h3>
 
+
             <ul>
+
 
                 <li>
                     Diseño pensado para uso diario
                 </li>
 
+
                 <li>
                     Sistema de alerta SOS
                 </li>
+
 
                 <li>
                     Tecnología de localización
                 </li>
 
+
                 <li>
                     Función de contacto con cuidador
                 </li>
+
 
                 <li>
                     Panel para aprovechar la luz
                 </li>
 
+
                 <li>
                     Interfaz sencilla
                 </li>
 
+
             </ul>
 
+
         </div>
+
 
     </div>
 
 </section>
 
+
+<!-- =====================================================
+     FRASE FINAL
+===================================================== -->
+
 <section class="final-message">
+
 
     <small>
         MEMORA AEI
     </small>
+
 
     <h2>
 
@@ -2957,6 +3204,7 @@ footer strong {
 
     </h2>
 
+
     <p>
 
         Una propuesta que busca unir tecnología,
@@ -2965,9 +3213,16 @@ footer strong {
 
     </p>
 
+
 </section>
 
+
 </main>
+
+
+<!-- =====================================================
+     VOLVER ARRIBA
+===================================================== -->
 
 <a
     href="#inicio"
@@ -2977,11 +3232,18 @@ footer strong {
     ↑
 </a>
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
+
 
     <div class="footer-brand">
         MEMORA AEI
     </div>
+
 
     <p>
 
@@ -2991,13 +3253,16 @@ footer strong {
 
     </p>
 
+
     <p style="margin-top:10px;">
 
         Orientación · Compañía · Cuidado
 
     </p>
 
+
 </footer>
+
 
 </body>
 
