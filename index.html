@@ -619,6 +619,10 @@ section {
 }
 
 .watch-point {
+    width: 100%;
+    font: inherit;
+    color: inherit;
+    text-align: left;
     padding: 20px;
 
     border-radius: 17px;
@@ -2071,6 +2075,132 @@ footer strong {
    TABLET
 ===================================================== */
 
+
+/* =====================================================
+   VENTANA DE INFORMACIÓN DE FUNCIONES
+===================================================== */
+
+.function-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(0,0,0,.78);
+    backdrop-filter: blur(14px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: .3s ease;
+}
+
+.function-modal.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.function-modal-box {
+    width: min(620px, 100%);
+    max-height: min(760px, 88vh);
+    overflow-y: auto;
+    position: relative;
+    padding: 38px;
+    border-radius: 28px;
+    background: linear-gradient(145deg, #111, #050505);
+    border: 1px solid rgba(181,108,255,.45);
+    box-shadow: 0 25px 100px rgba(0,0,0,.75), 0 0 45px rgba(181,108,255,.12);
+    transform: translateY(25px) scale(.97);
+    transition: .3s ease;
+}
+
+.function-modal.active .function-modal-box { transform: translateY(0) scale(1); }
+
+.function-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 17px;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50%;
+    background: rgba(255,255,255,.05);
+    color: #fff;
+    font-size: 25px;
+    line-height: 1;
+    cursor: pointer;
+    transition: .25s;
+}
+
+.function-modal-close:hover {
+    background: rgba(181,108,255,.16);
+    border-color: rgba(181,108,255,.55);
+    color: var(--lila);
+    transform: rotate(90deg);
+}
+
+.modal-icon {
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    border-radius: 20px;
+    background: rgba(181,108,255,.10);
+    border: 1px solid rgba(181,108,255,.28);
+    font-size: 30px;
+}
+
+.modal-label {
+    color: var(--lila);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.function-modal h3 { font-size: clamp(25px, 5vw, 34px); margin-bottom: 18px; }
+.function-modal p { color: #aaa; font-size: 16px; line-height: 1.8; margin-bottom: 22px; }
+
+.modal-list {
+    display: grid;
+    gap: 12px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.modal-list li {
+    padding: 14px 16px;
+    border-radius: 13px;
+    background: rgba(255,255,255,.035);
+    border: 1px solid rgba(255,255,255,.07);
+    color: #ccc;
+    line-height: 1.5;
+}
+
+.modal-list li::before {
+    content: "✓";
+    color: var(--lila);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+body.modal-open { overflow: hidden; }
+
+@media (max-width: 600px) {
+    .function-modal { padding: 12px; align-items: flex-end; }
+    .function-modal-box {
+        max-height: 88vh;
+        padding: 30px 22px 24px;
+        border-radius: 25px 25px 18px 18px;
+    }
+    .function-modal-close { top: 12px; right: 12px; }
+}
+
 @media (max-width: 900px) {
 
     header {
@@ -2471,7 +2601,7 @@ footer strong {
             <div class="watch-points">
 
 
-                <a href="#gps" class="watch-point">
+                <button type="button" class="watch-point" data-function="gps">
 
                     <strong>
                         📍 GPS
@@ -2481,10 +2611,10 @@ footer strong {
                         Mi ubicación
                     </span>
 
-                </a>
+                </button>
 
 
-                <a href="#sos-resumen" class="watch-point">
+                <button type="button" class="watch-point" data-function="sos">
 
                     <strong>
                         🚨 SOS
@@ -2494,10 +2624,10 @@ footer strong {
                         Emergencia
                     </span>
 
-                </a>
+                </button>
 
 
-                <a href="#contacto" class="watch-point">
+                <button type="button" class="watch-point" data-function="contacto">
 
                     <strong>
                         🧑‍🦳 Contacto
@@ -2507,10 +2637,10 @@ footer strong {
                         Cuidador
                     </span>
 
-                </a>
+                </button>
 
 
-                <a href="#orientacion" class="watch-point">
+                <button type="button" class="watch-point" data-function="orientacion">
 
                     <strong>
                         🧭 Orientación
@@ -2520,7 +2650,7 @@ footer strong {
                         Ayuda al usuario
                     </span>
 
-                </a>
+                </button>
 
 
             </div>
@@ -3597,6 +3727,22 @@ footer strong {
 </main>
 
 
+
+<!-- =====================================================
+     VENTANA DE INFORMACIÓN DE FUNCIONES
+===================================================== -->
+
+<div class="function-modal" id="functionModal" aria-hidden="true">
+    <div class="function-modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <button type="button" class="function-modal-close" id="closeFunctionModal" aria-label="Cerrar">×</button>
+        <div class="modal-icon" id="modalIcon">📍</div>
+        <div class="modal-label" id="modalLabel">Función 01</div>
+        <h3 id="modalTitle">Mi ubicación — GPS</h3>
+        <p id="modalDescription"></p>
+        <ul class="modal-list" id="modalList"></ul>
+    </div>
+</div>
+
 <!-- =====================================================
      BOTÓN ARRIBA
 ===================================================== -->
@@ -3632,6 +3778,66 @@ footer strong {
 
 </footer>
 
+
+
+<script>
+const functionData = {
+    gps: {
+        icon: "📍", label: "Función 01", title: "Mi ubicación — GPS",
+        description: "La función GPS está planteada para facilitar la localización del usuario. Desde el concepto del reloj, esta herramienta busca permitir que el cuidador pueda conocer la ubicación del dispositivo cuando sea necesario.",
+        items: ["Facilita la localización del usuario.", "Está pensada para apoyar al cuidador.", "Puede ser útil cuando el usuario se encuentra fuera de su entorno habitual.", "Se integra directamente en la interfaz del reloj."]
+    },
+    sos: {
+        icon: "🚨", label: "Función 02", title: "SOS — Emergencia",
+        description: "El botón SOS está pensado para ofrecer una forma sencilla y rápida de solicitar ayuda. El usuario podría utilizarlo cuando se encuentre ante una situación que requiera atención.",
+        items: ["Botón de emergencia de fácil reconocimiento.", "Busca facilitar una solicitud rápida de ayuda.", "Está pensado para situaciones de emergencia.", "Su diseño prioriza que sea fácil de identificar dentro de la interfaz."]
+    },
+    contacto: {
+        icon: "🧑‍🦳", label: "Función 03", title: "Contacto — Cuidador",
+        description: "La función de contacto está planteada para facilitar la comunicación entre la persona que utiliza el reloj y su cuidador o familiar.",
+        items: ["Facilita el acceso al contacto del cuidador.", "Busca reducir la cantidad de pasos necesarios para comunicarse.", "Está pensada para un uso sencillo.", "Puede ayudar a mantener una comunicación más directa con la persona responsable."]
+    },
+    orientacion: {
+        icon: "🧭", label: "Función 04", title: "Orientación — Ayuda",
+        description: "La función de orientación busca ofrecer una interfaz clara que ayude al usuario a encontrar opciones importantes dentro del dispositivo.",
+        items: ["Interfaz sencilla y fácil de reconocer.", "Busca facilitar la navegación dentro del reloj.", "Permite acceder a funciones importantes desde la pantalla principal.", "Está pensada teniendo en cuenta la facilidad de uso."]
+    }
+};
+
+const functionModal = document.getElementById("functionModal");
+const modalIcon = document.getElementById("modalIcon");
+const modalLabel = document.getElementById("modalLabel");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modalList = document.getElementById("modalList");
+const closeFunctionModal = document.getElementById("closeFunctionModal");
+
+function openFunctionModal(type) {
+    const data = functionData[type];
+    if (!data) return;
+    modalIcon.textContent = data.icon;
+    modalLabel.textContent = data.label;
+    modalTitle.textContent = data.title;
+    modalDescription.textContent = data.description;
+    modalList.innerHTML = data.items.map(item => `<li>${item}</li>`).join("");
+    functionModal.classList.add("active");
+    functionModal.setAttribute("aria-hidden", "false");
+    document.body.classList.add("modal-open");
+}
+
+function closeFunctionInfo() {
+    functionModal.classList.remove("active");
+    functionModal.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("modal-open");
+}
+
+document.querySelectorAll(".watch-point[data-function]").forEach(button => {
+    button.addEventListener("click", () => openFunctionModal(button.dataset.function));
+});
+closeFunctionModal.addEventListener("click", closeFunctionInfo);
+functionModal.addEventListener("click", event => { if (event.target === functionModal) closeFunctionInfo(); });
+document.addEventListener("keydown", event => { if (event.key === "Escape" && functionModal.classList.contains("active")) closeFunctionInfo(); });
+</script>
 
 </body>
 
