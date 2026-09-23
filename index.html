@@ -4,12 +4,25 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MEMORA AEI | Tecnología que acompaña</title>
 
 <style>
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root {
+    --lila: #B56CFF;
+    --lila-soft: #D9B8FF;
+    --azul-claro: #BFEFFF;
+    --blanco: #FFFFFF;
+    --gris: #858585;
+    --fondo: #020202;
+}
+
 
 /* =====================================================
    RESET
@@ -26,8 +39,8 @@ html {
 }
 
 body {
-    background: #020202;
-    color: #fff;
+    background: var(--fondo);
+    color: var(--blanco);
     font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
@@ -44,12 +57,9 @@ a {
 
 body::before {
     content: "";
-
     position: fixed;
     inset: 0;
-
     pointer-events: none;
-
     z-index: -3;
 
     background:
@@ -72,12 +82,9 @@ body::before {
 
 body::after {
     content: "";
-
     position: fixed;
     inset: 0;
-
     pointer-events: none;
-
     z-index: -2;
 
     background-image:
@@ -108,40 +115,31 @@ body::after {
 
 header {
     position: fixed;
-
     top: 0;
     left: 0;
-
     width: 100%;
 
     padding: 18px 7%;
 
     display: flex;
-
     justify-content: space-between;
     align-items: center;
 
     background: rgba(0,0,0,.68);
-
     backdrop-filter: blur(18px);
 
-    border-bottom:
-        1px solid rgba(255,255,255,.07);
+    border-bottom: 1px solid rgba(255,255,255,.07);
 
     z-index: 1000;
 }
 
 .logo-text {
     display: flex;
-
     align-items: center;
-
     gap: 9px;
 
     font-size: 19px;
-
     font-weight: bold;
-
     letter-spacing: 2px;
 }
 
@@ -151,15 +149,15 @@ header {
 
     border-radius: 50%;
 
-    background: #B56CFF;
+    background: var(--lila);
 
     box-shadow:
-        0 0 15px #B56CFF,
-        0 0 30px rgba(181,108,255,.5);
+        0 0 15px var(--lila),
+        0 0 30px rgba(181,108,255,.45);
 }
 
 .logo-text span {
-    color: #B56CFF;
+    color: var(--lila);
 }
 
 nav {
@@ -169,11 +167,8 @@ nav {
 
 nav a {
     color: #aaa;
-
     font-size: 13px;
-
     transition: .3s;
-
     position: relative;
 }
 
@@ -181,20 +176,18 @@ nav a::after {
     content: "";
 
     position: absolute;
-
     left: 0;
     bottom: -7px;
 
     width: 0;
     height: 1px;
 
-    background: #B56CFF;
-
+    background: var(--lila);
     transition: .3s;
 }
 
 nav a:hover {
-    color: #fff;
+    color: var(--lila);
 }
 
 nav a:hover::after {
@@ -210,14 +203,12 @@ nav a:hover::after {
     min-height: 100vh;
 
     display: flex;
-
     align-items: center;
     justify-content: center;
 
     padding: 88px 20px 30px;
 
     position: relative;
-
     overflow: hidden;
 }
 
@@ -239,74 +230,17 @@ nav a:hover::after {
         );
 
     filter: blur(10px);
-
     z-index: -1;
 }
 
 .eyebrow {
-    color: #B56CFF;
+    color: var(--lila);
 
     font-size: 11px;
-
     letter-spacing: 4px;
-
     text-transform: uppercase;
 
     margin-bottom: 20px;
-}
-
-.hero h1 {
-    font-size: clamp(50px, 8vw, 105px);
-
-    line-height: .91;
-
-    letter-spacing: -5px;
-
-    margin-bottom: 30px;
-
-    text-shadow:
-        0 15px 60px rgba(0,0,0,.8);
-}
-
-.hero h1 span {
-    color: #B56CFF;
-
-    text-shadow:
-        0 0 45px rgba(181,108,255,.22);
-}
-
-.hero-description {
-    max-width: 720px;
-
-    color: #929292;
-
-    font-size: 18px;
-
-    line-height: 1.7;
-
-    margin-bottom: 40px;
-}
-
-
-/* =====================================================
-   LOGO
-===================================================== */
-
-.memora-logo {
-    width: 210px;
-
-    max-width: 70%;
-
-    height: auto;
-
-    display: block;
-
-    margin: 0 auto;
-
-    border-radius: 12px;
-
-    box-shadow:
-        0 0 55px rgba(181,108,255,.14);
 }
 
 
@@ -323,8 +257,7 @@ nav a:hover::after {
 
     background: #070707;
 
-    border:
-        1px solid rgba(255,255,255,.11);
+    border: 1px solid rgba(255,255,255,.11);
 
     box-shadow:
         0 0 90px rgba(181,108,255,.08),
@@ -333,113 +266,8 @@ nav a:hover::after {
 
 video {
     width: 100%;
-
     display: block;
-
     background: #000;
-}
-
-
-/* =====================================================
-   BOTONES
-===================================================== */
-
-.buttons {
-    display: flex;
-
-    gap: 14px;
-
-    margin-top: 35px;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-}
-
-.button {
-    padding: 14px 28px;
-
-    border-radius: 30px;
-
-    background: #B56CFF;
-
-    color: #000;
-
-    font-weight: bold;
-
-    transition: .35s;
-
-    box-shadow:
-        0 0 0 rgba(181,108,255,0);
-}
-
-.button:hover {
-    transform: translateY(-5px);
-
-    background: #fff;
-
-    box-shadow:
-        0 12px 40px rgba(181,108,255,.25);
-}
-
-.button-secondary {
-    padding: 14px 28px;
-
-    border-radius: 30px;
-
-    border: 1px solid #333;
-
-    color: #fff;
-
-    transition: .35s;
-}
-
-.button-secondary:hover {
-    border-color: #B56CFF;
-
-    color: #B56CFF;
-
-    transform: translateY(-4px);
-
-    box-shadow:
-        0 10px 30px rgba(181,108,255,.08);
-}
-
-
-/* =====================================================
-   STATS
-===================================================== */
-
-.stats {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 65px;
-
-    margin-top: 65px;
-
-    flex-wrap: wrap;
-}
-
-.stat {
-    text-align: center;
-}
-
-.stat strong {
-    display: block;
-
-    font-size: 27px;
-
-    margin-bottom: 5px;
-}
-
-.stat span {
-    color: #555;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
 }
 
 
@@ -453,21 +281,18 @@ section {
 
 .section-title {
     text-align: center;
-
     margin-bottom: 38px;
 }
 
 .section-title small {
-    color: #B56CFF;
-
+    color: var(--lila);
     letter-spacing: 3px;
-
     text-transform: uppercase;
 }
 
 .section-title h2 {
+    color: var(--blanco);
     font-size: 42px;
-
     margin-top: 15px;
 }
 
@@ -476,7 +301,7 @@ section {
 
     margin: 20px auto 0;
 
-    color: #858585;
+    color: var(--gris);
 
     line-height: 1.7;
 }
@@ -488,14 +313,10 @@ section {
 
 .cards {
     max-width: 1150px;
-
     margin: auto;
 
     display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
+    grid-template-columns: repeat(3,1fr);
     gap: 20px;
 }
 
@@ -509,15 +330,13 @@ section {
             #070707
         );
 
-    border:
-        1px solid #1c1c1c;
+    border: 1px solid rgba(191,239,255,.12);
 
     border-radius: 22px;
 
     transition: .4s;
 
     position: relative;
-
     overflow: hidden;
 }
 
@@ -542,15 +361,13 @@ section {
         );
 
     opacity: 0;
-
     transition: .4s;
 }
 
 .card:hover {
     transform: translateY(-10px);
 
-    border-color:
-        rgba(181,108,255,.45);
+    border-color: rgba(181,108,255,.48);
 
     box-shadow:
         0 25px 70px rgba(0,0,0,.5);
@@ -567,14 +384,12 @@ section {
     border-radius: 16px;
 
     display: flex;
-
     justify-content: center;
     align-items: center;
 
-    background:
-        rgba(181,108,255,.08);
+    background: rgba(181,108,255,.08);
 
-    color: #B56CFF;
+    color: var(--lila);
 
     font-size: 24px;
 
@@ -583,15 +398,12 @@ section {
 
 .card h3 {
     font-size: 21px;
-
     margin-bottom: 14px;
 }
 
 .card p {
-    color: #858585;
-
+    color: var(--gris);
     line-height: 1.7;
-
     font-size: 15px;
 }
 
@@ -634,13 +446,11 @@ section {
 
 .watch-showcase {
     max-width: 1250px;
-
     margin: auto;
 
     display: grid;
 
-    grid-template-columns:
-        1.1fr .9fr;
+    grid-template-columns: 1.1fr .9fr;
 
     align-items: center;
 
@@ -669,20 +479,20 @@ section {
 
     pointer-events: none;
 
-    box-shadow: 0 0 80px rgba(181,108,255,.16);
+    box-shadow:
+        0 0 80px rgba(181,108,255,.16);
 }
 
+
 /* =====================================================
-   RELOJ — IMAGEN
+   RELOJ - IMAGEN
 ===================================================== */
 
 .watch-image-wrap {
     position: relative;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 }
 
@@ -706,8 +516,7 @@ section {
 
     filter: blur(12px);
 
-    animation:
-        glow 5s ease-in-out infinite;
+    animation: glow 5s ease-in-out infinite;
 }
 
 @keyframes glow {
@@ -722,12 +531,10 @@ section {
         transform: scale(1.08);
         opacity: 1;
     }
-
 }
 
 .watch-image {
     width: 100%;
-
     max-width: 570px;
 
     display: block;
@@ -740,7 +547,6 @@ section {
     transition: .5s;
 
     position: relative;
-
     z-index: 2;
 }
 
@@ -764,8 +570,9 @@ section {
 }
 
 .watch-info h2 {
-    font-size: 55px;
+    color: var(--blanco);
 
+    font-size: 55px;
     line-height: 1.04;
 
     letter-spacing: -2px;
@@ -774,11 +581,11 @@ section {
 }
 
 .watch-info h2 span {
-    color: #B56CFF;
+    color: var(--lila);
 }
 
 .watch-info > p {
-    color: #858585;
+    color: var(--gris);
 
     line-height: 1.8;
 
@@ -787,15 +594,12 @@ section {
 
 
 /* =====================================================
-   FUNCIONES
+   FUNCIONES DEL RELOJ
 ===================================================== */
 
 .watch-points {
     display: grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
+    grid-template-columns: repeat(2,1fr);
     gap: 12px;
 }
 
@@ -811,8 +615,7 @@ section {
             #070707
         );
 
-    border:
-        1px solid #202020;
+    border: 1px solid rgba(191,239,255,.12);
 
     transition: .35s;
 
@@ -821,7 +624,6 @@ section {
     display: block;
 
     position: relative;
-
     overflow: hidden;
 }
 
@@ -831,7 +633,6 @@ section {
     position: absolute;
 
     left: -100%;
-
     top: 0;
 
     width: 100%;
@@ -854,7 +655,7 @@ section {
         scale(1.02);
 
     border-color:
-        rgba(181,108,255,.65);
+        rgba(181,108,255,.48);
 
     box-shadow:
         0 18px 50px rgba(0,0,0,.5);
@@ -866,15 +667,16 @@ section {
 
 .watch-point strong {
     display: block;
-
     margin-bottom: 7px;
-
     font-size: 15px;
+}
+
+.watch-point:hover strong {
+    color: var(--lila);
 }
 
 .watch-point span {
     color: #666;
-
     font-size: 12px;
 }
 
@@ -888,7 +690,7 @@ section {
 
     transform: translateY(-50%);
 
-    color: #B56CFF;
+    color: var(--lila);
 
     font-size: 19px;
 
@@ -911,18 +713,15 @@ section {
 
     border-radius: 30px;
 
-    background:
-        rgba(10,10,10,.85);
+    background: rgba(10,10,10,.85);
 
-    border:
-        1px solid rgba(181,108,255,.35);
+    border: 1px solid rgba(181,108,255,.35);
 
     backdrop-filter: blur(10px);
 
     color: #aaa;
 
     font-size: 10px;
-
     letter-spacing: 1px;
 
     z-index: 5;
@@ -953,7 +752,6 @@ section {
 
 .divider {
     width: 100%;
-
     max-width: 900px;
 
     height: 1px;
@@ -967,6 +765,322 @@ section {
             #252525,
             transparent
         );
+}
+
+
+/* =====================================================
+   PROYECTO
+===================================================== */
+
+.about {
+    background: #000;
+}
+
+.about-content {
+    max-width: 1050px;
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 70px;
+
+    align-items: center;
+}
+
+.about-text h2 {
+    color: var(--blanco);
+
+    font-size: 48px;
+
+    margin-bottom: 25px;
+}
+
+.about-text h2 span {
+    color: var(--lila);
+}
+
+.about-text p {
+    color: var(--gris);
+
+    line-height: 1.8;
+
+    margin-bottom: 20px;
+}
+
+.about-box {
+    padding: 40px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c0c0c,
+            #050505
+        );
+
+    border: 1px solid rgba(191,239,255,.12);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.4);
+}
+
+.about-box h3 {
+    margin-bottom: 20px;
+}
+
+.about-box ul {
+    list-style: none;
+}
+
+.about-box li {
+    color: #909090;
+
+    margin: 18px 0;
+
+    padding-left: 25px;
+
+    position: relative;
+}
+
+.about-box li::before {
+    content: "✓";
+
+    position: absolute;
+    left: 0;
+
+    color: var(--lila);
+
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   PROBLEMA
+===================================================== */
+
+.problem-section {
+    padding: 72px 6%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #030303,
+            #08050d,
+            #030303
+        );
+}
+
+.problem-grid {
+    max-width: 1100px;
+
+    margin: 35px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap: 18px;
+}
+
+.problem-card {
+    padding: 28px 24px;
+
+    border: 1px solid rgba(191,239,255,.12);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(181,108,255,.07),
+            rgba(191,239,255,.025)
+        );
+
+    transition: .35s ease;
+}
+
+.problem-card:hover {
+    transform: translateY(-6px);
+
+    border-color:
+        rgba(181,108,255,.48);
+}
+
+.problem-icon,
+.inside-icon {
+    width: 54px;
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 16px;
+
+    background: rgba(181,108,255,.10);
+
+    border: 1px solid rgba(181,108,255,.22);
+
+    font-size: 25px;
+
+    margin-bottom: 18px;
+}
+
+.problem-card h3 {
+    margin-bottom: 10px;
+}
+
+.problem-card p {
+    color: var(--gris);
+
+    line-height: 1.7;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   RELOJ POR DENTRO
+===================================================== */
+
+.inside-section {
+    padding: 72px 6%;
+    background: #050505;
+}
+
+.inside-layout {
+    max-width: 1150px;
+
+    margin: 35px auto 0;
+
+    display: grid;
+
+    grid-template-columns: 1.1fr .9fr;
+
+    gap: 35px;
+
+    align-items: center;
+}
+
+.inside-watch {
+    min-height: 480px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 28px;
+
+    border: 1px solid rgba(181,108,255,.18);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(181,108,255,.12),
+            transparent 58%
+        ),
+        #02040c;
+
+    overflow: hidden;
+}
+
+.inside-watch::before {
+    content: "";
+
+    position: absolute;
+
+    width: 520px;
+    height: 520px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(181,108,255,.10),
+            transparent 68%
+        );
+
+    filter: blur(4px);
+}
+
+.inside-watch img {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    height: auto;
+
+    display: block;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 30px 45px rgba(0,0,0,.65)
+        );
+}
+
+.inside-watch-exploded {
+    min-height: 0;
+    padding: 0;
+}
+
+.inside-labels {
+    display: grid;
+    gap: 14px;
+}
+
+.inside-card {
+    padding: 20px;
+
+    border: 1px solid rgba(191,239,255,.12);
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.025);
+
+    transition: .3s;
+}
+
+.inside-card:hover {
+    transform: translateX(5px);
+
+    border-color:
+        rgba(181,108,255,.48);
+}
+
+.inside-card strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: var(--blanco);
+}
+
+.inside-card span {
+    color: var(--gris);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+.inside-card b {
+    color: var(--azul-claro);
+    font-weight: 500;
 }
 
 
@@ -1000,13 +1114,11 @@ section {
             #050505
         );
 
-    border:
-        1px solid #202020;
+    border: 1px solid rgba(191,239,255,.12);
 
     transition: .4s;
 
     position: relative;
-
     overflow: hidden;
 }
 
@@ -1033,7 +1145,7 @@ section {
 
 .function-detail:hover {
     border-color:
-        rgba(181,108,255,.45);
+        rgba(181,108,255,.48);
 
     box-shadow:
         0 25px 80px rgba(0,0,0,.5);
@@ -1084,12 +1196,11 @@ section {
 
 .function-detail h3 {
     font-size: 30px;
-
     margin-bottom: 6px;
 }
 
 .function-detail-label {
-    color: #B56CFF;
+    color: var(--lila);
 
     font-size: 11px;
 
@@ -1099,7 +1210,7 @@ section {
 }
 
 .function-detail p {
-    color: #858585;
+    color: var(--gris);
 
     line-height: 1.8;
 
@@ -1110,7 +1221,6 @@ section {
 
 .function-list {
     list-style: none;
-
     margin-top: 20px;
 }
 
@@ -1133,7 +1243,7 @@ section {
 
     left: 0;
 
-    color: #B56CFF;
+    color: var(--lila);
 
     font-weight: bold;
 }
@@ -1147,8 +1257,7 @@ section {
 
     border-radius: 25px;
 
-    border:
-        1px solid #292929;
+    border: 1px solid #292929;
 
     color: #aaa;
 
@@ -1160,9 +1269,191 @@ section {
 .back-watch:hover {
     color: #fff;
 
-    border-color: #B56CFF;
+    border-color: var(--lila);
 
     transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   CUIDADOR / APP
+===================================================== */
+
+.caregiver-section {
+    padding: 72px 6%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #030303,
+            #070a0d,
+            #030303
+        );
+}
+
+.caregiver-layout {
+    max-width: 1050px;
+
+    margin: 35px auto 0;
+
+    display: grid;
+
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 55px;
+
+    align-items: center;
+}
+
+.phone {
+    width: 280px;
+
+    margin: auto;
+
+    padding: 12px;
+
+    border: 1px solid rgba(191,239,255,.25);
+
+    border-radius: 34px;
+
+    background: #080808;
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.55),
+        0 0 45px rgba(181,108,255,.08);
+}
+
+.phone-screen {
+    min-height: 510px;
+
+    padding: 24px 18px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #101015,
+            #08090b
+        );
+
+    border: 1px solid rgba(255,255,255,.05);
+}
+
+.phone-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #777;
+
+    font-size: 11px;
+
+    margin-bottom: 22px;
+}
+
+.phone-title {
+    font-size: 22px;
+
+    font-weight: bold;
+
+    margin-bottom: 18px;
+}
+
+.phone-user {
+    padding: 16px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(181,108,255,.08);
+
+    border:
+        1px solid rgba(181,108,255,.18);
+
+    margin-bottom: 12px;
+}
+
+.phone-user small {
+    color: var(--lila);
+
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+.phone-user strong {
+    font-size: 15px;
+}
+
+.phone-location {
+    padding: 16px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(191,239,255,.07);
+
+    border:
+        1px solid rgba(191,239,255,.15);
+
+    margin-bottom: 12px;
+}
+
+.phone-location small {
+    color: var(--azul-claro);
+
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+.phone-location strong {
+    font-size: 14px;
+}
+
+.phone-sos {
+    margin-top: 18px;
+
+    padding: 15px;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    color: #fff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5b1dff,
+            #B56CFF
+        );
+
+    font-weight: bold;
+
+    box-shadow:
+        0 10px 30px rgba(181,108,255,.18);
+}
+
+.caregiver-text h3 {
+    font-size: 35px;
+
+    margin-bottom: 16px;
+}
+
+.caregiver-text h3 span {
+    color: var(--azul-claro);
+}
+
+.caregiver-text p {
+    color: var(--gris);
+
+    line-height: 1.8;
+
+    max-width: 520px;
+
+    margin-bottom: 20px;
 }
 
 
@@ -1222,7 +1513,7 @@ section {
     align-items: center;
     justify-content: center;
 
-    color: #B56CFF;
+    color: var(--lila);
 
     font-weight: bold;
 
@@ -1241,6 +1532,140 @@ section {
     font-size: 14px;
 
     line-height: 1.7;
+}
+
+
+/* =====================================================
+   PENSADO PARA DOS
+===================================================== */
+
+.roles-section {
+    padding: 72px 6%;
+    background: #000;
+}
+
+.roles-grid {
+    max-width: 1050px;
+
+    margin: 35px auto 0;
+
+    display: grid;
+
+    grid-template-columns:
+        1fr auto 1fr;
+
+    gap: 22px;
+
+    align-items: stretch;
+}
+
+.role-card {
+    padding: 32px;
+
+    border: 1px solid rgba(191,239,255,.12);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0d0d0d,
+            #050505
+        );
+}
+
+.role-card:first-child {
+    box-shadow:
+        inset 0 0 50px
+        rgba(181,108,255,.04);
+}
+
+.role-card:last-child {
+    box-shadow:
+        inset 0 0 50px
+        rgba(191,239,255,.04);
+}
+
+.role-card h3 {
+    margin-bottom: 18px;
+}
+
+.role-card h3 span {
+    color: var(--lila);
+}
+
+.role-card:last-child h3 span {
+    color: var(--azul-claro);
+}
+
+.role-card ul {
+    list-style: none;
+}
+
+.role-card li {
+    color: #929292;
+
+    margin: 13px 0;
+
+    padding-left: 20px;
+
+    position: relative;
+
+    font-size: 14px;
+}
+
+.role-card li::before {
+    content: "✓";
+
+    position: absolute;
+
+    left: 0;
+
+    color: var(--lila);
+}
+
+.role-card:last-child li::before {
+    color: var(--azul-claro);
+}
+
+.role-center {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+
+    color: var(--blanco);
+
+    letter-spacing: 2px;
+}
+
+.role-center span {
+    width: 65px;
+    height: 65px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(181,108,255,.35);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(181,108,255,.18),
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 30px
+        rgba(181,108,255,.10);
 }
 
 
@@ -1272,8 +1697,7 @@ section {
     justify-content: center;
     align-items: center;
 
-    border:
-        2px solid #ff3333;
+    border: 2px solid #ff3333;
 
     box-shadow:
         0 0 40px rgba(255,0,0,.12),
@@ -1299,7 +1723,6 @@ section {
             0 0 75px rgba(255,0,0,.22),
             inset 0 0 45px rgba(255,0,0,.12);
     }
-
 }
 
 .sos-ring:hover {
@@ -1334,7 +1757,7 @@ section {
 
     margin: auto;
 
-    color: #858585;
+    color: var(--gris);
 
     line-height: 1.7;
 }
@@ -1355,8 +1778,7 @@ section {
 
     display: grid;
 
-    grid-template-columns:
-        1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 
     gap: 70px;
 
@@ -1368,8 +1790,7 @@ section {
 
     border-radius: 25px;
 
-    border:
-        1px solid #1c1c1c;
+    border: 1px solid rgba(191,239,255,.12);
 
     background:
         radial-gradient(
@@ -1383,7 +1804,6 @@ section {
     flex-direction: column;
 
     justify-content: center;
-
     align-items: center;
 
     position: relative;
@@ -1422,7 +1842,6 @@ section {
     50% {
         transform: scale(1.15);
     }
-
 }
 
 .solar-icon {
@@ -1440,7 +1859,7 @@ section {
 }
 
 .solar-visual strong,
-.solar-visual span {
+.solar-visual > span {
     position: relative;
 }
 
@@ -1448,51 +1867,25 @@ section {
     font-size: 21px;
 }
 
-.solar-visual span {
+.solar-visual > span {
     color: #666;
-
     margin-top: 10px;
 }
 
-.energy-flow {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 12px;
-
-    margin-top: 25px;
-
-    color: #aaa;
-
-    font-size: 12px;
-}
-
-.energy-flow span {
-    padding: 8px 12px;
-
-    border-radius: 20px;
-
-    border:
-        1px solid #292929;
-
-    background: #090909;
-}
-
 .solar-text h2 {
+    color: var(--blanco);
+
     font-size: 45px;
 
     margin-bottom: 20px;
 }
 
 .solar-text h2 span {
-    color: #B56CFF;
+    color: var(--lila);
 }
 
 .solar-text p {
-    color: #858585;
+    color: var(--gris);
 
     line-height: 1.8;
 
@@ -1516,99 +1909,293 @@ section {
 
 
 /* =====================================================
-   PROYECTO
+   PROCESO
 ===================================================== */
 
-.about {
-    background: #000;
+.process-section {
+    padding: 72px 6%;
+    background: #050505;
 }
 
-.about-content {
-    max-width: 1050px;
+.process-grid {
+    max-width: 1100px;
 
-    margin: auto;
+    margin: 35px auto 0;
 
     display: grid;
 
     grid-template-columns:
-        1fr 1fr;
+        repeat(4,1fr);
 
-    gap: 70px;
-
-    align-items: center;
+    gap: 16px;
 }
 
-.about-text h2 {
-    font-size: 48px;
+.process-card {
+    padding: 25px 20px;
 
-    margin-bottom: 25px;
+    border-radius: 20px;
+
+    border: 1px solid rgba(191,239,255,.12);
+
+    background: rgba(255,255,255,.018);
+
+    transition: .3s;
 }
 
-.about-text h2 span {
-    color: #B56CFF;
+.process-card:hover {
+    border-color:
+        rgba(181,108,255,.48);
 }
 
-.about-text p {
-    color: #858585;
+.process-number {
+    color: var(--lila);
 
-    line-height: 1.8;
+    font-size: 11px;
+
+    letter-spacing: 2px;
 
     margin-bottom: 20px;
 }
 
-.about-box {
-    padding: 40px;
+.process-card h3 {
+    margin-bottom: 9px;
+}
 
-    border-radius: 25px;
+.process-card p {
+    color: var(--gris);
+
+    line-height: 1.65;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   INDICADOR DE ENERGÍA
+===================================================== */
+
+.energy-meter {
+    max-width: 380px;
+
+    margin: 28px auto 0;
+
+    position: relative;
+    z-index: 2;
+}
+
+.energy-meter-top {
+    display: flex;
+
+    justify-content: space-between;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    margin-bottom: 9px;
+}
+
+.energy-bar {
+    height: 9px;
+
+    border-radius: 20px;
+
+    background: #151515;
+
+    overflow: hidden;
+
+    border: 1px solid #242424;
+}
+
+.energy-bar span {
+    display: block;
+
+    width: 85%;
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--azul-claro),
+            var(--lila)
+        );
+
+    box-shadow:
+        0 0 18px
+        rgba(181,108,255,.25);
+}
+
+.energy-note {
+    color: #666;
+
+    font-size: 11px;
+
+    margin-top: 9px;
+}
+
+.energy-flow {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-top: 25px;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    position: relative;
+    z-index: 2;
+}
+
+.energy-flow span {
+    padding: 8px 12px;
+
+    border-radius: 20px;
+
+    border: 1px solid #292929;
+
+    background: #090909;
+}
+
+
+/* =====================================================
+   CONTACTO
+===================================================== */
+
+.contact-section {
+    padding: 75px 6%;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(181,108,255,.08),
+            transparent 55%
+        ),
+        #000;
+
+    text-align: center;
+}
+
+.contact-content {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.contact-intro {
+    max-width: 650px;
+
+    margin: 0 auto 35px;
+
+    color: var(--gris);
+
+    line-height: 1.7;
+}
+
+.contact-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap: 18px;
+}
+
+.contact-card {
+    padding: 28px 20px;
+
+    border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            #0c0c0c,
+            #101010,
             #050505
         );
 
-    border:
-        1px solid #1d1d1d;
+    border: 1px solid rgba(191,239,255,.12);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.4);
+        0 20px 50px rgba(0,0,0,.35);
+
+    transition: .35s;
 }
 
-.about-box h3 {
-    margin-bottom: 20px;
+.contact-card:hover {
+    transform: translateY(-7px);
+
+    border-color:
+        rgba(181,108,255,.48);
+
+    box-shadow:
+        0 25px 65px rgba(0,0,0,.5);
 }
 
-.about-box ul {
-    list-style: none;
+.contact-icon {
+    width: 52px;
+    height: 52px;
+
+    margin: 0 auto 16px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background:
+        rgba(181,108,255,.10);
+
+    border:
+        1px solid rgba(181,108,255,.20);
+
+    font-size: 24px;
 }
 
-.about-box li {
-    color: #909090;
+.contact-card small {
+    display: block;
 
-    margin: 18px 0;
+    color: var(--lila);
 
-    padding-left: 25px;
+    font-size: 10px;
 
-    position: relative;
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 9px;
 }
 
-.about-box li::before {
-    content: "✓";
+.contact-card strong {
+    display: block;
 
-    position: absolute;
+    color: #eee;
 
-    left: 0;
+    font-size: 15px;
 
-    color: #B56CFF;
+    font-weight: 500;
 
-    font-weight: bold;
+    word-break: break-word;
 }
 
+.contact-brand {
+    margin-top: 32px;
 
+    color: #555;
 
-/* CONTACTO MEMORA AEI */
-.contact-section{padding:75px 6%;background:radial-gradient(circle at center,rgba(181,108,255,.08),transparent 55%),#000;text-align:center}.contact-content{max-width:1100px;margin:auto}.contact-intro{max-width:650px;margin:0 auto 35px;color:#858585;line-height:1.7}.contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.contact-card{padding:28px 20px;border-radius:20px;background:linear-gradient(145deg,#101010,#050505);border:1px solid #202020;box-shadow:0 20px 50px rgba(0,0,0,.35);transition:.35s}.contact-card:hover{transform:translateY(-7px);border-color:rgba(181,108,255,.45);box-shadow:0 25px 65px rgba(0,0,0,.5)}.contact-icon{width:52px;height:52px;margin:0 auto 16px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:rgba(181,108,255,.10);border:1px solid rgba(181,108,255,.20);font-size:24px}.contact-card small{display:block;color:#B56CFF;font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:9px}.contact-card strong{display:block;color:#eee;font-size:15px;font-weight:500;word-break:break-word}.contact-brand{margin-top:32px;color:#555;font-size:11px;letter-spacing:3px;text-transform:uppercase}@media(max-width:900px){.contact-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.contact-section{padding:65px 6%}.contact-grid{grid-template-columns:1fr}}
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+}
+
 
 /* =====================================================
    FRASE FINAL
@@ -1635,7 +2222,8 @@ section {
     left: 50%;
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%);
 
     border-radius: 50%;
 
@@ -1652,7 +2240,7 @@ section {
 }
 
 .final-message small {
-    color: #B56CFF;
+    color: var(--lila);
 
     letter-spacing: 4px;
 
@@ -1660,11 +2248,14 @@ section {
 }
 
 .final-message h2 {
+    color: var(--blanco);
+
     max-width: 900px;
 
     margin: 25px auto;
 
-    font-size: clamp(38px, 6vw, 75px);
+    font-size:
+        clamp(38px, 6vw, 75px);
 
     line-height: 1;
 
@@ -1672,7 +2263,7 @@ section {
 }
 
 .final-message h2 span {
-    color: #B56CFF;
+    color: var(--lila);
 }
 
 .final-message p {
@@ -1708,10 +2299,9 @@ section {
 
     background: rgba(20,20,20,.9);
 
-    border:
-        1px solid #292929;
+    border: 1px solid #292929;
 
-    color: #B56CFF;
+    color: var(--lila);
 
     font-size: 20px;
 
@@ -1725,7 +2315,7 @@ section {
 .top-button:hover {
     transform: translateY(-4px);
 
-    border-color: #B56CFF;
+    border-color: var(--lila);
 
     box-shadow:
         0 10px 30px
@@ -1742,8 +2332,7 @@ footer {
 
     text-align: center;
 
-    border-top:
-        1px solid #151515;
+    border-top: 1px solid #151515;
 
     color: #555;
 
@@ -1757,7 +2346,7 @@ footer strong {
 }
 
 .footer-brand {
-    color: #B56CFF;
+    color: var(--lila);
 
     font-size: 11px;
 
@@ -1814,12 +2403,6 @@ footer strong {
         padding-top: 90px;
     }
 
-    .hero h1 {
-        font-size: 56px;
-
-        letter-spacing: -2px;
-    }
-
     section {
         padding: 65px 6%;
     }
@@ -1830,21 +2413,17 @@ footer strong {
 
     .watch-showcase {
         grid-template-columns: 1fr;
-
         gap: 55px;
-
         text-align: center;
     }
 
     .watch-info {
         max-width: 700px;
-
         margin: auto;
     }
 
     .steps {
-        grid-template-columns:
-            repeat(2,1fr);
+        grid-template-columns: repeat(2,1fr);
     }
 
     .solar-content {
@@ -1859,14 +2438,32 @@ footer strong {
         padding: 40px;
     }
 
-    .label-gps {
-        left: 8%;
-    }
-
+    .label-gps,
     .label-sos {
         left: 8%;
     }
 
+    .problem-grid,
+    .process-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .inside-layout,
+    .caregiver-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .role-center {
+        padding: 2px 0;
+    }
+
+    .contact-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
 }
 
 
@@ -1888,25 +2485,11 @@ footer strong {
         padding-top: 82px;
     }
 
-    .hero h1 {
-        font-size: 44px;
-
-        letter-spacing: -1.5px;
-    }
-
-    .hero-description {
-        font-size: 16px;
-    }
-
     .watch-logo {
         width: 150px;
         top: 25px;
         right: 5%;
         opacity: .10;
-    }
-
-    .stats {
-        gap: 30px;
     }
 
     .section-title h2 {
@@ -1919,7 +2502,6 @@ footer strong {
 
     .watch-points {
         grid-template-columns: 1fr;
-
         text-align: left;
     }
 
@@ -1930,14 +2512,10 @@ footer strong {
 
     .product-label {
         font-size: 8px;
-
         padding: 7px 10px;
     }
 
-    .label-gps {
-        left: 0;
-    }
-
+    .label-gps,
     .label-sos {
         left: 0;
     }
@@ -1975,7 +2553,6 @@ footer strong {
 
     .function-detail {
         padding: 30px 22px;
-
         margin-bottom: 40px;
     }
 
@@ -1986,7 +2563,6 @@ footer strong {
     .function-detail-icon {
         width: 58px;
         height: 58px;
-
         font-size: 25px;
     }
 
@@ -2006,348 +2582,39 @@ footer strong {
         letter-spacing: -1.5px;
     }
 
-}
-
-
-
-/* =====================================================
-   NUEVA PALETA MEMORA AEI
-===================================================== */
-
-:root {
-    --lila: #B56CFF;
-    --lila-soft: #D9B8FF;
-    --azul-claro: #BFEFFF;
-    --blanco: #FFFFFF;
-    --gris: #858585;
-    --fondo: #020202;
-}
-
-body {
-    background: var(--fondo);
-}
-
-.section-title h2,
-.about-text h2,
-.watch-info h2,
-.solar-text h2,
-.final-message h2 {
-    color: var(--blanco);
-}
-
-.eyebrow,
-.section-title small,
-.function-detail-label,
-.contact-card small {
-    color: var(--lila);
-}
-
-.logo-dot {
-    background: var(--lila);
-    box-shadow: 0 0 15px var(--lila), 0 0 30px rgba(181,108,255,.45);
-}
-
-.logo-text span,
-nav a:hover,
-.button:hover,
-.button-secondary:hover,
-.watch-point:hover strong,
-.about-text h2 span,
-.solar-text h2 span,
-.final-message h2 span {
-    color: var(--lila);
-}
-
-.card,
-.watch-point,
-.function-detail,
-.about-box,
-.contact-card,
-.problem-card,
-.inside-card,
-.process-card,
-.role-card,
-.app-screen,
-.map-panel {
-    border-color: rgba(191,239,255,.12);
-}
-
-.card:hover,
-.watch-point:hover,
-.function-detail:hover,
-.problem-card:hover,
-.inside-card:hover,
-.process-card:hover,
-.role-card:hover,
-.contact-card:hover {
-    border-color: rgba(181,108,255,.48);
-}
-
-/* =====================================================
-   PROBLEMA
-===================================================== */
-
-.problem-section,
-.inside-section,
-.caregiver-section,
-.roles-section,
-.process-section {
-    padding: 72px 6%;
-}
-
-.problem-section {
-    background: linear-gradient(180deg,#030303,#08050d,#030303);
-}
-
-.problem-grid {
-    max-width: 1100px;
-    margin: 35px auto 0;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 18px;
-}
-
-.problem-card {
-    padding: 28px 24px;
-    border: 1px solid rgba(191,239,255,.12);
-    border-radius: 22px;
-    background: linear-gradient(145deg,rgba(181,108,255,.07),rgba(191,239,255,.025));
-    transition: .35s ease;
-}
-
-.problem-card:hover { transform: translateY(-6px); }
-
-.problem-icon,
-.inside-icon {
-    width: 54px;
-    height: 54px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 16px;
-    background: rgba(181,108,255,.10);
-    border: 1px solid rgba(181,108,255,.22);
-    font-size: 25px;
-    margin-bottom: 18px;
-}
-
-.problem-card h3 { margin-bottom: 10px; }
-.problem-card p { color: var(--gris); line-height: 1.7; font-size: 14px; }
-
-/* =====================================================
-   RELOJ POR DENTRO
-===================================================== */
-
-.inside-section {
-    background: #050505;
-}
-
-.inside-layout {
-    max-width: 1150px;
-    margin: 35px auto 0;
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap: 35px;
-    align-items: center;
-}
-
-.inside-watch {
-    min-height: 480px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 28px;
-    border: 1px solid rgba(191,239,255,.10);
-    background: radial-gradient(circle,rgba(181,108,255,.12),transparent 58%),#070707;
-    overflow: hidden;
-}
-
-.inside-watch::before {
-    content: "";
-    position: absolute;
-    width: 330px;
-    height: 330px;
-    border-radius: 50%;
-    background: radial-gradient(circle,rgba(191,239,255,.11),transparent 68%);
-    filter: blur(4px);
-}
-
-.inside-watch img {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    display: block;
-    filter: drop-shadow(0 30px 45px rgba(0,0,0,.65));
-}
-
-.inside-watch-exploded {
-    min-height: 0;
-    padding: 0;
-    background: #02040c;
-    border: 1px solid rgba(181,108,255,.18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.inside-watch-exploded img {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 1100px;
-    height: auto;
-    display: block;
-    object-fit: contain;
-    filter: drop-shadow(0 30px 45px rgba(0,0,0,.65));
-}
-
-.inside-watch-exploded::before {
-    width: 520px;
-    height: 520px;
-    background: radial-gradient(circle,rgba(181,108,255,.10),transparent 68%);
-}
-
-@media(max-width:900px){
-    .inside-watch-exploded {
-        min-height: 0;
+    .problem-section,
+    .inside-section,
+    .caregiver-section,
+    .roles-section,
+    .process-section {
+        padding: 60px 6%;
     }
-}
 
-.inside-labels { display: grid; gap: 14px; }
+    .problem-grid,
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
 
-.inside-card {
-    padding: 20px;
-    border: 1px solid rgba(191,239,255,.12);
-    border-radius: 18px;
-    background: rgba(255,255,255,.025);
-    transition: .3s;
-}
+    .inside-watch {
+        min-height: 360px;
+    }
 
-.inside-card:hover { transform: translateX(5px); }
-.inside-card strong { display:block; margin-bottom:5px; color:var(--blanco); }
-.inside-card span { color:var(--gris); font-size:13px; line-height:1.5; }
-.inside-card b { color:var(--azul-claro); font-weight:500; }
+    .inside-watch img {
+        width: 100%;
+        max-width: 100%;
+    }
 
-/* =====================================================
-   CUIDADOR / APP CONCEPTUAL
-===================================================== */
+    .phone {
+        width: 250px;
+    }
 
-.caregiver-section { background: linear-gradient(180deg,#030303,#070a0d,#030303); }
+    .contact-section {
+        padding: 65px 6%;
+    }
 
-.caregiver-layout {
-    max-width: 1050px;
-    margin: 35px auto 0;
-    display: grid;
-    grid-template-columns: .8fr 1.2fr;
-    gap: 55px;
-    align-items: center;
-}
-
-.phone {
-    width: 280px;
-    margin: auto;
-    padding: 12px;
-    border: 1px solid rgba(191,239,255,.25);
-    border-radius: 34px;
-    background: #080808;
-    box-shadow: 0 30px 80px rgba(0,0,0,.55),0 0 45px rgba(181,108,255,.08);
-}
-
-.phone-screen {
-    min-height: 510px;
-    padding: 24px 18px;
-    border-radius: 25px;
-    background: linear-gradient(180deg,#101015,#08090b);
-    border: 1px solid rgba(255,255,255,.05);
-}
-
-.phone-top { display:flex; justify-content:space-between; color:#777; font-size:11px; margin-bottom:22px; }
-.phone-title { font-size:22px; font-weight:bold; margin-bottom:18px; }
-.phone-user { padding:16px; border-radius:18px; background:rgba(181,108,255,.08); border:1px solid rgba(181,108,255,.18); margin-bottom:12px; }
-.phone-user small { color:var(--lila); display:block; margin-bottom:5px; }
-.phone-user strong { font-size:15px; }
-.phone-location { padding:16px; border-radius:18px; background:rgba(191,239,255,.07); border:1px solid rgba(191,239,255,.15); margin-bottom:12px; }
-.phone-location small { color:var(--azul-claro); display:block; margin-bottom:5px; }
-.phone-location strong { font-size:14px; }
-.phone-sos { margin-top:18px; padding:15px; text-align:center; border-radius:18px; color:#fff; background:linear-gradient(135deg,#5b1dff,#B56CFF); font-weight:bold; box-shadow:0 10px 30px rgba(181,108,255,.18); }
-
-.caregiver-text h3 { font-size:35px; margin-bottom:16px; }
-.caregiver-text h3 span { color:var(--azul-claro); }
-.caregiver-text p { color:var(--gris); line-height:1.8; max-width:520px; margin-bottom:20px; }
-
-/* =====================================================
-   PENSADO PARA DOS
-===================================================== */
-
-.roles-section { background:#000; }
-
-.roles-grid {
-    max-width:1050px;
-    margin:35px auto 0;
-    display:grid;
-    grid-template-columns:1fr auto 1fr;
-    gap:22px;
-    align-items:stretch;
-}
-
-.role-card {
-    padding:32px;
-    border:1px solid rgba(191,239,255,.12);
-    border-radius:24px;
-    background:linear-gradient(145deg,#0d0d0d,#050505);
-}
-
-.role-card:first-child { box-shadow:inset 0 0 50px rgba(181,108,255,.04); }
-.role-card:last-child { box-shadow:inset 0 0 50px rgba(191,239,255,.04); }
-.role-card h3 { margin-bottom:18px; }
-.role-card h3 span { color:var(--lila); }
-.role-card:last-child h3 span { color:var(--azul-claro); }
-.role-card ul { list-style:none; }
-.role-card li { color:#929292; margin:13px 0; padding-left:20px; position:relative; font-size:14px; }
-.role-card li::before { content:"✓"; position:absolute; left:0; color:var(--lila); }
-.role-card:last-child li::before { color:var(--azul-claro); }
-.role-center { display:flex; align-items:center; justify-content:center; font-weight:bold; color:var(--blanco); letter-spacing:2px; }
-.role-center span { width:65px; height:65px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:1px solid rgba(181,108,255,.35); background:radial-gradient(circle,rgba(181,108,255,.18),transparent 70%); box-shadow:0 0 30px rgba(181,108,255,.10); }
-
-/* =====================================================
-   PROCESO
-===================================================== */
-
-.process-section { background:#050505; }
-.process-grid { max-width:1100px; margin:35px auto 0; display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
-.process-card { padding:25px 20px; border-radius:20px; border:1px solid rgba(191,239,255,.12); background:rgba(255,255,255,.018); }
-.process-number { color:var(--lila); font-size:11px; letter-spacing:2px; margin-bottom:20px; }
-.process-card h3 { margin-bottom:9px; }
-.process-card p { color:var(--gris); line-height:1.65; font-size:13px; }
-
-/* =====================================================
-   INDICADOR DE ENERGÍA
-===================================================== */
-
-.energy-meter { max-width:380px; margin:28px auto 0; }
-.energy-meter-top { display:flex; justify-content:space-between; color:#aaa; font-size:12px; margin-bottom:9px; }
-.energy-bar { height:9px; border-radius:20px; background:#151515; overflow:hidden; border:1px solid #242424; }
-.energy-bar span { display:block; width:85%; height:100%; border-radius:20px; background:linear-gradient(90deg,var(--azul-claro),var(--lila)); box-shadow:0 0 18px rgba(181,108,255,.25); }
-.energy-note { color:#666; font-size:11px; margin-top:9px; }
-
-@media(max-width:900px){
-    .problem-grid,.process-grid { grid-template-columns:1fr 1fr; }
-    .inside-layout,.caregiver-layout { grid-template-columns:1fr; }
-    .roles-grid { grid-template-columns:1fr; }
-    .role-center { padding:2px 0; }
-}
-
-@media(max-width:600px){
-    .problem-section,.inside-section,.caregiver-section,.roles-section,.process-section { padding:60px 6%; }
-    .problem-grid,.process-grid { grid-template-columns:1fr; }
-    .inside-watch { min-height:360px; }
-    .inside-watch img { width:100%; max-width:100%; }
-    .inside-watch-exploded img { width:100%; max-width:100%; }
-    .phone { width:250px; }
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 </style>
@@ -2359,11 +2626,8 @@ nav a:hover,
 <header>
 
     <div class="logo-text">
-
         <div class="logo-dot"></div>
-
         MEMORA<span> AEI</span>
-
     </div>
 
     <nav>
@@ -2382,41 +2646,109 @@ nav a:hover,
 
 </header>
 
+
 <main>
+
+
+<!-- =====================================================
+     INICIO
+===================================================== -->
 
 <section class="hero fade" id="inicio">
 
     <div class="video-container">
 
         <video controls autoplay muted loop playsinline>
+
             <source src="reloj.mp4" type="video/mp4">
+
             Tu navegador no puede reproducir este video.
+
         </video>
 
     </div>
 
 </section>
 
+
 <div class="divider"></div>
 
 
+<!-- =====================================================
+     PROBLEMA
+===================================================== -->
+
 <section class="problem-section">
+
     <div class="section-title">
+
         <small>El problema</small>
+
         <h2>¿Qué queremos solucionar?</h2>
-        <p>MEMORA AEI nace a partir de situaciones en las que la orientación, la ubicación y la comunicación pueden ser importantes.</p>
+
+        <p>
+            MEMORA AEI nace a partir de situaciones en las que
+            la orientación, la ubicación y la comunicación
+            pueden ser importantes.
+        </p>
+
     </div>
+
+
     <div class="problem-grid">
-        <div class="problem-card"><div class="problem-icon">🧭</div><h3>Desorientación</h3><p>Una interfaz sencilla busca ayudar al usuario a reconocer y acceder a funciones importantes.</p></div>
-        <div class="problem-card"><div class="problem-icon">📍</div><h3>Ubicación</h3><p>La propuesta contempla una función de localización para apoyar al cuidador cuando sea necesario.</p></div>
-        <div class="problem-card"><div class="problem-icon">🚨</div><h3>Emergencias</h3><p>El botón SOS plantea una forma rápida y reconocible de solicitar ayuda.</p></div>
+
+        <div class="problem-card">
+
+            <div class="problem-icon">🧭</div>
+
+            <h3>Desorientación</h3>
+
+            <p>
+                Una interfaz sencilla busca ayudar al usuario
+                a reconocer y acceder a funciones importantes.
+            </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+            <div class="problem-icon">📍</div>
+
+            <h3>Ubicación</h3>
+
+            <p>
+                La propuesta contempla una función de
+                localización para apoyar al cuidador cuando
+                sea necesario.
+            </p>
+
+        </div>
+
+
+        <div class="problem-card">
+
+            <div class="problem-icon">🚨</div>
+
+            <h3>Emergencias</h3>
+
+            <p>
+                El botón SOS plantea una forma rápida y
+                reconocible de solicitar ayuda.
+            </p>
+
+        </div>
+
     </div>
+
 </section>
 
-<section
-    class="watch-section"
-    id="reloj"
->
+
+<!-- =====================================================
+     RELOJ
+===================================================== -->
+
+<section class="watch-section" id="reloj">
 
     <img
         src="memora-logo.jpeg"
@@ -2424,7 +2756,9 @@ nav a:hover,
         class="watch-logo"
     >
 
+
     <div class="watch-showcase">
+
 
         <div class="watch-image-wrap">
 
@@ -2440,6 +2774,7 @@ nav a:hover,
                 ● ENERGÍA
             </div>
 
+
             <img
                 src="reloj-modelo.jpeg"
                 alt="Reloj MEMORA AEI"
@@ -2448,38 +2783,33 @@ nav a:hover,
 
         </div>
 
+
         <div class="watch-info">
 
             <div class="eyebrow">
                 El dispositivo
             </div>
 
+
             <h2>
-
                 Diseñado para
-
-                <span>
-                    acompañar.
-                </span>
-
+                <span>acompañar.</span>
             </h2>
 
-            <p>
 
+            <p>
                 MEMORA AEI propone un reloj inteligente
                 pensado para integrar funciones de
                 orientación, ubicación, comunicación
                 y emergencia en un dispositivo de
                 uso cotidiano.
-
             </p>
+
 
             <div class="watch-points">
 
-                <a
-                    href="#gps"
-                    class="watch-point"
-                >
+
+                <a href="#gps" class="watch-point">
 
                     <strong>
                         📍 GPS
@@ -2491,10 +2821,8 @@ nav a:hover,
 
                 </a>
 
-                <a
-                    href="#sos-resumen"
-                    class="watch-point"
-                >
+
+                <a href="#sos-resumen" class="watch-point">
 
                     <strong>
                         🚨 SOS
@@ -2506,10 +2834,8 @@ nav a:hover,
 
                 </a>
 
-                <a
-                    href="#contacto"
-                    class="watch-point"
-                >
+
+                <a href="#contacto" class="watch-point">
 
                     <strong>
                         🧑‍🦳 Contacto
@@ -2521,10 +2847,8 @@ nav a:hover,
 
                 </a>
 
-                <a
-                    href="#orientacion"
-                    class="watch-point"
-                >
+
+                <a href="#orientacion" class="watch-point">
 
                     <strong>
                         🧭 Orientación
@@ -2536,6 +2860,7 @@ nav a:hover,
 
                 </a>
 
+
             </div>
 
         </div>
@@ -2544,12 +2869,15 @@ nav a:hover,
 
 </section>
 
-<section
-    class="about"
-    id="proyecto"
->
+
+<!-- =====================================================
+     PROYECTO
+===================================================== -->
+
+<section class="about" id="proyecto">
 
     <div class="about-content">
+
 
         <div class="about-text">
 
@@ -2557,42 +2885,38 @@ nav a:hover,
                 Nuestro proyecto
             </div>
 
+
             <h2>
-
                 Tecnología con
-
-                <span>
-                    propósito.
-                </span>
-
+                <span>propósito.</span>
             </h2>
 
-            <p>
 
+            <p>
                 MEMORA AEI nace como una propuesta
                 tecnológica enfocada en apoyar a las
                 personas con Alzheimer y facilitar
                 el acompañamiento por parte de sus
                 familiares y cuidadores.
-
             </p>
 
-            <p>
 
+            <p>
                 El objetivo es integrar diferentes
                 funciones en un dispositivo de uso
                 cotidiano, buscando que la tecnología
                 sea sencilla, clara y útil.
-
             </p>
 
         </div>
+
 
         <div class="about-box">
 
             <h3>
                 Características
             </h3>
+
 
             <ul>
 
@@ -2628,6 +2952,11 @@ nav a:hover,
 
 </section>
 
+
+<!-- =====================================================
+     FUNCIONES
+===================================================== -->
+
 <section id="funciones">
 
     <div class="section-title">
@@ -2641,16 +2970,16 @@ nav a:hover,
         </h2>
 
         <p>
-
             El concepto reúne diferentes funciones
             destinadas a facilitar el acompañamiento
             y aumentar la seguridad del usuario.
-
         </p>
 
     </div>
 
+
     <div class="cards">
+
 
         <div class="card">
 
@@ -2663,14 +2992,13 @@ nav a:hover,
             </h3>
 
             <p>
-
                 El proyecto contempla tecnología de
                 localización para facilitar la ubicación
                 del usuario cuando sea necesario.
-
             </p>
 
         </div>
+
 
         <div class="card">
 
@@ -2683,14 +3011,13 @@ nav a:hover,
             </h3>
 
             <p>
-
                 Un botón de emergencia pensado para
                 permitir que el usuario solicite ayuda
                 rápidamente.
-
             </p>
 
         </div>
+
 
         <div class="card">
 
@@ -2703,39 +3030,141 @@ nav a:hover,
             </h3>
 
             <p>
-
                 Una función pensada para facilitar
                 la comunicación entre el usuario
                 y su cuidador.
-
             </p>
 
         </div>
 
+
     </div>
 
 </section>
 
+
+<!-- =====================================================
+     RELOJ POR DENTRO
+===================================================== -->
 
 <section class="inside-section">
+
     <div class="section-title">
-        <small>El dispositivo</small>
-        <h2>El reloj, parte por parte</h2>
-        <p>Una vista conceptual de los elementos que hacen parte de MEMORA AEI.</p>
+
+        <small>
+            El dispositivo
+        </small>
+
+        <h2>
+            El reloj, parte por parte
+        </h2>
+
+        <p>
+            Una vista conceptual de los elementos
+            que hacen parte de MEMORA AEI.
+        </p>
+
     </div>
+
+
     <div class="inside-layout">
+
+
         <div class="inside-watch inside-watch-exploded">
-            <img src="reloj-desarmado.png" alt="Reloj MEMORA AEI desarmado por partes y funciones">
+
+            <img
+                src="reloj-desarmado.png"
+                alt="Reloj MEMORA AEI desarmado por partes y funciones"
+            >
+
         </div>
+
+
         <div class="inside-labels">
-            <div class="inside-card"><div class="inside-icon">📍</div><strong>GPS integrado</strong><span>Ayuda a representar la función de <b>ubicación</b> del dispositivo.</span></div>
-            <div class="inside-card"><div class="inside-icon">🚨</div><strong>Botón SOS</strong><span>Elemento pensado para una <b>solicitud rápida de ayuda</b>.</span></div>
-            <div class="inside-card"><div class="inside-icon">☀️</div><strong>Panel de energía</strong><span>Pequeño panel pensado para aprovechar <b>luz solar y artificial</b>.</span></div>
-            <div class="inside-card"><div class="inside-icon">🧭</div><strong>Interfaz</strong><span>Diseñada como una experiencia <b>clara y sencilla</b>.</span></div>
+
+
+            <div class="inside-card">
+
+                <div class="inside-icon">
+                    📍
+                </div>
+
+                <strong>
+                    GPS integrado
+                </strong>
+
+                <span>
+                    Ayuda a representar la función de
+                    <b>ubicación</b> del dispositivo.
+                </span>
+
+            </div>
+
+
+            <div class="inside-card">
+
+                <div class="inside-icon">
+                    🚨
+                </div>
+
+                <strong>
+                    Botón SOS
+                </strong>
+
+                <span>
+                    Elemento pensado para una
+                    <b>solicitud rápida de ayuda</b>.
+                </span>
+
+            </div>
+
+
+            <div class="inside-card">
+
+                <div class="inside-icon">
+                    ☀️
+                </div>
+
+                <strong>
+                    Panel de energía
+                </strong>
+
+                <span>
+                    Pequeño panel pensado para aprovechar
+                    <b>luz solar y artificial</b>.
+                </span>
+
+            </div>
+
+
+            <div class="inside-card">
+
+                <div class="inside-icon">
+                    🧭
+                </div>
+
+                <strong>
+                    Interfaz
+                </strong>
+
+                <span>
+                    Diseñada como una experiencia
+                    <b>clara y sencilla</b>.
+                </span>
+
+            </div>
+
+
         </div>
+
     </div>
+
 </section>
 
+
+<!-- =====================================================
+     FUNCIONES DETALLADAS
+===================================================== -->
 
 <section
     class="function-details"
@@ -2753,13 +3182,14 @@ nav a:hover,
         </h2>
 
         <p>
-
             Cada herramienta tiene un propósito dentro
             del concepto MEMORA AEI.
-
         </p>
 
     </div>
+
+
+    <!-- GPS -->
 
     <div
         class="function-detail"
@@ -2786,15 +3216,15 @@ nav a:hover,
 
         </div>
 
-        <p>
 
+        <p>
             La función GPS está planteada para facilitar
             la localización del usuario. Desde el concepto
             del reloj, esta herramienta busca permitir que
             el cuidador pueda conocer la ubicación del
             dispositivo cuando sea necesario.
-
         </p>
+
 
         <ul class="function-list">
 
@@ -2818,6 +3248,7 @@ nav a:hover,
 
         </ul>
 
+
         <a
             href="#reloj"
             class="back-watch"
@@ -2826,6 +3257,9 @@ nav a:hover,
         </a>
 
     </div>
+
+
+    <!-- SOS -->
 
     <div
         class="function-detail"
@@ -2852,15 +3286,15 @@ nav a:hover,
 
         </div>
 
-        <p>
 
+        <p>
             El botón SOS está pensado para ofrecer una
             forma sencilla y rápida de solicitar ayuda.
             El usuario podría utilizarlo cuando se
             encuentre ante una situación que requiera
             atención.
-
         </p>
+
 
         <ul class="function-list">
 
@@ -2883,6 +3317,7 @@ nav a:hover,
 
         </ul>
 
+
         <a
             href="#reloj"
             class="back-watch"
@@ -2891,6 +3326,9 @@ nav a:hover,
         </a>
 
     </div>
+
+
+    <!-- CONTACTO -->
 
     <div
         class="function-detail"
@@ -2917,13 +3355,13 @@ nav a:hover,
 
         </div>
 
-        <p>
 
+        <p>
             La función de contacto está planteada para
             facilitar la comunicación entre la persona
             que utiliza el reloj y su cuidador o familiar.
-
         </p>
+
 
         <ul class="function-list">
 
@@ -2947,6 +3385,7 @@ nav a:hover,
 
         </ul>
 
+
         <a
             href="#reloj"
             class="back-watch"
@@ -2955,6 +3394,9 @@ nav a:hover,
         </a>
 
     </div>
+
+
+    <!-- ORIENTACIÓN -->
 
     <div
         class="function-detail"
@@ -2981,14 +3423,14 @@ nav a:hover,
 
         </div>
 
-        <p>
 
+        <p>
             La función de orientación busca ofrecer una
             interfaz clara que ayude al usuario a
             encontrar opciones importantes dentro del
             dispositivo.
-
         </p>
+
 
         <ul class="function-list">
 
@@ -3013,6 +3455,7 @@ nav a:hover,
 
         </ul>
 
+
         <a
             href="#reloj"
             class="back-watch"
@@ -3025,31 +3468,119 @@ nav a:hover,
 </section>
 
 
+<!-- =====================================================
+     CUIDADOR
+===================================================== -->
+
 <section class="caregiver-section">
+
     <div class="section-title">
-        <small>Experiencia del cuidador</small>
-        <h2>La tecnología conecta a dos personas</h2>
+
+        <small>
+            Experiencia del cuidador
+        </small>
+
+        <h2>
+            La tecnología conecta a dos personas
+        </h2>
+
     </div>
+
+
     <div class="caregiver-layout">
+
+
         <div class="phone">
+
             <div class="phone-screen">
-                <div class="phone-top"><span>MEMORA AEI</span><span>●</span></div>
-                <div class="phone-title">Panel del cuidador</div>
-                <div class="phone-user"><small>USUARIO</small><strong>Persona vinculada ✓</strong></div>
-                <div class="phone-location"><small>UBICACIÓN</small><strong>📍 Ubicación disponible</strong></div>
-                <div class="phone-user"><small>ESTADO</small><strong>✓ Sistema activo</strong></div>
-                <div class="phone-sos">🚨 SOLICITUD SOS</div>
+
+                <div class="phone-top">
+                    <span>MEMORA AEI</span>
+                    <span>●</span>
+                </div>
+
+                <div class="phone-title">
+                    Panel del cuidador
+                </div>
+
+                <div class="phone-user">
+
+                    <small>
+                        USUARIO
+                    </small>
+
+                    <strong>
+                        Persona vinculada ✓
+                    </strong>
+
+                </div>
+
+                <div class="phone-location">
+
+                    <small>
+                        UBICACIÓN
+                    </small>
+
+                    <strong>
+                        📍 Ubicación disponible
+                    </strong>
+
+                </div>
+
+                <div class="phone-user">
+
+                    <small>
+                        ESTADO
+                    </small>
+
+                    <strong>
+                        ✓ Sistema activo
+                    </strong>
+
+                </div>
+
+                <div class="phone-sos">
+                    🚨 SOLICITUD SOS
+                </div>
+
             </div>
+
         </div>
+
+
         <div class="caregiver-text">
-            <div class="eyebrow">Concepto de aplicación</div>
-            <h3>El cuidador también forma parte del <span>sistema.</span></h3>
-            <p>La página muestra de manera conceptual cómo podría verse un panel para acompañar al usuario, consultar información y recibir una alerta.</p>
-            <p>Esta representación es visual y hace parte del concepto de MEMORA AEI.</p>
+
+            <div class="eyebrow">
+                Concepto de aplicación
+            </div>
+
+            <h3>
+                El cuidador también forma parte
+                del <span>sistema.</span>
+            </h3>
+
+            <p>
+                La página muestra de manera conceptual
+                cómo podría verse un panel para acompañar
+                al usuario, consultar información y
+                recibir una alerta.
+            </p>
+
+            <p>
+                Esta representación es visual y hace
+                parte del concepto de MEMORA AEI.
+            </p>
+
         </div>
+
     </div>
+
 </section>
 
+
+<!-- =====================================================
+     CÓMO FUNCIONA
+===================================================== -->
 
 <section class="how-section">
 
@@ -3064,15 +3595,15 @@ nav a:hover,
         </h2>
 
         <p>
-
             Las funciones principales están planteadas
             para ser sencillas de reconocer y utilizar.
-
         </p>
 
     </div>
 
+
     <div class="steps">
+
 
         <div class="step">
 
@@ -3085,13 +3616,12 @@ nav a:hover,
             </h3>
 
             <p>
-
                 Una interfaz sencilla busca facilitar
                 el uso cotidiano del dispositivo.
-
             </p>
 
         </div>
+
 
         <div class="step">
 
@@ -3104,13 +3634,12 @@ nav a:hover,
             </h3>
 
             <p>
-
                 La función de ubicación está pensada
                 para facilitar la localización.
-
             </p>
 
         </div>
+
 
         <div class="step">
 
@@ -3123,13 +3652,12 @@ nav a:hover,
             </h3>
 
             <p>
-
                 El concepto contempla comunicación
                 con el cuidador.
-
             </p>
 
         </div>
+
 
         <div class="step">
 
@@ -3142,32 +3670,121 @@ nav a:hover,
             </h3>
 
             <p>
-
                 El botón SOS permite plantear una
                 solicitud rápida de ayuda.
-
             </p>
 
         </div>
 
+
     </div>
 
 </section>
 
+
+<!-- =====================================================
+     PENSADO PARA DOS
+===================================================== -->
 
 <section class="roles-section">
+
     <div class="section-title">
-        <small>Pensado para dos</small>
-        <h2>Persona + cuidador</h2>
-        <p>El propósito del proyecto es crear una conexión sencilla entre quien usa el reloj y quien lo acompaña.</p>
+
+        <small>
+            Pensado para dos
+        </small>
+
+        <h2>
+            Persona + cuidador
+        </h2>
+
+        <p>
+            El propósito del proyecto es crear una
+            conexión sencilla entre quien usa el reloj
+            y quien lo acompaña.
+        </p>
+
     </div>
+
+
     <div class="roles-grid">
-        <div class="role-card"><h3>Para la <span>persona</span></h3><ul><li>Orientación sencilla</li><li>Botón SOS reconocible</li><li>Acceso a funciones importantes</li><li>Diseño pensado para el uso cotidiano</li></ul></div>
-        <div class="role-center"><span>AEI</span></div>
-        <div class="role-card"><h3>Para el <span>cuidador</span></h3><ul><li>Apoyo en la ubicación</li><li>Contacto directo</li><li>Recepción conceptual de alertas</li><li>Acompañamiento a distancia</li></ul></div>
+
+
+        <div class="role-card">
+
+            <h3>
+                Para la <span>persona</span>
+            </h3>
+
+            <ul>
+
+                <li>
+                    Orientación sencilla
+                </li>
+
+                <li>
+                    Botón SOS reconocible
+                </li>
+
+                <li>
+                    Acceso a funciones importantes
+                </li>
+
+                <li>
+                    Diseño pensado para el uso cotidiano
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <div class="role-center">
+
+            <span>
+                AEI
+            </span>
+
+        </div>
+
+
+        <div class="role-card">
+
+            <h3>
+                Para el <span>cuidador</span>
+            </h3>
+
+            <ul>
+
+                <li>
+                    Apoyo en la ubicación
+                </li>
+
+                <li>
+                    Contacto directo
+                </li>
+
+                <li>
+                    Recepción conceptual de alertas
+                </li>
+
+                <li>
+                    Acompañamiento a distancia
+                </li>
+
+            </ul>
+
+        </div>
+
+
     </div>
+
 </section>
 
+
+<!-- =====================================================
+     SOS
+===================================================== -->
 
 <section
     class="sos-section"
@@ -3186,6 +3803,7 @@ nav a:hover,
 
     </div>
 
+
     <div class="sos-ring">
 
         <div class="sos-button">
@@ -3193,6 +3811,7 @@ nav a:hover,
         </div>
 
     </div>
+
 
     <p class="sos-description">
 
@@ -3205,9 +3824,18 @@ nav a:hover,
 
 </section>
 
-<section class="solar-section" id="energia">
+
+<!-- =====================================================
+     ENERGÍA
+===================================================== -->
+
+<section
+    class="solar-section"
+    id="energia"
+>
 
     <div class="solar-content">
+
 
         <div class="solar-visual">
 
@@ -3223,14 +3851,35 @@ nav a:hover,
                 Luz solar + luz artificial
             </span>
 
+
             <div class="energy-meter">
+
                 <div class="energy-meter-top">
-                    <span>Nivel de energía</span>
-                    <span>85%</span>
+
+                    <span>
+                        Nivel de energía
+                    </span>
+
+                    <span>
+                        85%
+                    </span>
+
                 </div>
-                <div class="energy-bar"><span></span></div>
-                <div class="energy-note">Representación conceptual de autonomía.</div>
+
+
+                <div class="energy-bar">
+
+                    <span></span>
+
+                </div>
+
+
+                <div class="energy-note">
+                    Representación conceptual de autonomía.
+                </div>
+
             </div>
+
 
             <div class="energy-flow">
 
@@ -3258,39 +3907,36 @@ nav a:hover,
 
         </div>
 
+
         <div class="solar-text">
 
             <div class="eyebrow">
                 Energía y autonomía
             </div>
 
-            <h2>
 
+            <h2>
                 Una idea pensada
                 para <span>acompañar.</span>
-
             </h2>
 
-            <p>
 
+            <p>
                 El concepto incorpora un pequeño panel
                 solar capaz de aprovechar la luz para
                 contribuir a la alimentación del
                 dispositivo.
-
             </p>
+
 
             <p>
-
                 Está planteado para aprovechar tanto
                 la luz solar como la luz artificial.
-
             </p>
 
+
             <div class="light-box">
-
                 ☀ Funciona con luz solar y artificial
-
             </div>
 
         </div>
@@ -3300,25 +3946,131 @@ nav a:hover,
 </section>
 
 
+<!-- =====================================================
+     CONTACTO
+===================================================== -->
+
 <section class="contact-section">
-<div class="contact-content">
-<div class="section-title"><small>Conoce a MEMORA AEI</small><h2>Estamos para acompañar</h2></div>
-<p class="contact-intro">MEMORA AEI es una propuesta tecnológica creada para brindar acompañamiento, orientación y seguridad a las personas con Alzheimer y sus familias.</p>
-<div class="contact-grid">
-<div class="contact-card"><div class="contact-icon">📱</div><small>WhatsApp</small><strong>+57 300 456 7890</strong></div>
-<div class="contact-card"><div class="contact-icon">✉</div><small>Correo</small><strong>contacto@memoraaei.com</strong></div>
-<div class="contact-card"><div class="contact-icon">◎</div><small>Instagram</small><strong>@memora.aei</strong></div>
-<div class="contact-card"><div class="contact-icon">f</div><small>Facebook</small><strong>MEMORA AEI</strong></div>
-</div>
-<div class="contact-brand">MEMORA AEI · Tecnología que acompaña</div>
-</div>
+
+    <div class="contact-content">
+
+
+        <div class="section-title">
+
+            <small>
+                Conoce a MEMORA AEI
+            </small>
+
+            <h2>
+                Estamos para acompañar
+            </h2>
+
+        </div>
+
+
+        <p class="contact-intro">
+
+            MEMORA AEI es una propuesta tecnológica
+            creada para brindar acompañamiento,
+            orientación y seguridad a las personas
+            con Alzheimer y sus familias.
+
+        </p>
+
+
+        <div class="contact-grid">
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    📱
+                </div>
+
+                <small>
+                    WhatsApp
+                </small>
+
+                <strong>
+                    +57 300 456 7890
+                </strong>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    ✉
+                </div>
+
+                <small>
+                    Correo
+                </small>
+
+                <strong>
+                    contacto@memoraaei.com
+                </strong>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    ◎
+                </div>
+
+                <small>
+                    Instagram
+                </small>
+
+                <strong>
+                    @memora.aei
+                </strong>
+
+            </div>
+
+
+            <div class="contact-card">
+
+                <div class="contact-icon">
+                    f
+                </div>
+
+                <small>
+                    Facebook
+                </small>
+
+                <strong>
+                    MEMORA AEI
+                </strong>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="contact-brand">
+            MEMORA AEI · Tecnología que acompaña
+        </div>
+
+    </div>
+
 </section>
+
+
+<!-- =====================================================
+     MENSAJE FINAL
+===================================================== -->
 
 <section class="final-message">
 
     <small>
         MEMORA AEI
     </small>
+
 
     <h2>
 
@@ -3332,6 +4084,7 @@ nav a:hover,
 
     </h2>
 
+
     <p>
 
         Una propuesta que busca unir tecnología,
@@ -3341,7 +4094,14 @@ nav a:hover,
     </p>
 
 </section>
+
+
 </main>
+
+
+<!-- =====================================================
+     BOTÓN ARRIBA
+===================================================== -->
 
 <a
     href="#inicio"
@@ -3351,6 +4111,11 @@ nav a:hover,
     ↑
 </a>
 
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
 <footer>
 
     <div class="footer-brand">
@@ -3358,20 +4123,17 @@ nav a:hover,
     </div>
 
     <p>
-
         <strong>
             Tecnología que acompaña.
         </strong>
-
     </p>
 
     <p style="margin-top:10px;">
-
         Orientación · Compañía · Cuidado
-
     </p>
 
 </footer>
+
 
 </body>
 
